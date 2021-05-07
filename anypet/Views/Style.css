@@ -67,7 +67,7 @@ header {
 .Search {
     padding-right: 45px;
     padding-top: 30px;
-   
+    z-index: 0;
 }
 
 .form-check-label {
@@ -76,8 +76,9 @@ header {
 }
 
 .bg-video__content {
-    width: 100%;
-    height: 100%;
+    width: 86%;
+    height:30%;
+    z-index: -1;
 }
 
 

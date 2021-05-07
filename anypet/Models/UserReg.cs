@@ -29,18 +29,18 @@ namespace anypet.Models
         [Range(18,110)]
         public int Age { get; set; }
 
-        public String Address { get; set; }
+        public String City { get; set; }
 
         public Boolean ThereIsAnimal{ get; set; }
 
-        public Boolean HaveYouAdopted{ get; set; }
-
+        
         //making it only match for numbers around 9 digit only
         [RegularExpression("^[0-9]+$", ErrorMessage = "the id is not right ")]
         [StringLength(9, MinimumLength = 8)]
         public long Id{ get; set; }
 
         
+        //to do it disabeld-an option in html that make the field disabeld and colored it grey
         [DataType(DataType.DateTime)]
         public DateTime DateOfCreate { get; set; }
                
