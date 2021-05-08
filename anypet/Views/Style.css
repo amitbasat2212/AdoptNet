@@ -1,18 +1,19 @@
 ﻿body {
 
-
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 .navbar {
     FLOAT: right;
     direction: rtl;
     padding-left:54.5px;
+   
 }
 
 
@@ -76,9 +77,29 @@ header {
 }
 
 .bg-video__content {
-    width: 86%;
-    height:30%;
-    z-index: -1;
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin: 0 auto;
+    
+}
+
+.carousel{
+
+    width:300px;
+    height:300px;
+}
+
+
+.welcome {
+    direction: rtl;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.addline{
+
+    margin-top:80px;
 }
 
 
