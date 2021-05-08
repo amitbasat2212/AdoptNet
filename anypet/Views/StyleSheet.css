@@ -152,9 +152,13 @@
 
 
 .welcome {
-    direction: rtl;
     text-align: center;
     padding-bottom: 20px;
+    background: #E7E9EB;
+    border-radius: 25px;
+    font-family: 'PT Sans', sans-serif;
+    line-height: 1.4;
+    opacity: 0.8;
 }
 
 @keyframes animation {
@@ -188,4 +192,56 @@ h1 {
     font-family: 'Open Sans', sans-serif;
     font-family: 'Raleway', sans-serif;
     font-family: 'Roboto', sans-serif;
+}
+
+
+
+.d-block{
+
+    width:50px;
+    height:400px;
+}
+
+
+.carousel{
+
+    width:600px;
+    height:800px;
+}
+
+.card-title{
+
+    text-align:center;
+}
+
+.text {
+    color: #D1C9C8;
+}
+
+.Facebook{
+    width: 50px;
+    height:50px;
+}
+
+.twitter {
+    width: 60px;
+    height: 60px;
+
+    margin-right:150px;
+}
+
+.instagram {
+    width: 55px;
+    height: 55px;
+}
+
+.icons1 {
+    padding-top: 30px;
+    margin-left: 50px;
+    margin-right:50px;
+    padding-left:150px;
+}
+
+.ic {
+    padding-right: 100px;
 }
