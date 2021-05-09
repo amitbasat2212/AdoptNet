@@ -239,10 +239,45 @@ h1 {
     padding-right: 100px;
 }
 
+/*      */
+.About {
+    text-align: center;
+    float: none;
+    color: #ff6666;
+}
+.img-About {
+    height: 80%;
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: initial;
+    margin-top: auto;
+}
 
+#Name-box {
+    color: #ff6666;
+    background-color: #ff6666;
+    color: black;
+    padding: 6px;
+    text-align: center;
+    text-emphasis-color: #ff6666;
+    margin-top: 0px;
+}
 
+h4 {
+    color: lightblue;
+}
 
-/*////////*/
+#Left-Blog-box {
+    margin-left: 55px;
+    margin-block-start: 70px;
+    width: 550px;
+    height: 300px;
+}
 
-
-
+#Right-Blog-box {
+    margin-block-start: 70px;
+    width: 550px;
+    height: 300px;
+}
+S
