@@ -245,6 +245,7 @@ h1 {
     float: none;
     color: #ff6666;
 }
+
 .img-About {
     display: block;
     margin-left: auto;
@@ -267,19 +268,31 @@ h4 {
 }
 
 #Left-Blog-box {
-    margin-left: 55px;
-    margin-right: 100px;
-    margin-block-start: 150px;
-    width: 550px;
-    height: 300px;
+    margin-left: 850px;
+    margin-block-start: 70px;
+    width: 570px;
+    height: 310px;
+    outline-style: groove;
+    outline-color: blanchedalmond;
 }
 
 #Right-Blog-box {
-    margin-left: 40%;
+    margin-left: 1100px;
     margin-block-start: 70px;
-    width: 550px;
-    height: 300px;
+    width: 570px;
+    height: 310px;
+    outline-style: groove;
+    outline-color: blanchedalmond;
 }
-.container{
-   width: 1000000px;
+
+.container {
+    width: 1000000px;
+    height: 1000000px;
+}
+
+#wholepage {
+    width: 1000px;
+    height: 1000px;
+    margin-right:1000px;
+    float:right;
 }
