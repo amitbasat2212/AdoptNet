@@ -271,18 +271,18 @@ h4 {
     margin-left: 850px;
     margin-block-start: 70px;
     width: 570px;
-    height: 310px;
+    height: 280px;
     outline-style: groove;
-    outline-color: blanchedalmond;
+    outline-color: black;
 }
 
 #Right-Blog-box {
     margin-left: 1100px;
     margin-block-start: 70px;
     width: 570px;
-    height: 310px;
+    height: 280px;
     outline-style: groove;
-    outline-color: blanchedalmond;
+    outline-color: black;
 }
 
 .container {
