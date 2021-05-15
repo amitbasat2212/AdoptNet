@@ -10,7 +10,9 @@ namespace anypet.Models
     public class AdoptMeeting
     {
         //need to open as a diary to choose a date 
-        
+
+        public int Id { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
 

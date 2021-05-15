@@ -10,8 +10,8 @@ namespace anypet.Models
     {
         public int Id { get; set; }
         public string Image { get; set; }
-        public int AssociationID { get; set; }
+        public int AssociationId { get; set; }
         //this field represent the connection of one to one 
-        public Association association { get; set; }
+        public Association Association { get; set; }
     }
 }

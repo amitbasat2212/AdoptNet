@@ -1,0 +1,46 @@
+﻿.About {
+    text-align: center;
+    float: none;
+    color: #ff6666;
+    padding-bottom:45px;
+}
+.img-About {
+    display: block;
+    margin-left: auto;
+    margin-right: initial;
+    margin-top: auto;
+}
+#Name-box {
+    color: #ff6666;
+    background-color: #ff6666;
+    color: black;
+    padding: 6px;
+    text-align: center;
+    text-emphasis-color: #ff6666;
+    margin-top: 0px;
+}
+
+h4 {
+    color: lightblue;
+}
+
+#Left-Blog-box {
+    
+   
+    outline-style: groove;
+    outline-color: black;
+    margin-right:30px; 
+    margin-top:40px;
+}
+
+#Right-Blog-box {
+    outline-style: groove;
+    outline-color: black;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+#wholepage {
+   
+    padding-bottom:70px;
+}

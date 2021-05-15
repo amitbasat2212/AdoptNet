@@ -9,7 +9,7 @@ namespace anypet.Models
     //this class is represanting the image of each animal 
     public class AnimalImage
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         //this is a connection of one to one 
         public string Image { get; set; }

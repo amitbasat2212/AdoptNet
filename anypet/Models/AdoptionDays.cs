@@ -11,6 +11,7 @@ namespace AdoptNet.Models
     public class AdoptionDays
     {
 
+        public int Id { get; set; }
         public DateTime AdoptionDate { get; set; }
 
        //this field represent the connection of many to many 

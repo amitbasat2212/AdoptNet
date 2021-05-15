@@ -15,5 +15,9 @@ namespace AdoptNet.Data
         }
 
         public DbSet<anypet.Models.UserReg> UserReg { get; set; }
+
+        public DbSet<anypet.Models.Animal> Animal { get; set; }
+
+        public DbSet<anypet.Models.Association> Association { get; set; }
     }
 }
