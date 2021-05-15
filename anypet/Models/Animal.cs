@@ -5,9 +5,91 @@ using System.Threading.Tasks;
 
 namespace anypet.Models
 {
+<<<<<<< HEAD
     public class Animal
     {
         public int MyProperty { get; set; }
+=======
+    public enum Size
+    {
+        Small,
+        medium,
+        Big
+
+    }
+    public enum Kind
+    {
+       Dog,
+       Cat
+
+    }
+
+    public enum Location
+    {
+        Center,
+        North,
+        South
+    }
+    public enum Gender
+    {
+       Male,
+       Feamle
+    }
+
+
+
+    //the class itself for the cats,dogs an so on , the details about each pet 
+    public class Animal
+    {
+        public int ID { get; set; }
+
+
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name  must contain only letters...")]
+       
+        public String Name { get; set; }
+
+        public Kind Kind { get; set; }
+
+
+        [RegularExpression("^[0-9]+$", ErrorMessage = "the age is only in numbers ")]
+        [Required(ErrorMessage = "You must input Age of the Animal")]
+        [Range(0, 110)]
+        public ushort Age { get; set; }
+
+
+        //need to check this with validation- maby making it a list of female and male** 
+        [Required(ErrorMessage = "You must input the Gender of the Animal")]
+        public Gender Gender { get; set; }
+
+
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "The Description must contain only letters...")]
+        public String Description  { get; set; }
+
+
+        //need to ne a list of small,medium and big 
+        [Required(ErrorMessage = "You must input the Size of the Animal")]
+        public Size Size { get; set; }
+
+        [Required(ErrorMessage = "You must input the Location of the Association")]
+        public Location Location { get; set; }
+
+
+        //this field represnt the connection of many to one 
+        [Display(Name = "Association")]
+        public int IdAssociation { get; set; }
+
+
+        public Association association { get; set; }       
+
+              
+        //this field represent the connection of one to one 
+        public AnimalImage AnimalImage { get; set; }
+
+       
+
+
+
+>>>>>>> 954bab7 (adding new controllers and html of about and the controllers with the design of the create)
 
     }
 }
