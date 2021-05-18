@@ -39,13 +39,14 @@ namespace anypet.Models
     //the class itself for the cats,dogs an so on , the details about each pet 
     public class Animal
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
 
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name  must contain only letters...")]
        
         public String Name { get; set; }
 
+        [Display(Name = "species")]
         public Kind Kind { get; set; }
 
 
@@ -74,14 +75,14 @@ namespace anypet.Models
 
         //this field represnt the connection of many to one 
         [Display(Name = "Association")]
-        public int IdAssociation { get; set; }
+        public int AssociationId { get; set; }
 
 
-        public Association association { get; set; }       
+        public Association Association { get; set; }       
 
               
         //this field represent the connection of one to one 
-        public AnimalImage AnimalImage { get; set; }
+        public AnimalImage Image { get; set; }
 
        
 

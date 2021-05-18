@@ -4,14 +4,16 @@ using AdoptNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdoptNet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    partial class AdoptNetContextModelSnapshot : ModelSnapshot
+    [Migration("20210517131602_controllersAdd")]
+    partial class controllersAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,8 +31,8 @@ namespace AdoptNet.Migrations
                     b.Property<DateTime>("AdoptionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LocationAdopt")
-                        .HasColumnType("int");
+                    b.Property<string>("LocationAdopt")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

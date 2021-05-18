@@ -22,7 +22,8 @@ namespace AdoptNet.Controllers
         // GET: Animals
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Animal.ToListAsync());
+            var adoptNetContext = _context.Animal.Include(a => a.Association);
+            return View(await adoptNetContext.ToListAsync());
         }
 
         // GET: Animals/Details/5
@@ -34,7 +35,8 @@ namespace AdoptNet.Controllers
             }
 
             var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(a => a.Association)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (animal == null)
             {
                 return NotFound();
@@ -46,7 +48,7 @@ namespace AdoptNet.Controllers
         // GET: Animals/Create
         public IActionResult Create()
         {
-            ViewData["Associations"] = new SelectList(_context.Association, nameof(Association.ID), nameof(Association.Name));
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
             return View();
         }
 
@@ -55,7 +57,7 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Age,Gender,Description,Size,Location,IdAssociation,Kind")] Animal animal)
+        public async Task<IActionResult> Create([Bind("Id,Name,Kind,Age,Gender,Description,Size,Location,AssociationId")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +65,7 @@ namespace AdoptNet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), animal.AssociationId);
             return View(animal);
         }
 
@@ -79,6 +82,7 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), animal.AssociationId);
             return View(animal);
         }
 
@@ -87,9 +91,9 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Age,Gender,Description,Size,Location,IdAssociation,Kind")] Animal animal)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Kind,Age,Gender,Description,Size,Location,AssociationId")] Animal animal)
         {
-            if (id != animal.ID)
+            if (id != animal.Id)
             {
                 return NotFound();
             }
@@ -103,7 +107,7 @@ namespace AdoptNet.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AnimalExists(animal.ID))
+                    if (!AnimalExists(animal.Id))
                     {
                         return NotFound();
                     }
@@ -114,6 +118,7 @@ namespace AdoptNet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), animal.AssociationId);
             return View(animal);
         }
 
@@ -126,7 +131,8 @@ namespace AdoptNet.Controllers
             }
 
             var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(a => a.Association)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (animal == null)
             {
                 return NotFound();
@@ -148,7 +154,7 @@ namespace AdoptNet.Controllers
 
         private bool AnimalExists(int id)
         {
-            return _context.Animal.Any(e => e.ID == id);
+            return _context.Animal.Any(e => e.Id == id);
         }
     }
 }

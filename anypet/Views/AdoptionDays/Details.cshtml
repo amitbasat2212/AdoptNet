@@ -1,7 +1,7 @@
-﻿@model anypet.Models.Association
+﻿@model AdoptNet.Models.AdoptionDays
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Details";
 }
 
 <head>
@@ -34,45 +34,27 @@
 
 </head>
 
+<h1><ins>Details about Adoption Days</ins></h1>
 
-<br />
-<h1><ins>Edit an Adoption Day</ins></h1>
-<hr />
-<div class="row justify-content-center">
-    <div class="col-md-3 formback">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <select asp-for="Location" class="form-control"></select>
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailOfUser" class="control-label"></label>
-                <input asp-for="EmailOfUser" class="form-control" />
-                <span asp-validation-for="EmailOfUser" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
-                <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
-            </div>
-        </form>
-    </div>
+<div>
+    <h4>AdoptionDays</h4>
+    <hr />
+    <dl class="row" id="footerbootom">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AdoptionDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AdoptionDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LocationAdopt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LocationAdopt)
+        </dd>
+    </dl>
 </div>
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

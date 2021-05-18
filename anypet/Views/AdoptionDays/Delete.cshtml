@@ -1,4 +1,4 @@
-﻿@model anypet.Models.Animal
+﻿@model AdoptNet.Models.AdoptionDays
 
 @{
     ViewData["Title"] = "Delete";
@@ -34,66 +34,31 @@
 
 </head>
 
-<h1><ins>Delete an Animal</ins></h1>
+<h1><ins>Delete an Adoption day</ins></h1>
 
-<h3 class="subtitle">Are you sure you want to delete this Animal?</h3>
+<h3 class="subtitle">Are you sure you want to delete this Adoption Day?</h3>
 <div>
+   
     <hr />
     <dl class="row justify-content-center">
         <div class="col-6 mx-auto spacesdes">
             <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.AdoptionDate)
             </dt>
             <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Name)
+                @Html.DisplayFor(model => model.AdoptionDate)
             </dd>
             <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Kind)
+                @Html.DisplayNameFor(model => model.LocationAdopt)
             </dt>
             <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Kind)
+                @Html.DisplayFor(model => model.LocationAdopt)
             </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Age)
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Age)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Gender)
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Gender)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Size)
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Size)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Location)
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Location)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                @Html.DisplayNameFor(model => model.Association)
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Association.Name)
-            </dd>
-
-            <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none col-6 mx-auto spacesdes" href="#" aria-label="Product">
-                <img src="~/css/smily.jpg" class="bi me-4 px-4" width="150" height="70" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap" />
-            </a>
-
+            
+                <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none col-6 mx-auto spacesdes" href="#" aria-label="Product">
+                    <img src="~/css/smily.jpg" class="bi me-4 px-4" width="150" height="70" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap" />
+                </a>
+          
             <form class="col-6 mx-auto spacesdes" asp-action="Delete" id="footerbootom">
                 <input type="hidden" asp-for="Id" />
                 <input type="submit" value="Delete" class="btn btn-danger btn-outline-dark" id="dangiSize" />
@@ -104,7 +69,7 @@
 
 
     </dl>
-
+    
 
 
 

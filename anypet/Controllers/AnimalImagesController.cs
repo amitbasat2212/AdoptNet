@@ -10,22 +10,23 @@ using anypet.Models;
 
 namespace AdoptNet.Controllers
 {
-    public class AssociationsController : Controller
+    public class AnimalImagesController : Controller
     {
         private readonly AdoptNetContext _context;
 
-        public AssociationsController(AdoptNetContext context)
+        public AnimalImagesController(AdoptNetContext context)
         {
             _context = context;
         }
 
-        // GET: Associations
+        // GET: AnimalImages
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Association.ToListAsync());
+            var adoptNetContext = _context.AnimalImage.Include(a => a.Animal);
+            return View(await adoptNetContext.ToListAsync());
         }
 
-        // GET: Associations/Details/5
+        // GET: AnimalImages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association
+            var animalImage = await _context.AnimalImage
+                .Include(a => a.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (association == null)
+            if (animalImage == null)
             {
                 return NotFound();
             }
 
-            return View(association);
+            return View(animalImage);
         }
 
-        // GET: Associations/Create
+        // GET: AnimalImages/Create
         public IActionResult Create()
         {
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name));
             return View();
         }
 
-        // POST: Associations/Create
+        // POST: AnimalImages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association)
+        public async Task<IActionResult> Create([Bind("Id,Image,AnimalId")] AnimalImage animalImage)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(association);
+                _context.Add(animalImage);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(association);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id",nameof(Animal.Name), animalImage.AnimalId);
+            return View(animalImage);
         }
 
-        // GET: Associations/Edit/5
+        // GET: AnimalImages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association.FindAsync(id);
-            if (association == null)
+            var animalImage = await _context.AnimalImage.FindAsync(id);
+            if (animalImage == null)
             {
                 return NotFound();
             }
-            return View(association);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
+            return View(animalImage);
         }
 
-        // POST: Associations/Edit/5
+        // POST: AnimalImages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,AnimalId")] AnimalImage animalImage)
         {
-            if (id != association.Id)
+            if (id != animalImage.Id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace AdoptNet.Controllers
             {
                 try
                 {
-                    _context.Update(association);
+                    _context.Update(animalImage);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssociationExists(association.Id))
+                    if (!AnimalImageExists(animalImage.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace AdoptNet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(association);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
+            return View(animalImage);
         }
 
-        // GET: Associations/Delete/5
+        // GET: AnimalImages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association
+            var animalImage = await _context.AnimalImage
+                .Include(a => a.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (association == null)
+            if (animalImage == null)
             {
                 return NotFound();
             }
 
-            return View(association);
+            return View(animalImage);
         }
 
-        // POST: Associations/Delete/5
+        // POST: AnimalImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var association = await _context.Association.FindAsync(id);
-            _context.Association.Remove(association);
+            var animalImage = await _context.AnimalImage.FindAsync(id);
+            _context.AnimalImage.Remove(animalImage);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AssociationExists(int id)
+        private bool AnimalImageExists(int id)
         {
-            return _context.Association.Any(e => e.Id == id);
+            return _context.AnimalImage.Any(e => e.Id == id);
         }
     }
 }
