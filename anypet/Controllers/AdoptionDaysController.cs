@@ -6,26 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
-using anypet.Models;
+using AdoptNet.Models;
 
 namespace AdoptNet.Controllers
 {
-    public class AssociationsController : Controller
+    public class AdoptionDaysController : Controller
     {
         private readonly AdoptNetContext _context;
 
-        public AssociationsController(AdoptNetContext context)
+        public AdoptionDaysController(AdoptNetContext context)
         {
             _context = context;
         }
 
-        // GET: Associations
+        // GET: AdoptionDays
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Association.ToListAsync());
+            return View(await _context.AdoptionDays.ToListAsync());
         }
 
-        // GET: Associations/Details/5
+        // GET: AdoptionDays/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association
+            var adoptionDays = await _context.AdoptionDays
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (association == null)
+            if (adoptionDays == null)
             {
                 return NotFound();
             }
 
-            return View(association);
+            return View(adoptionDays);
         }
 
-        // GET: Associations/Create
+        // GET: AdoptionDays/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Associations/Create
+        // POST: AdoptionDays/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association)
+        public async Task<IActionResult> Create([Bind("Id,AdoptionDate,LocationAdopt")] AdoptionDays adoptionDays)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(association);
+                _context.Add(adoptionDays);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(association);
+            return View(adoptionDays);
         }
 
-        // GET: Associations/Edit/5
+        // GET: AdoptionDays/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association.FindAsync(id);
-            if (association == null)
+            var adoptionDays = await _context.AdoptionDays.FindAsync(id);
+            if (adoptionDays == null)
             {
                 return NotFound();
             }
-            return View(association);
+            return View(adoptionDays);
         }
 
-        // POST: Associations/Edit/5
+        // POST: AdoptionDays/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AdoptionDate,LocationAdopt")] AdoptionDays adoptionDays)
         {
-            if (id != association.Id)
+            if (id != adoptionDays.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace AdoptNet.Controllers
             {
                 try
                 {
-                    _context.Update(association);
+                    _context.Update(adoptionDays);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssociationExists(association.Id))
+                    if (!AdoptionDaysExists(adoptionDays.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace AdoptNet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(association);
+            return View(adoptionDays);
         }
 
-        // GET: Associations/Delete/5
+        // GET: AdoptionDays/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association
+            var adoptionDays = await _context.AdoptionDays
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (association == null)
+            if (adoptionDays == null)
             {
                 return NotFound();
             }
 
-            return View(association);
+            return View(adoptionDays);
         }
 
-        // POST: Associations/Delete/5
+        // POST: AdoptionDays/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var association = await _context.Association.FindAsync(id);
-            _context.Association.Remove(association);
+            var adoptionDays = await _context.AdoptionDays.FindAsync(id);
+            _context.AdoptionDays.Remove(adoptionDays);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AssociationExists(int id)
+        private bool AdoptionDaysExists(int id)
         {
-            return _context.Association.Any(e => e.Id == id);
+            return _context.AdoptionDays.Any(e => e.Id == id);
         }
     }
 }

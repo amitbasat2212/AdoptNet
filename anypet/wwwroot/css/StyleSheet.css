@@ -1,5 +1,6 @@
-﻿.container {
-    max-width: 100%;
+﻿
+.container {
+    max-width: 80%;
 }
 
 /*
@@ -272,6 +273,7 @@ font-size:20px;
 
 body {
     background-image: url("background1.jpg");
+    font-family: 'Raleway',sans-serif;
 }
 
 .formback {
@@ -370,6 +372,33 @@ body {
 
 
 
+
 /**/
 
+#footerbootom{
 
+    margin-bottom:150px;
+}
+
+#dangiSize {
+    border-bottom-color: black;
+    margin-top: 15px;
+    height: 50px;
+    width: 100px;
+}
+
+.subtitle {
+    color: #FE8C99;
+    font-family: inherit;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 0 0 24px;
+    text-align: center;
+}
+
+
+.spacesdes {
+    margin: 20px;
+    font-weight: bold;
+}

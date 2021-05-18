@@ -1,6 +1,7 @@
 ﻿using anypet.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,12 +13,15 @@ namespace AdoptNet.Models
     {
 
         public int Id { get; set; }
+
+        [Display(Name = "Adoption Day")]
         public DateTime AdoptionDate { get; set; }
 
        //this field represent the connection of many to many 
-        public List<Association> associationsAdopt { get; set; }
+        public List<Association> Associations { get; set; }
 
-        public String LocationAdopt { get; set; }
+        [Display(Name = "Location of the Adoption Day")]
+        public Location LocationAdopt { get; set; }
 
         
 

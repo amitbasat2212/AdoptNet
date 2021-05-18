@@ -10,22 +10,23 @@ using anypet.Models;
 
 namespace AdoptNet.Controllers
 {
-    public class AssociationsController : Controller
+    public class AssociationImagesController : Controller
     {
         private readonly AdoptNetContext _context;
 
-        public AssociationsController(AdoptNetContext context)
+        public AssociationImagesController(AdoptNetContext context)
         {
             _context = context;
         }
 
-        // GET: Associations
+        // GET: AssociationImages
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Association.ToListAsync());
+            var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
+            return View(await adoptNetContext.ToListAsync());
         }
 
-        // GET: Associations/Details/5
+        // GET: AssociationImages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association
+            var associationImage = await _context.AssociationImage
+                .Include(a => a.Association)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (association == null)
+            if (associationImage == null)
             {
                 return NotFound();
             }
 
-            return View(association);
+            return View(associationImage);
         }
 
-        // GET: Associations/Create
+        // GET: AssociationImages/Create
         public IActionResult Create()
         {
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id",nameof(Association.Name));
             return View();
         }
 
-        // POST: Associations/Create
+        // POST: AssociationImages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association)
+        public async Task<IActionResult> Create([Bind("Id,Image,AssociationId")] AssociationImage associationImage)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(association);
+                _context.Add(associationImage);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(association);
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
+            return View(associationImage);
         }
 
-        // GET: Associations/Edit/5
+        // GET: AssociationImages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association.FindAsync(id);
-            if (association == null)
+            var associationImage = await _context.AssociationImage.FindAsync(id);
+            if (associationImage == null)
             {
                 return NotFound();
             }
-            return View(association);
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
+            return View(associationImage);
         }
 
-        // POST: Associations/Edit/5
+        // POST: AssociationImages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,AssociationId")] AssociationImage associationImage)
         {
-            if (id != association.Id)
+            if (id != associationImage.Id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace AdoptNet.Controllers
             {
                 try
                 {
-                    _context.Update(association);
+                    _context.Update(associationImage);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssociationExists(association.Id))
+                    if (!AssociationImageExists(associationImage.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace AdoptNet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(association);
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
+            return View(associationImage);
         }
 
-        // GET: Associations/Delete/5
+        // GET: AssociationImages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var association = await _context.Association
+            var associationImage = await _context.AssociationImage
+                .Include(a => a.Association)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (association == null)
+            if (associationImage == null)
             {
                 return NotFound();
             }
 
-            return View(association);
+            return View(associationImage);
         }
 
-        // POST: Associations/Delete/5
+        // POST: AssociationImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var association = await _context.Association.FindAsync(id);
-            _context.Association.Remove(association);
+            var associationImage = await _context.AssociationImage.FindAsync(id);
+            _context.AssociationImage.Remove(associationImage);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AssociationExists(int id)
+        private bool AssociationImageExists(int id)
         {
-            return _context.Association.Any(e => e.Id == id);
+            return _context.AssociationImage.Any(e => e.Id == id);
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿@model anypet.Models.Animal
 
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
 
 <head>
     <meta charset="utf-8" />
@@ -43,60 +41,56 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control inputspace" />
+                <input asp-for="Name" class="form-control " />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control inputspace" />
+                <input asp-for="Age" class="form-control " />
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Kind" class="control-label"></label>
-                <select asp-for="Kind" class="form-control inputspace" asp-items="Html.GetEnumSelectList<Kind>()"></select>
+                <select asp-for="Kind" class="form-control " asp-items="Html.GetEnumSelectList<Kind>()"></select>
                 <span asp-validation-for="Kind" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <select asp-for="Gender" class="form-control inputspace" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                <select asp-for="Gender" class="form-control " asp-items="Html.GetEnumSelectList<Gender>()"></select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control inputspace" />
+                <input asp-for="Description" class="form-control " />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
-                <select asp-for="Size" class="form-control inputspace" asp-items="Html.GetEnumSelectList<Size>()"></select>
+                <select asp-for="Size" class="form-control " asp-items="Html.GetEnumSelectList<Size>()"></select>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Location" class="control-label"></label>
-                <select asp-for="Location" class="form-control inputspace" asp-items="Html.GetEnumSelectList<Location>()"></select>
+                <select asp-for="Location" class="form-control " asp-items="Html.GetEnumSelectList<Location>()"></select>
                 <span asp-validation-for="Location" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdAssociation" class="control-label"></label>
-                <select asp-for="IdAssociation" class="form-control inputspace" asp-items="ViewBag.Associations"></select>
-                <span asp-validation-for="IdAssociation" class="text-danger"></span>
+                <label asp-for="AssociationId" class="control-label"></label>
+                <select asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId"></select>
             </div>
-
-
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
+                <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+
 </div>
 
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
 
