@@ -14,19 +14,16 @@ namespace AdoptNet.Controllers
     public class AnimalImagesController : Controller
     {
         private readonly AdoptNetContext _context;
-
         public AnimalImagesController(AdoptNetContext context)
         {
             _context = context;
         }
-
         // GET: AnimalImages
         public async Task<IActionResult> Index()
         {
             var adoptNetContext = _context.AnimalImage.Include(a => a.Animal);
             return View(await adoptNetContext.ToListAsync());
         }
-
         // GET: AnimalImages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -34,7 +31,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             var animalImage = await _context.AnimalImage
                 .Include(a => a.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -42,7 +38,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             return View(animalImage);
         }
 
@@ -53,7 +48,6 @@ namespace AdoptNet.Controllers
             ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name));
             return View();
         }
-
         // POST: AnimalImages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -67,7 +61,7 @@ namespace AdoptNet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id",nameof(Animal.Name), animalImage.AnimalId);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
             return View(animalImage);
         }
 
@@ -79,7 +73,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             var animalImage = await _context.AnimalImage.FindAsync(id);
             if (animalImage == null)
             {
@@ -88,7 +81,6 @@ namespace AdoptNet.Controllers
             ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
             return View(animalImage);
         }
-
         // POST: AnimalImages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -100,7 +92,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -133,7 +124,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             var animalImage = await _context.AnimalImage
                 .Include(a => a.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -141,10 +131,8 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             return View(animalImage);
         }
-
         // POST: AnimalImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -155,7 +143,6 @@ namespace AdoptNet.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool AnimalImageExists(int id)
         {
             return _context.AnimalImage.Any(e => e.Id == id);

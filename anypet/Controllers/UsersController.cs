@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
-using AdoptNet.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using anypet.Models;
 
-namespace AdoptNet.Controllers
+namespace Ad.Controllers
 {
     public class UsersController : Controller
     {
@@ -21,7 +21,7 @@ namespace AdoptNet.Controllers
         {
             _context = context;
         }
-        
+
         //this isthe get of login & access denied
         public IActionResult Login()
         {
@@ -131,11 +131,11 @@ namespace AdoptNet.Controllers
     }
 
 }
-        //// GET: Users
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.User.ToListAsync());
-        //}
+//// GET: Users
+//public async Task<IActionResult> Index()
+//{
+//    return View(await _context.User.ToListAsync());
+//}
 
 //        // GET: Users/Details/5
 //        public async Task<IActionResult> Details(int? id)

@@ -14,19 +14,16 @@ namespace AdoptNet.Controllers
     public class AssociationImagesController : Controller
     {
         private readonly AdoptNetContext _context;
-
         public AssociationImagesController(AdoptNetContext context)
         {
             _context = context;
         }
-
         // GET: AssociationImages
         public async Task<IActionResult> Index()
         {
             var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
             return View(await adoptNetContext.ToListAsync());
         }
-
         // GET: AssociationImages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -34,7 +31,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             var associationImage = await _context.AssociationImage
                 .Include(a => a.Association)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -42,7 +38,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             return View(associationImage);
         }
 
@@ -50,10 +45,9 @@ namespace AdoptNet.Controllers
         [Authorize(Roles = "Admin, Association")]
         public IActionResult Create()
         {
-            ViewData["AssociationId"] = new SelectList(_context.Association, "Id",nameof(Association.Name));
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
             return View();
         }
-
         // POST: AssociationImages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -79,7 +73,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             var associationImage = await _context.AssociationImage.FindAsync(id);
             if (associationImage == null)
             {
@@ -88,7 +81,6 @@ namespace AdoptNet.Controllers
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
             return View(associationImage);
         }
-
         // POST: AssociationImages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -100,7 +92,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -133,7 +124,6 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             var associationImage = await _context.AssociationImage
                 .Include(a => a.Association)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -141,10 +131,8 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-
             return View(associationImage);
         }
-
         // POST: AssociationImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -155,7 +143,6 @@ namespace AdoptNet.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool AssociationImageExists(int id)
         {
             return _context.AssociationImage.Any(e => e.Id == id);

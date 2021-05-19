@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdoptNet.Models
+namespace anypet.Models
 {
 
     public enum UserType
