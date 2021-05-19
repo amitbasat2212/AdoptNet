@@ -42,7 +42,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AnimalImages/Create
-        [Authorize(Roles = "Admin, Association")]
+       // [Authorize(Roles = "Admin, Association")]
         public IActionResult Create()
         {
             ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name));
@@ -66,7 +66,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AnimalImages/Edit/5
-        [Authorize(Roles = "Admin, Association")]
+        //[Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,7 +117,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AnimalImages/Delete/5
-        [Authorize(Roles = "Admin, Association")]
+        //[Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

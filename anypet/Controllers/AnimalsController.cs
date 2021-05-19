@@ -18,6 +18,21 @@ namespace AdoptNet.Controllers
         {
             _context = context;
         }
+
+        public async Task<IActionResult> Search(String Searching)
+        {
+
+            //Location l = (Location)Enum.Parse(typeof(Location), Searching);
+            //Gender g = (Gender)Enum.Parse(typeof(Gender), Searching);
+            //Size s = (Size)Enum.Parse(typeof(Size), Searching);
+            //Kind k = (Kind)Enum.Parse(typeof(Kind), Searching);
+
+            var SearchContect = _context.Animal.Where(a => (a.Gender.Equals(Searching) || a.Location.ToString().Contains(Searching) || a.Kind.ToString().Contains(Searching) || a.Size.ToString().Contains(Searching)));
+            return View("Index", await SearchContect.ToListAsync());
+        }
+
+
+
         // GET: Animals
         public async Task<IActionResult> Index()
         {
@@ -42,7 +57,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Animals/Create
-        [Authorize(Roles = "Admin, Association")]
+      //  [Authorize(Roles = "Admin, Association")]
         public IActionResult Create()
         {
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
@@ -66,7 +81,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Animals/Edit/5
-        [Authorize(Roles = "Admin, Association")]
+      //  [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,7 +132,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Animals/Delete/5
-        [Authorize(Roles = "Admin, Association")]
+     //   [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

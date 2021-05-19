@@ -47,12 +47,12 @@
                 <li><a asp-controller="AdoptionDays" asp-action="Index" class="nav-link px-4 text-white ">Adoption days</a></li>
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
-                <il><input type="search" class="form-control moving1 form-control-dark px-4 moving" placeholder="Search..." aria-label="Search"></il>
+                <form asp-controller="Animals" asp-action="Search">
+                    <input name="Searching" placeholder="Enter something to search" />
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </form>
                 <il class="moving1 ">
-                    <button type="button" class="btn btn-outline-secondary px-4 moving moving1">Search</button>
-
-
-                    <il class="text-end px-5 moving1">
+                   <il class="text-end px-5 moving1">
                         <a asp-controller="Users" asp-action="Login"><button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
                         <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>
                     </il>
