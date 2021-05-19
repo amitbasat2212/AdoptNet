@@ -1,6 +1,10 @@
-﻿@{ ViewData["Title"] = "Home Page"; }
+﻿[@{
+    ViewData["Title"] = "Home Page";
+}
 
-@{ Layout = null; }
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +32,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -37,24 +41,36 @@
     <header class="site-header sticky-top py-1">
 
         <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <!-- link from the logo to home page -->
-            <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" aria-label="Product">
+            <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="C:\Users\amitb\source\repos\AdoptNet\anypet\Views\Home\Index.cshtml" aria-label="Product">
                 <img src="~/css/Lemonsouce.png" class="bi me-4 px-4" width="150" height="70" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap" />
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center ">
+<<<<<<< HEAD
                 <li><a asp-controller="Animals" asp-action="Index" class="nav-link px-4 text-white ">Cat Adoption</a></li>
                 <li><a asp-controller="Animals" asp-action="Index" class="nav-link px-4 text-white ">Dog Adoption</a></li>
                 <li><a asp-controller="AdoptionDays" asp-action="Index" class="nav-link px-4 text-white ">Adoption days</a></li>
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
+=======
+                <li><a href="#" class="nav-link px-4 text-white ">Cat Adoption</a></li>
+                <li><a href="#" class="nav-link px-4 text-white ">Dog Adoption</a></li>
+                <li><a href="#" class="nav-link px-4 text-white ">Adoption days</a></li>
+                <li><a href="#" class="nav-link px-4 text-white ">Associations</a></li>
+                <li><a href="#" class="nav-link px-4 text-white ">About</a></li>
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
                 <il><input type="search" class="form-control moving1 form-control-dark px-4 moving" placeholder="Search..." aria-label="Search"></il>
                 <il class="moving1 ">
                     <button type="button" class="btn btn-outline-secondary px-4 moving moving1">Search</button>
 
 
                     <il class="text-end px-5 moving1">
+<<<<<<< HEAD
                         <a asp-controller="Users" asp-action="Login"><button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
                         <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>
+=======
+                        <button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button>
+                        <button type="button" class="btn btn-warning px-3 ">Sign-up</button>
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
                     </il>
             </ul>
 
@@ -108,7 +124,7 @@
                 <div class="card">
                     <a target="_new" href="https://brightside.me/wonder-animals/20-curious-facts-about-pets-thatll-make-you-love-them-even-more-757860/"><img src="~/css/2.jpeg" class="card-img-top" alt="..."></a>
                     <div class="card-body">
-                        <h3 class="card-title">20 Curious Facts About Pets That’ll Make You Love Them</h3>
+                        <h3 class="card-title">20 Curious Facts About Pets That’ll Make You Love Them Even More</h3>
 
                     </div>
                 </div>
@@ -218,3 +234,8 @@
 
 </body>
 </html>
+
+
+
+
+

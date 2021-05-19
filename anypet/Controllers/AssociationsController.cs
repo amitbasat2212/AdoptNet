@@ -6,8 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
+<<<<<<< HEAD
 using AdoptNet.Models;
 using Microsoft.AspNetCore.Authorization;
+=======
+using anypet.Models;
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
 
 namespace AdoptNet.Controllers
 {
@@ -40,7 +44,6 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Associations/Create
-        [Authorize(Roles = "Admin, Association")]
         public IActionResult Create()
         {
             return View();
@@ -62,7 +65,6 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Associations/Edit/5
-        [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -111,7 +113,6 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Associations/Delete/5
-        [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

@@ -10,8 +10,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdoptNet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
+<<<<<<< HEAD
     [Migration("20210517151158_LocatinAdopt")]
     partial class LocatinAdopt
+=======
+<<<<<<< HEAD:anypet/Migrations/20210519105312_User.Designer.cs
+    [Migration("20210519105312_User")]
+    partial class User
+=======
+    [Migration("20210517151158_LocatinAdopt")]
+    partial class LocatinAdopt
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.):anypet/Migrations/20210517151158_LocatinAdopt.Designer.cs
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

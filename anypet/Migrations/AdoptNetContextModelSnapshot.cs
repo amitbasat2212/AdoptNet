@@ -37,29 +37,6 @@ namespace AdoptNet.Migrations
                     b.ToTable("AdoptionDays");
                 });
 
-            modelBuilder.Entity("AdoptNet.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
-                });
-
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
                 {
                     b.Property<int>("AdoptionDaysId")
@@ -177,6 +154,43 @@ namespace AdoptNet.Migrations
                         .IsUnique();
 
                     b.ToTable("AssociationImage");
+                });
+
+            modelBuilder.Entity("anypet.Models.UserReg", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(9)
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailOfUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrivateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ThereIsAnimal")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserReg");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>

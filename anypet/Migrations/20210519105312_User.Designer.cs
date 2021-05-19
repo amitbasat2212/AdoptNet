@@ -10,8 +10,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdoptNet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
+<<<<<<< HEAD:anypet/Migrations/20210519105312_User.Designer.cs
     [Migration("20210519105312_User")]
     partial class User
+=======
+    [Migration("20210517151158_LocatinAdopt")]
+    partial class LocatinAdopt
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.):anypet/Migrations/20210517151158_LocatinAdopt.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,29 +42,6 @@ namespace AdoptNet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AdoptionDays");
-                });
-
-            modelBuilder.Entity("AdoptNet.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
@@ -179,6 +161,43 @@ namespace AdoptNet.Migrations
                         .IsUnique();
 
                     b.ToTable("AssociationImage");
+                });
+
+            modelBuilder.Entity("anypet.Models.UserReg", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(9)
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailOfUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrivateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ThereIsAnimal")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserReg");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
