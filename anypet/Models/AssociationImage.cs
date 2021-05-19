@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace anypet.Models
+namespace AdoptNet.Models
 {
     //this class is represent the image of each association
     public class AssociationImage

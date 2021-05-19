@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace anypet.Models
+namespace AdoptNet.Models
 {
 
     //this class is represanting the image of each animal 

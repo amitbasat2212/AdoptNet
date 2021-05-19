@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AdoptNet.Models;
 
-namespace anypet.Models
+namespace AdoptNet.Models
 {
 
     //the information for the association itself, the information about each one 

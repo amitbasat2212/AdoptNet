@@ -24,7 +24,6 @@ namespace AdoptNet.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        public UserType Type { get; set; } = UserType.Client;
+        public UserType Type { get; set; } = UserType.Client; // when we a new type the difualt will be the client
     }
 }

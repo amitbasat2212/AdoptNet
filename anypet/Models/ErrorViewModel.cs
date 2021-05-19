@@ -1,6 +1,6 @@
 using System;
 
-namespace anypet.Models
+namespace AdoptNet.Models
 {
     public class ErrorViewModel
     {

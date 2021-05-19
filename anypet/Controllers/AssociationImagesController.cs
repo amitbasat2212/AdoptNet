@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
-using anypet.Models;
+using AdoptNet.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AdoptNet.Controllers
