@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
 using anypet.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AdoptNet.Controllers
 {
@@ -45,7 +44,6 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Associations/Create
-        [Authorize(Roles = "Admin, Association")]
         public IActionResult Create()
         {
             return View();
@@ -68,7 +66,6 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Associations/Edit/5
-        [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -120,7 +117,6 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Associations/Delete/5
-        [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

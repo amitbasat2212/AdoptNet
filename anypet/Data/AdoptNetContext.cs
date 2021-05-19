@@ -15,7 +15,7 @@ namespace AdoptNet.Data
         {
         }
 
-       
+        public DbSet<anypet.Models.UserReg> UserReg { get; set; }
 
         public DbSet<anypet.Models.Animal> Animal { get; set; }
 
@@ -26,7 +26,5 @@ namespace AdoptNet.Data
         public DbSet<anypet.Models.AssociationImage> AssociationImage { get; set; }
 
         public DbSet<AdoptNet.Models.AdoptionDays> AdoptionDays { get; set; }
-
-        public DbSet<AdoptNet.Models.User> User { get; set; }
     }
 }
