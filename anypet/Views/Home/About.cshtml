@@ -1,5 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@page
+@model AdoptNet.Views.Home.AboutModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
 <head>
 
     <meta charset="utf-8" />
@@ -35,6 +40,7 @@
 </head>
 <body>
 
+    <!--  header-navbar -->
     <header class="site-header sticky-top py-1">
 
         <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -46,7 +52,7 @@
                 <li><a asp-controller="Animals" asp-action="Index" class="nav-link px-4 text-white ">Dog Adoption</a></li>
                 <li><a asp-controller="AdoptionDays" asp-action="Index" class="nav-link px-4 text-white ">Adoption days</a></li>
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
-                <li><a asp-controller="Home" asp-action="About"  class="nav-link px-4 text-white ">About</a></li>
+                <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
                 <il><input type="search" class="form-control moving1 form-control-dark px-4 moving" placeholder="Search..." aria-label="Search"></il>
                 <il class="moving1 ">
                     <button type="button" class="btn btn-outline-secondary px-4 moving moving1">Search</button>
@@ -59,18 +65,92 @@
             </ul>
 
 
-
         </nav>
 
     </header>
 
-    <div class="container containerbackground">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
+    <h1 class="About">
+        <br> </br>
+        <b>About us: </b>
 
+    </h1>
+    <main class="container">
+
+        <!--Top left-->
+        <div id="wholepage" class="row mb-2">
+            <div class="col-md-6">
+                <div id="Left-Blog-box" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong id="Name-box" class="d-inline-block mb-2 text-primary"><h4>Limi Hodory</h4></strong>
+                        <p class="card-text mb-auto">
+                            Limor hodory, 26 years old , lives in Azor.
+                            I'm a Computer science student, love to travel, meet new people and especially take care of animals and help them :)
+                        </p>
+
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img class="img-About " width="210" height="280" src="~/css/LIMI.jpeg" alt="Sitelogo">
+                    </div>
+                </div>
+            </div>
+
+            <!--Top right-->
+            <div class="col-md-6">
+                <div id="Right-Blog-box" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong id="Name-box" class="d-inline-block mb-2 text-primary"><h4>Rotem Rokah</h4></strong>
+                        <p class="card-text mb-auto">
+                            Rotem Rokah 25 yo, lives in Givat Brenner
+                            Computer science student, love dogs, sport and Beer.
+                            I enjoy playing basketball and training at the gym , and love learning new things.
+                        </p>
+
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img class="img-About " width="210" height="280" src="~/css/ROTEM.jpeg" alt="Sitelogo">
+                    </div>
+                </div>
+            </div>
+
+            <!--Bottom left-->
+            <div class="col-md-6">
+                <div id="Left-Blog-box" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong id="Name-box" class="d-inline-block mb-2 text-primary"><h4>Amit Ben Basat</h4></strong>
+                        <p class="card-text mb-auto">
+                            Amit ben basat
+                            23 yo, lives in mosav gealya
+                            love to read books, watching marvel and the proud honor of the best dog in the world
+                            learning Computer science and loves food more then life.
+                        </p>
+
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img class="img-About " width="210" height="280" src="~/css/AMIT.jpeg" alt="Sitelogo">
+                    </div>
+                </div>
+            </div>
+
+            <!--Bottom right-->
+            <div class="col-md-6">
+                <div id="Right-Blog-box" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong id="Name-box" class="d-inline-block mb-2 text-primary"><h4>Liem Mazal</h4></strong>
+                        <p class="card-text mb-auto">
+                            Liem Mazal
+                            24 yo, lives in Yehud
+                            Computer science student, love animals, baking cakes and bread.
+                            I enjoy running and exercising weekly, and love learning new things.
+                        </p>
+
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img class="img-About " width="210" height="280" src="~/css/LIEM.jpeg" alt="Sitelogo">
+                    </div>
+                </div>
+            </div>
+    </main>
 
     <div class="footer-dark">
         <footer>
@@ -114,9 +194,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
