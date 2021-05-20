@@ -11,6 +11,7 @@ namespace AdoptNet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
 <<<<<<< HEAD
+<<<<<<< HEAD
     [Migration("20210517151158_LocatinAdopt")]
     partial class LocatinAdopt
 =======
@@ -18,9 +19,17 @@ namespace AdoptNet.Migrations
     [Migration("20210519105312_User")]
     partial class User
 =======
+<<<<<<< HEAD:anypet/Migrations/20210517131602_controllersAdd.Designer.cs
+    [Migration("20210517131602_controllersAdd")]
+    partial class controllersAdd
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
+=======
     [Migration("20210517151158_LocatinAdopt")]
     partial class LocatinAdopt
 >>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.):anypet/Migrations/20210517151158_LocatinAdopt.Designer.cs
+<<<<<<< HEAD
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
+=======
 >>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,8 +50,18 @@ namespace AdoptNet.Migrations
                     b.Property<DateTime>("AdoptionDate")
                         .HasColumnType("datetime2");
 
+<<<<<<< HEAD
                     b.Property<int>("LocationAdopt")
                         .HasColumnType("int");
+=======
+<<<<<<< HEAD:anypet/Migrations/20210517131602_controllersAdd.Designer.cs
+                    b.Property<string>("LocationAdopt")
+                        .HasColumnType("nvarchar(max)");
+=======
+                    b.Property<int>("LocationAdopt")
+                        .HasColumnType("int");
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.):anypet/Migrations/20210517151158_LocatinAdopt.Designer.cs
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
 
                     b.HasKey("Id");
 

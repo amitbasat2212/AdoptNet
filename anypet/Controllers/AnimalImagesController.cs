@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using AdoptNet.Models;
 using Microsoft.AspNetCore.Authorization;
+=======
+using anypet.Models;
+>>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
 =======
 using anypet.Models;
 >>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
