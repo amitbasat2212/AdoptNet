@@ -35,23 +35,23 @@ namespace AdoptNet.Controllers
             if (Searching.Equals("Cat") || Searching.Equals("Dog"))
             {
                 k = (Kind)Enum.Parse(typeof(Kind), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Kind.Equals(k));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a=>a.Association).Where(a => a.Kind.Equals(k));
 
             }
             else if (Searching.Equals("Center") || Searching.Equals("North") || Searching.Equals("South"))
             {
                 l = (Location)Enum.Parse(typeof(Location), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Location.Equals(l));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Location.Equals(l));
             }
             else if (Searching.Equals("Male") || Searching.Equals("Female"))
             {
                 g = (Gender)Enum.Parse(typeof(Gender), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Gender.Equals(g));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Gender.Equals(g));
             }
             else if (Searching.Equals("Small") || Searching.Equals("Medium") || Searching.Equals("Big"))
             {
                 s = (Size)Enum.Parse(typeof(Size), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Size.Equals(s));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Size.Equals(s));
             }
             
 
