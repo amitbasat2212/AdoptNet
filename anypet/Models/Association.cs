@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AdoptNet.Models;
 
-namespace AdoptNet.Models
+namespace anypet.Models
 {
 
     //the information for the association itself, the information about each one 
@@ -32,7 +32,7 @@ namespace AdoptNet.Models
       
         public List<Animal> Animals { get; set; }    
 
-        public AssociationImage Image { get; set; }
+        public AssociationImage AssociationImage { get; set; }
 
         //this field represent the connection of many to many 
         public List<AdoptionDays> AdoptionDays { get; set; }

@@ -27,4 +27,16 @@
     <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Views\AdoptionDays\" />
+    <Folder Include="Views\AnimalImages\" />
+    <Folder Include="Views\Animals\" />
+    <Folder Include="Views\AssociationImages\" />
+    <Folder Include="Views\Associations\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
+
 </Project>

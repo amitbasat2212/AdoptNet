@@ -24,6 +24,7 @@ namespace anypet.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public UserType Type { get; set; } = UserType.Client; // when we a new type the difualt will be the client
+
+        public UserType Type { get; set; } = UserType.Client;
     }
 }

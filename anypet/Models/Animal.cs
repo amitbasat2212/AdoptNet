@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AdoptNet.Models
+namespace anypet.Models
 {
     public enum Size
     {
@@ -17,6 +17,7 @@ namespace AdoptNet.Models
     }
     public enum Kind
     {
+ 
        Dog,
        Cat
 
@@ -82,7 +83,7 @@ namespace AdoptNet.Models
 
               
         //this field represent the connection of one to one 
-        public AnimalImage Image { get; set; }
+        public AnimalImage AnimalImage { get; set; }
 
        
 

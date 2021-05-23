@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdoptNet.Models
+namespace anypet.Models
 {
     //a class for the adoption itself, when a person wants to adopt he spouuse to put details of him and a place to meet for the adopt 
     public class AdoptMeeting

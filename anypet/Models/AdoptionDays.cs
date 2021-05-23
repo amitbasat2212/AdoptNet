@@ -1,4 +1,4 @@
-﻿using AdoptNet.Models;
+﻿using anypet.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

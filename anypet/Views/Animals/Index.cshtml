@@ -1,77 +1,33 @@
-﻿@model IEnumerable<AdoptNet.Models.Animal>
+﻿@model IEnumerable<anypet.Models.Animal>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" id="footerbootom">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Kind)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Association)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kind)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Association.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card-group">
+    @foreach (var Animal in Model)
+    {
+<div class="card" style="width: 18rem;">
+    <img src="@Animal.AnimalImage" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@Animal.Name</h5>
+        <p class="card-text">@Animal.Description</p>
+        <a asp-action="Edit" asp-route-id="@Animal.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@Animal.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@Animal.Id">Delete</a>
+
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Animal.Age</li>
+        <li class="list-group-item">@Animal.Gender</li>
+        <li class="list-group-item">@Animal.Id</li>
+        <li class="list-group-item">@Animal.Size</li>
+        <li class="list-group-item">@Animal.Location</li>
+        <li class="list-group-item">@Animal.Kind</li>
+        
+    </ul>
+</div>}
+</div>

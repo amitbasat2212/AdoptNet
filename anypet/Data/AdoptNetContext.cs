@@ -15,15 +15,7 @@ namespace AdoptNet.Data
         {
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
       
-=======
-        public DbSet<anypet.Models.UserReg> UserReg { get; set; }
->>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
-=======
-        public DbSet<anypet.Models.UserReg> UserReg { get; set; }
->>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
 
         public DbSet<anypet.Models.Animal> Animal { get; set; }
 
@@ -34,13 +26,7 @@ namespace AdoptNet.Data
         public DbSet<anypet.Models.AssociationImage> AssociationImage { get; set; }
 
         public DbSet<AdoptNet.Models.AdoptionDays> AdoptionDays { get; set; }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
         public DbSet<anypet.Models.User> User { get; set; }
-=======
->>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
-=======
->>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
     }
 }

@@ -128,6 +128,41 @@ namespace Ad.Controllers
 
             return RedirectToAction(nameof(Index), "Home");
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Users/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Username,Password,Type")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var q = _context.User.FirstOrDefault(u => u.Username == user.Username); // if return null- there is no user like this ans we can do register
+
+                if (q == null)
+                {
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+
+                    var u = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
+
+                    Signin(u);
+
+                    return RedirectToAction(nameof(Index), "Home");// regsiter succeed- go to home
+                }
+                else // user already exists
+                {
+                    ViewData["Error"] = "Unable to comply; cannot register this user.";
+                }
+            }
+            return View(user);
+        }
     }
 
 }
@@ -155,27 +190,8 @@ namespace Ad.Controllers
 //            return View(user);
 //        }
 
-//        // GET: Users/Create
-//        public IActionResult Create()
-//        {
-//            return View();
-//        }
+// GET: Users/Create
 
-//        // POST: Users/Create
-//        // To protect from overposting attacks, enable the specific properties you want to bind to.
-//        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Create([Bind("Id,Username,Password,Type")] User user)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                _context.Add(user);
-//                await _context.SaveChangesAsync();
-//                return RedirectToAction(nameof(Index));
-//            }
-//            return View(user);
-//        }
 
 //        // GET: Users/Edit/5
 //        public async Task<IActionResult> Edit(int? id)

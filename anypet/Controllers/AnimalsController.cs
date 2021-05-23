@@ -6,16 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using AdoptNet.Models;
+using anypet.Models;
 using Microsoft.AspNetCore.Authorization;
-=======
-using anypet.Models;
->>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
-=======
-using anypet.Models;
->>>>>>> parent of beca518 (adding the users conrollers & chaing the about to cshtml & adding permissions for admin (only) and user.)
 
 namespace AdoptNet.Controllers
 {
@@ -26,6 +18,60 @@ namespace AdoptNet.Controllers
         {
             _context = context;
         }
+
+
+        public async Task<IActionResult> Search(String Searching)
+        {
+            
+            Kind k;
+            Location l;
+            Gender g;
+            Size s;
+
+
+            Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
+
+
+            if (Searching.Equals("Cat") || Searching.Equals("Dog"))
+            {
+                k = (Kind)Enum.Parse(typeof(Kind), Searching);
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Kind.Equals(k));
+
+            }
+            else if (Searching.Equals("Center") || Searching.Equals("North") || Searching.Equals("South"))
+            {
+                l = (Location)Enum.Parse(typeof(Location), Searching);
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Location.Equals(l));
+            }
+            else if (Searching.Equals("Male") || Searching.Equals("Female"))
+            {
+                g = (Gender)Enum.Parse(typeof(Gender), Searching);
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Gender.Equals(g));
+            }
+            else if (Searching.Equals("Small") || Searching.Equals("Medium") || Searching.Equals("Big"))
+            {
+                s = (Size)Enum.Parse(typeof(Size), Searching);
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Where(a => a.Size.Equals(s));
+            }
+            
+
+            if(SearchContent == null)
+            {
+                return View("Index", new List<Animal>());
+            } 
+
+            //var SearchContent = _context.Animal.Where(a => 1==1);
+            
+            //var q = "SELECT * FROM dbo.Animal WHERE [Name] LIKE '%" + Searching + "%' OR [Description] LIKE '%" + Searching + "%'";
+            //var SearchContent = _context.Animal.FromSqlRaw(q);
+            
+            return View("Index", await SearchContent.ToListAsync());
+
+
+        }
+
+
+
         // GET: Animals
         public async Task<IActionResult> Index()
         {
@@ -50,6 +96,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Animals/Create
+        //  [Authorize(Roles = "Admin, Association")]
         public IActionResult Create()
         {
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
@@ -73,6 +120,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Animals/Edit/5
+        //  [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -123,6 +171,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: Animals/Delete/5
+        //   [Authorize(Roles = "Admin, Association")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
