@@ -246,7 +246,7 @@ h1 {
 
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -269,7 +269,8 @@ body {
 }
 
 .formback {
-    background-color: #F6F6F6;
+    border-radius: 40px;
+    background-color: #E7E9EB;
 }
 
 .footer-dark {
@@ -392,6 +393,7 @@ body {
 .spacesdes {
     margin: 20px;
     font-weight: bold;
+    text-align:center;
 }
 
 
@@ -440,5 +442,36 @@ h4 {
 #wholepage {
     padding-bottom: 70px;
 }
+
+.spaceCards {
+    width: 100rem;
+    margin-right: 80px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top:30px;
+}
+
+.card-img-top {
+    height: 150px;
+}
+
+.decoText {
+    color: black;
+}
+
+    .decoText:hover {
+        color: #E66977;
+    }
+
+
+
+.space{
+
+    margin-top:20px;
+}
+
+
+
 
 

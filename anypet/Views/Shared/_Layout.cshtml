@@ -48,11 +48,11 @@
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
                 <form asp-controller="Animals" asp-action="Search">
-                    <input name="Searching"  placeholder="Enter something to search" />
+                    <input name="Searching" placeholder="Enter something to search" />
                     <input type="submit" value="Search" class="btn btn-primary" />
                 </form>
                 <il class="moving1 ">
-                   
+
 
 
                     <il class="text-end px-5 moving1">
@@ -82,17 +82,17 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Adoption Days</h3>
                         <ul>
-                            <li><a href="#">Adoption Days</a></li>
-                            <li><a href="#">Adopt Dog</a></li>
-                            <li><a href="#">Adopt Cat</a></li>
+                            <li><a asp-action="Index" asp-controller="AdoptionDays">Adoption Days</a></li>
+                            <li><a asp-action="Index" asp-controller="Animals">Adopt Dog</a></li>
+                            <li><a asp-action="Index" asp-controller="Animals">Adopt Cat</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact us: 08-9319192</a></li>
-                            <li><a href="#">AdoptNet Email:AdoptNet2021@gmail.com </a></li>
+                            <li><a asp-action="About" asp-controller="Home">About Us</a></li>
+                            <li>Contact us: 08-9319192</li>
+                            <li>AdoptNet Email:AdoptNet2021@gmail.com </li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">

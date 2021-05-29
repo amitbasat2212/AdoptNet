@@ -61,7 +61,7 @@ namespace Ad.Controllers
             return View(user);
         }
 
-        private async void Signin(User account) //takes the username & password into list, chek if the user in the coockies and signin (in the end its signin the user)
+        private async void Signin(User account)
         {
             var claims = new List<Claim>
                 {
@@ -74,7 +74,7 @@ namespace Ad.Controllers
 
             var authProperties = new AuthenticationProperties
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60) // time on web
+                //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
             };
 
             await HttpContext.SignInAsync(
@@ -82,7 +82,6 @@ namespace Ad.Controllers
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
         }
-
         // GET: Users/Register
         public IActionResult Register()
         {

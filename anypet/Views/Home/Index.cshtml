@@ -34,10 +34,12 @@
 </head>
 <body>
 
+
+
+
     <header class="site-header sticky-top py-1">
 
         <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <!-- link from the logo to home page -->
             <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" aria-label="Product">
                 <img src="~/css/Lemonsouce.png" class="bi me-4 px-4" width="150" height="70" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap" />
             </a>
@@ -52,7 +54,10 @@
                     <input type="submit" value="Search" class="btn btn-primary" />
                 </form>
                 <il class="moving1 ">
-                   <il class="text-end px-5 moving1">
+
+
+
+                    <il class="text-end px-5 moving1">
                         <a asp-controller="Users" asp-action="Login"><button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
                         <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>
                     </il>
@@ -63,9 +68,6 @@
         </nav>
 
     </header>
-
-
-
 
     <main>
 
@@ -178,17 +180,17 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Adoption Days</h3>
                         <ul>
-                            <li><a href="#">Adoption Days</a></li>
-                            <li><a href="#">Adopt Dog</a></li>
-                            <li><a href="#">Adopt Cat</a></li>
+                            <li><a asp-action="Index" asp-controller="AdoptionDays">Adoption Days</a></li>
+                            <li><a asp-action="Index" asp-controller="Animals">Adopt Dog</a></li>
+                            <li><a asp-action="Index" asp-controller="Animals">Adopt Cat</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact us: 08-9319192</a></li>
-                            <li><a href="#">AdoptNet Email:AdoptNet2021@gmail.com </a></li>
+                            <li><a asp-action="About" asp-controller="Home">About Us</a></li>
+                            <li>Contact us: 08-9319192</li>
+                            <li>AdoptNet Email:AdoptNet2021@gmail.com </li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">

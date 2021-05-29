@@ -1,18 +1,26 @@
 ﻿using AdoptNet.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace anypet.Models
 {
-    public enum Size
+   
+
+public enum Size
     {
+        [Description("Small")]
         Small,
+        [Description("medium")]
         medium,
+        [Description("Big")]
         Big
+
 
     }
     public enum Kind
@@ -82,7 +90,7 @@ namespace anypet.Models
 
               
         //this field represent the connection of one to one 
-        public AnimalImage Image { get; set; }
+        public AnimalImage AnimalImage { get; set; }
 
        
 

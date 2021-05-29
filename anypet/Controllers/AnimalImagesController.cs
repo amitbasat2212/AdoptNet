@@ -133,7 +133,7 @@ namespace AdoptNet.Controllers
             }
             return View(animalImage);
         }
-        // POST: AnimalImages/Delete/5
+        // POST: AnimalImages/Delete/
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

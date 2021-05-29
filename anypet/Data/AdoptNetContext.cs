@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using anypet.Models;
 using AdoptNet.Models;
+using System.Collections;
 
 namespace AdoptNet.Data
 {
@@ -14,8 +15,8 @@ namespace AdoptNet.Data
             : base(options)
         {
         }
+        
 
-      
 
         public DbSet<anypet.Models.Animal> Animal { get; set; }
 
@@ -27,6 +28,9 @@ namespace AdoptNet.Data
 
         public DbSet<AdoptNet.Models.AdoptionDays> AdoptionDays { get; set; }
 
+       
+
         public DbSet<anypet.Models.User> User { get; set; }
+        
     }
 }
