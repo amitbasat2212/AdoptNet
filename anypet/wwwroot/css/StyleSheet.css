@@ -1,5 +1,4 @@
-﻿
-.container {
+﻿.container {
     max-width: 80%;
 }
 
@@ -69,9 +68,9 @@
         flex: 1;
     }
 }
+
 .moving1 {
     padding-right: 50px;
-    
 }
 
 .btn-outline-secondary {
@@ -97,14 +96,13 @@
 .Search, filter, mb-3 {
     text-align: left;
     float: left;
-    
     color: white;
 }
 
 .Search {
     padding-left: 45px;
     padding-top: 30px;
-   background-color: #262626;
+    background-color: #262626;
 }
 
 
@@ -124,8 +122,6 @@
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-   
-   
 }
 
 
@@ -136,7 +132,7 @@
     margin: auto;
     display: block;
     width: 98%;
-    height:80%;
+    height: 80%;
 }
 
 #videoMessage {
@@ -197,38 +193,34 @@ h1 {
 
 
 
-.d-block{
-
-    width:50px;
-    height:400px;
+.d-block {
+    width: 50px;
+    height: 400px;
 }
 
 
-.carousel{
-
-    width:600px;
-    height:800px;
+.carousel {
+    width: 600px;
+    height: 800px;
 }
 
-.card-title{
-
-    text-align:center;
+.card-title {
+    text-align: center;
 }
 
 .text {
     color: #D1C9C8;
 }
 
-.Facebook{
+.Facebook {
     width: 50px;
-    height:50px;
+    height: 50px;
 }
 
 .twitter {
     width: 60px;
     height: 60px;
-
-    margin-right:150px;
+    margin-right: 150px;
 }
 
 .instagram {
@@ -239,8 +231,8 @@ h1 {
 .icons1 {
     padding-top: 30px;
     margin-left: 50px;
-    margin-right:50px;
-    padding-left:150px;
+    margin-right: 50px;
+    padding-left: 150px;
 }
 
 .ic {
@@ -254,12 +246,12 @@ h1 {
 
 
 .form-group {
-    margin-bottom:15px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .control-label {
-font-size:20px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -277,7 +269,8 @@ body {
 }
 
 .formback {
-    background-color: #F6F6F6;
+    border-radius: 40px;
+    background-color: #E7E9EB;
 }
 
 .footer-dark {
@@ -375,9 +368,8 @@ body {
 
 /**/
 
-#footerbootom{
-
-    margin-bottom:150px;
+#footerbootom {
+    margin-bottom: 170px;
 }
 
 #dangiSize {
@@ -401,4 +393,85 @@ body {
 .spacesdes {
     margin: 20px;
     font-weight: bold;
+    text-align:center;
 }
+
+
+.About {
+    text-align: center;
+    float: none;
+    color: #ff6666;
+    padding-bottom: 45px;
+}
+
+.img-About {
+    display: block;
+    margin-left: auto;
+    margin-right: initial;
+    margin-top: auto;
+}
+
+#Name-box {
+    color: #ff6666;
+    background-color: #ff6666;
+    color: black;
+    padding: 6px;
+    text-align: center;
+    text-emphasis-color: #ff6666;
+    margin-top: 0px;
+}
+
+h4 {
+    color: lightblue;
+}
+
+#Left-Blog-box {
+    outline-style: groove;
+    outline-color: black;
+    margin-right: 30px;
+    margin-top: 40px;
+}
+
+#Right-Blog-box {
+    outline-style: groove;
+    outline-color: black;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+#wholepage {
+    padding-bottom: 70px;
+}
+
+.spaceCards {
+    width: 100rem;
+    margin-right: 80px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top:30px;
+}
+
+.card-img-top {
+    height: 150px;
+}
+
+.decoText {
+    color: black;
+}
+
+    .decoText:hover {
+        color: #E66977;
+    }
+
+
+
+.space{
+
+    margin-top:20px;
+}
+
+
+
+
+

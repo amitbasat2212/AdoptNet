@@ -32,7 +32,7 @@ namespace anypet.Models
       
         public List<Animal> Animals { get; set; }    
 
-        public AssociationImage Image { get; set; }
+        public AssociationImage AssociationImage { get; set; }
 
         //this field represent the connection of many to many 
         public List<AdoptionDays> AdoptionDays { get; set; }

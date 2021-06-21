@@ -32,6 +32,9 @@ namespace AdoptNet.Migrations
                     b.Property<int>("LocationAdopt")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("AdoptionDays");
@@ -156,41 +159,27 @@ namespace AdoptNet.Migrations
                     b.ToTable("AssociationImage");
                 });
 
-            modelBuilder.Entity("anypet.Models.UserReg", b =>
+            modelBuilder.Entity("anypet.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(9)
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age")
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
+                    b.Property<string>("Username")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateOfCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("EmailOfUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrivateName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("ThereIsAnimal")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserReg");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
@@ -222,7 +211,7 @@ namespace AdoptNet.Migrations
             modelBuilder.Entity("anypet.Models.AnimalImage", b =>
                 {
                     b.HasOne("anypet.Models.Animal", "Animal")
-                        .WithOne("Image")
+                        .WithOne("AnimalImage")
                         .HasForeignKey("anypet.Models.AnimalImage", "AnimalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -233,7 +222,7 @@ namespace AdoptNet.Migrations
             modelBuilder.Entity("anypet.Models.AssociationImage", b =>
                 {
                     b.HasOne("anypet.Models.Association", "Association")
-                        .WithOne("Image")
+                        .WithOne("AssociationImage")
                         .HasForeignKey("anypet.Models.AssociationImage", "AssociationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -243,14 +232,14 @@ namespace AdoptNet.Migrations
 
             modelBuilder.Entity("anypet.Models.Animal", b =>
                 {
-                    b.Navigation("Image");
+                    b.Navigation("AnimalImage");
                 });
 
             modelBuilder.Entity("anypet.Models.Association", b =>
                 {
                     b.Navigation("Animals");
 
-                    b.Navigation("Image");
+                    b.Navigation("AssociationImage");
                 });
 #pragma warning restore 612, 618
         }

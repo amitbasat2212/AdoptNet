@@ -14,7 +14,7 @@ namespace anypet.Models
 
         //this is a connection of one to one 
         [Display(Name = "Image of the Pet")]
-        public string Image { get; set; }
+        public string Image { get; set; } = "~/css/defultImage.jpeg";
 
         [Display(Name = "Animal")]
         public int AnimalId { get; set; }

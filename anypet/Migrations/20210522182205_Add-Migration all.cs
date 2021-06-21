@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AdoptNet.Migrations
 {
-    public partial class AnimalandAssociatins : Migration
+    public partial class AddMigrationall : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace AdoptNet.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AdoptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LocationAdopt = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LocationAdopt = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +25,7 @@ namespace AdoptNet.Migrations
                 name: "Association",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
@@ -34,27 +34,22 @@ namespace AdoptNet.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Association", x => x.ID);
+                    table.PrimaryKey("PK_Association", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserReg",
+                name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", maxLength: 9, nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmailOfUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PrivateName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ThereIsAnimal = table.Column<bool>(type: "bit", nullable: false),
-                    DateOfCreate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserReg", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,11 +57,11 @@ namespace AdoptNet.Migrations
                 columns: table => new
                 {
                     AdoptionDaysId = table.Column<int>(type: "int", nullable: false),
-                    associationsAdoptID = table.Column<int>(type: "int", nullable: false)
+                    AssociationsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AdoptionDaysAssociation", x => new { x.AdoptionDaysId, x.associationsAdoptID });
+                    table.PrimaryKey("PK_AdoptionDaysAssociation", x => new { x.AdoptionDaysId, x.AssociationsId });
                     table.ForeignKey(
                         name: "FK_AdoptionDaysAssociation_AdoptionDays_AdoptionDaysId",
                         column: x => x.AdoptionDaysId,
@@ -74,10 +69,10 @@ namespace AdoptNet.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AdoptionDaysAssociation_Association_associationsAdoptID",
-                        column: x => x.associationsAdoptID,
+                        name: "FK_AdoptionDaysAssociation_Association_AssociationsId",
+                        column: x => x.AssociationsId,
                         principalTable: "Association",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -85,26 +80,26 @@ namespace AdoptNet.Migrations
                 name: "Animal",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Kind = table.Column<int>(type: "int", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Size = table.Column<int>(type: "int", nullable: false),
                     Location = table.Column<int>(type: "int", nullable: false),
-                    IdAssociation = table.Column<int>(type: "int", nullable: false),
-                    associationID = table.Column<int>(type: "int", nullable: true)
+                    AssociationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Animal", x => x.ID);
+                    table.PrimaryKey("PK_Animal", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Animal_Association_associationID",
-                        column: x => x.associationID,
+                        name: "FK_Animal_Association_AssociationId",
+                        column: x => x.AssociationId,
                         principalTable: "Association",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,7 +118,7 @@ namespace AdoptNet.Migrations
                         name: "FK_AssociationImage_Association_AssociationId",
                         column: x => x.AssociationId,
                         principalTable: "Association",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -131,31 +126,31 @@ namespace AdoptNet.Migrations
                 name: "AnimalImage",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AnimalId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AnimalImage", x => x.ID);
+                    table.PrimaryKey("PK_AnimalImage", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AnimalImage_Animal_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animal",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AdoptionDaysAssociation_associationsAdoptID",
+                name: "IX_AdoptionDaysAssociation_AssociationsId",
                 table: "AdoptionDaysAssociation",
-                column: "associationsAdoptID");
+                column: "AssociationsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Animal_associationID",
+                name: "IX_Animal_AssociationId",
                 table: "Animal",
-                column: "associationID");
+                column: "AssociationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AnimalImage_AnimalId",
@@ -182,7 +177,7 @@ namespace AdoptNet.Migrations
                 name: "AssociationImage");
 
             migrationBuilder.DropTable(
-                name: "UserReg");
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "AdoptionDays");

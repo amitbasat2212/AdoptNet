@@ -5,14 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\Style.css" />
-    <Content Remove="wwwroot\css\StyleSheet.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\css\About.html" />
-    <None Include="wwwroot\css\Style.css" />
-    <None Include="wwwroot\css\StyleSheet.css" />
+    <Content Include="Views\ItsLiem.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Add custom markers in Mapbox GL JS</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+    .marker {
+        background-image: url('Map Marker.png'); 
+        background-size: cover; 
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; 
+        cursor: pointer;
+
+    }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id='map'></div>
+
+    <script>
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm90ZW1yb2thaCIsImEiOiJja3E1OXFhaDkwNWRoMnZtZzUwZG5qMjYzIn0.4RjY4af8e6QdJIvseHfs1g';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+    style: 'mapbox://styles/rotemrokah/ckq5br0wi67db17n6z6jwypfa',
+    center: [34.781769, 32.085300],
+  zoom: 8
+});
+
+// code from the next step will go here!
+  var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+        coordinates: [34.781769, 32.085300]
+    },
+    properties: {
+      title: 'SOS Animals',
+      description: 'Tel Aviv'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+        coordinates: [34.790508, 31.820749]
+    },
+    properties: {
+      title: 'Friend on 4',
+      description: 'Kidron'
+      }
+
+      },
+      {
+          type: 'Feature',
+          geometry: {
+              type: 'Point',
+              coordinates: [35.3391118, 32.5308688]
+          },
+          properties: {
+              title: 'Gilboa love animals',
+              description: 'Gan Ner'
+          }
+      },
+      {
+          type: 'Feature',
+          geometry: {
+              type: 'Point',
+              coordinates: [34.8246812, 32.0686867]
+          },
+          properties: {
+              title: 'Let the animals live',
+              description: 'Ramat Gan'
+          }
+      },
+      {
+          type: 'Feature',
+          geometry: {
+              type: 'Point',
+              coordinates: [35.2257626, 31.7788242]
+          },
+          properties: {
+              title: 'Animal Welfare Association',
+              description: 'Jerusalem'
+          }
+      },
+
+      {
+          type: 'Feature',
+          geometry: {
+              type: 'Point',
+              coordinates: [34.9454021, 32.6287327]
+          },
+          properties: {
+              title: 'Let the animals live ',
+              description: 'Ein Ayala'
+          }
+      }]
+};
+// add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+     .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+    .addTo(map);
+});
+
+      //  var marker = new mapboxgl.Marker().setLngLat([-96, 37.8]).addTo(map);
+    </script>
+
+</body>
+</html>
