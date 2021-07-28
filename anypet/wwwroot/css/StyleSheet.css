@@ -69,8 +69,8 @@
     }
 }
 
-.moving1 {
-    padding-right: 50px;
+.moving3 {
+    padding-left: 130px;
 }
 
 .btn-outline-secondary {
@@ -471,7 +471,27 @@ h4 {
     margin-top:20px;
 }
 
+.moving2{
+
+    padding-left:50px;
+
+}
+.moving1{
+
+    margin-right:20px;
+    padding:30px;
+
+}
+
+.marg{
+    padding:10px;
 
 
+}
+.marg2{
+
+    margin-left:20px;
+
+}
 
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AdoptNet.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace anypet.Models
 {
@@ -12,6 +13,8 @@ namespace anypet.Models
     //the information for the association itself, the information about each one 
     public class Association
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id{ get; set; }
 
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name must contain only letters...")]

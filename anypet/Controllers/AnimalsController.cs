@@ -35,6 +35,10 @@ namespace AdoptNet.Controllers
 
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
 
+            if (SearchContent == null)
+            {
+                return View("Index", new List<Animal>());
+            }
 
             if (Searching.Equals("Cat") || Searching.Equals("Dog"))
             {
@@ -62,10 +66,7 @@ namespace AdoptNet.Controllers
             }
 
 
-            if (SearchContent == null)
-            {
-                return View("Index", new List<Animal>());
-            }
+           
 
             //var SearchContent = _context.Animal.Where(a => 1==1);
 
@@ -78,7 +79,30 @@ namespace AdoptNet.Controllers
         }
 
 
+        public async Task<IActionResult> SearchDog()
+        {
+            Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
+            Kind k;
+
+            k = (Kind)Enum.Parse(typeof(Kind), "Dog");
+            SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Kind.Equals(k));
+                       
+            return View("Index", await SearchContent.ToListAsync());
+        }
+        public async Task<IActionResult> SearchCat()
+        {
+            Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
+            Kind k;
+
+            k = (Kind)Enum.Parse(typeof(Kind), "Cat");
+            SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Kind.Equals(k));
+
+            return View("Index", await SearchContent.ToListAsync());
+        }
+
+
         // GET: Animals
+        [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
             var adoptNetContext = _context.Animal.Include(a => a.Association).Include(a=>a.AnimalImage);

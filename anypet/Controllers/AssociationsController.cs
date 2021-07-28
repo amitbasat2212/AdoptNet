@@ -18,10 +18,12 @@ namespace AdoptNet.Controllers
         public AssociationsController(AdoptNetContext context)
         {
             _context = context;
+            
         }
 
-       
+
         // GET: Associations
+        [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
             var adoptNetContext = _context.Association.Include(a => a.AssociationImage).Include(a=>a.AdoptionDays);
@@ -61,8 +63,10 @@ namespace AdoptNet.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 association.AdoptionDays = new List<AdoptionDays>();
                 association.AdoptionDays.AddRange(_context.AdoptionDays.Where(x => AdoptionDays.Contains(x.Id)));
+
                 
                 _context.Association.Add(association);
                 await _context.SaveChangesAsync();
@@ -81,6 +85,7 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
             var association = await _context.Association.FindAsync(id);
+            
             if (association == null)
             {
                 return NotFound();
@@ -101,26 +106,18 @@ namespace AdoptNet.Controllers
             }
             if (ModelState.IsValid)
             {
+               
                 try
                 {
+                    var association1 = _context.Association.FirstOrDefault(n => n.Id ==id);
                     
-                    Association associationtobeupdate = await _context.Association.Include(p => p.AdoptionDays).FirstOrDefaultAsync(p => p.Id == id);
-                    if (associationtobeupdate != null)
+                    _context.Update(association1);
+                    for (int i= 0;i < AdoptionDays.Length;i++)
                     {
-                        foreach (var scId in association.AdoptionDays)
-                        {
-                            associationtobeupdate.AdoptionDays.Add(new AdoptionDays()
-                            {
-                                Id = associationtobeupdate.Id
-                            });
-                        }
-
+                        var adoptionDays = _context.AdoptionDays.FirstOrDefault(n => n.Id ==AdoptionDays[i]);
+                        _context.Update(adoptionDays);
                     }
-
-                               
-                                             
-                        _context.Association.Update(association);
-                         await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
 
 
                 }
@@ -131,7 +128,7 @@ namespace AdoptNet.Controllers
                         return NotFound();
                     }
                     else
-                    {
+                    {   
                         throw;
                     }
                 }

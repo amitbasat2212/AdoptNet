@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\Style.css" />
-    <Content Remove="wwwroot\css\StyleSheet.css" />
   </ItemGroup>
 
   <ItemGroup>

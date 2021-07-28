@@ -21,6 +21,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AdoptionDays
+        [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.AdoptionDays.ToListAsync());
