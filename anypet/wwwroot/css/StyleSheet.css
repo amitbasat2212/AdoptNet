@@ -1,4 +1,4 @@
-﻿.container {
+﻿﻿.container {
     max-width: 80%;
 }
 
@@ -69,8 +69,8 @@
     }
 }
 
-.moving3 {
-    padding-left: 130px;
+.moving1 {
+    padding-right: 50px;
 }
 
 .btn-outline-secondary {
@@ -246,7 +246,7 @@ h1 {
 
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
@@ -269,8 +269,7 @@ body {
 }
 
 .formback {
-    border-radius: 40px;
-    background-color: #E7E9EB;
+    background-color: #F6F6F6;
 }
 
 .footer-dark {
@@ -393,7 +392,6 @@ body {
 .spacesdes {
     margin: 20px;
     font-weight: bold;
-    text-align:center;
 }
 
 
@@ -442,56 +440,3 @@ h4 {
 #wholepage {
     padding-bottom: 70px;
 }
-
-.spaceCards {
-    width: 100rem;
-    margin-right: 80px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-    margin-top:30px;
-}
-
-.card-img-top {
-    height: 150px;
-}
-
-.decoText {
-    color: black;
-}
-
-    .decoText:hover {
-        color: #E66977;
-    }
-
-
-
-.space{
-
-    margin-top:20px;
-}
-
-.moving2{
-
-    padding-left:50px;
-
-}
-.moving1{
-
-    margin-right:20px;
-    padding:30px;
-
-}
-
-.marg{
-    padding:10px;
-
-
-}
-.marg2{
-
-    margin-left:20px;
-
-}
-
-

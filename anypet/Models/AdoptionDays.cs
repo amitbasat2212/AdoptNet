@@ -12,6 +12,8 @@ namespace AdoptNet.Models
     //this class represent the adoption days and its fields
     public class AdoptionDays
     {
+       
+       
         public String Name { get; set; }
 
       

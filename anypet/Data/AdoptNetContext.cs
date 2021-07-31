@@ -29,7 +29,6 @@ namespace AdoptNet.Data
         public DbSet<AdoptNet.Models.AdoptionDays> AdoptionDays { get; set; }
 
        
-
         public DbSet<anypet.Models.User> User { get; set; }
         
     }

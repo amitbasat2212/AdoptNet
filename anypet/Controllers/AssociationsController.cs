@@ -15,10 +15,13 @@ namespace AdoptNet.Controllers
     public class AssociationsController : Controller
     {
         private readonly AdoptNetContext _context;
+  
         public AssociationsController(AdoptNetContext context)
         {
             _context = context;
+
             
+
         }
 
 
@@ -109,14 +112,17 @@ namespace AdoptNet.Controllers
                
                 try
                 {
-                    var association1 = _context.Association.FirstOrDefault(n => n.Id ==id);
-                    
-                    _context.Update(association1);
-                    for (int i= 0;i < AdoptionDays.Length;i++)
+                   
+                    var association1 = _context.Association.Single(n => n.Id == id);
+                    association1.AdoptionDays = new List<AdoptionDays>();
+                   
+                    for (int i = 0; i < AdoptionDays.Length; i++)
                     {
-                        var adoptionDays = _context.AdoptionDays.FirstOrDefault(n => n.Id ==AdoptionDays[i]);
-                        _context.Update(adoptionDays);
+                    
+                        var adopt = _context.AdoptionDays.Single(n => n.Id == AdoptionDays[i]);
+                        association1.AdoptionDays.Add(adopt);
                     }
+                    _context.Update(association1);
                     await _context.SaveChangesAsync();
 
 

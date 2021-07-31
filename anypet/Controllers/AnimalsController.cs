@@ -35,15 +35,11 @@ namespace AdoptNet.Controllers
 
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
 
-            if (SearchContent == null)
-            {
-                return View("Index", new List<Animal>());
-            }
 
             if (Searching.Equals("Cat") || Searching.Equals("Dog"))
             {
                 k = (Kind)Enum.Parse(typeof(Kind), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a =>a.Association).Where(a => a.Kind.Equals(k));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Kind.Equals(k));
 
             }
             else if (Searching.Equals("Center") || Searching.Equals("North") || Searching.Equals("South"))
@@ -59,14 +55,14 @@ namespace AdoptNet.Controllers
             else if (Searching.Equals("Small") || Searching.Equals("Medium") || Searching.Equals("Big"))
             {
                 s = (Size)Enum.Parse(typeof(Size), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association)
-                    
-                    
-                    .Where(a => a.Size.Equals(s));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(a => a.Association).Where(a => a.Size.Equals(s));
             }
 
 
-           
+            if (SearchContent == null)
+            {
+                return View("Index", new List<Animal>());
+            }
 
             //var SearchContent = _context.Animal.Where(a => 1==1);
 
@@ -79,6 +75,7 @@ namespace AdoptNet.Controllers
         }
 
 
+        [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> SearchDog()
         {
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
@@ -89,6 +86,9 @@ namespace AdoptNet.Controllers
                        
             return View("Index", await SearchContent.ToListAsync());
         }
+
+
+        [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> SearchCat()
         {
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;

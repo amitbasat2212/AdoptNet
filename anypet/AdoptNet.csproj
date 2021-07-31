@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\Style.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\css\About.html" />
-    <None Include="wwwroot\css\Style.css" />
     <None Include="wwwroot\css\StyleSheet.css" />
   </ItemGroup>
 
