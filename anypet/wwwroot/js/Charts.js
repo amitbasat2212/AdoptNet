@@ -1,23 +1,16 @@
-﻿
-const data = [
-    { month: 'January', DogsAdoptipon: 20 },
-    { month: 'February', DogsAdoptipon: 32 },
-    { month: 'March', DogsAdoptipon: 49 },
-    { month: 'April', DogsAdoptipon: 21 },
-    { month: 'May', DogsAdoptipon:70 },
-    { month: 'June', DogsAdoptipon: 55 },
-    { month: 'July', DogsAdoptipon: 90 },
-    { month: 'August', DogsAdoptipon: 86 },
-    { month: 'September', DogsAdoptipon: 79 },
-    { month: 'October', DogsAdoptipon: 60 },
-    { month: 'November', DogsAdoptipon: 94 },
-    { month: 'December', DogsAdoptipon: 95 },
+﻿const data = [
+    { name: 'John', score: 80 },
+    { name: 'Simon', score: 76 },
+    { name: 'Samantha', score: 90 },
+    { name: 'Patrick', score: 82 },
+    { name: 'Mary', score: 90 },
+    { name: 'Christina', score: 75 },
+    { name: 'Michael', score: 86 },
 ];
 
-
-const width = 1200;
+const width = 900;
 const height = 450;
-const margin = { top: 50, bottom: 50, left: 0, right:0 };
+const margin = { top: 50, bottom: 50, left: 50, right: 50 };
 
 const svg = d3.select('#d3-container')
     .append('svg')
@@ -38,13 +31,13 @@ svg
     .append("g")
     .attr("fill", 'royalblue')
     .selectAll("rect")
-    .data(data.sort((a, b) => d3.descending(1,12)))
+    .data(data.sort((a, b) => d3.descending(a.score, b.score)))
     .join("rect")
     .attr("x", (d, i) => x(i))
-    .attr("y", d => y(d.DogsAdoptipon))
-    .attr('title', (d) => d.DogsAdoptipon)
+    .attr("y", d => y(d.score))
+    .attr('title', (d) => d.score)
     .attr("class", "rect")
-    .attr("height", d => y(0) - y(d.DogsAdoptipon))
+    .attr("height", d => y(0) - y(d.score))
     .attr("width", x.bandwidth());
 
 function yAxis(g) {
@@ -55,29 +48,13 @@ function yAxis(g) {
 
 function xAxis(g) {
     g.attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x).tickFormat(i => data[i].month))
+        .call(d3.axisBottom(x).tickFormat(i => data[i].name))
         .attr("font-size", '20px')
 }
 
 svg.append("g").call(xAxis);
 svg.append("g").call(yAxis);
 svg.node();
-
-
-
-
-
-
-
-
-/*
-
-
-*/
-
-
-
-
 
 
 

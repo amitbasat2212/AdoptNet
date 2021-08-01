@@ -36,6 +36,10 @@ namespace anypet
            
             services.AddDbContext<AdoptNetContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AdoptNetContext")));
+            services.AddNodeServices();
+            services.AddMvc();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

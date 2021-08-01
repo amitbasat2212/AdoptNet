@@ -29,6 +29,8 @@ namespace AdoptNet.Controllers
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
+
+            
             var adoptNetContext = _context.Association.Include(a => a.AssociationImage).Include(a=>a.AdoptionDays);
             return View(await adoptNetContext.ToListAsync());
         }

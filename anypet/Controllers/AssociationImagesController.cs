@@ -22,10 +22,15 @@ namespace AdoptNet.Controllers
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
-            var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
+            var adoptNetContext = (from As in _context.AssociationImage
+                                   join im in _context.Association
+                                   on As.AssociationId equals im.Id
+                                   select As);
+
+            //var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
             return View(await adoptNetContext.ToListAsync());
         }
-        // GET: AssociationImages/Details/5
+        // GET: AssociationImages/Details/5  
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,7 +48,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AssociationImages/Create
-        [Authorize(Roles = "Admin,Association")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
@@ -67,7 +72,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AssociationImages/Edit/5
-        [Authorize(Roles = "Admin,Association")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -118,7 +123,7 @@ namespace AdoptNet.Controllers
         }
 
         // GET: AssociationImages/Delete/5
-        [Authorize(Roles = "Admin,Association")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

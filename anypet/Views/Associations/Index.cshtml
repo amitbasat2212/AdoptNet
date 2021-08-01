@@ -58,10 +58,10 @@
             <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a> |
             @if (Association.AssociationImage != null)
             {
-                <a class="decoText" asp-controller="AnimalImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |
+                <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |
             @if (Association.AssociationImage != null)
             {
-                <a class="decoText" asp-controller="AnimalImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}
+                <a class="decoText" asp-controller="AssociationImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}
 
         </div>
         <ul class="list-group colorCol list-group-flush">

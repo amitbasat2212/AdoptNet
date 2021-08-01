@@ -48,8 +48,8 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AdoptionDate" class="control-label"></label>
-                <input asp-for="AdoptionDate" class="form-control" />
+                <label asp-for="AdoptionDate"  class="control-label"></label>
+                <input asp-for="AdoptionDate" id="Adopt" class="form-control" />
                 <span asp-validation-for="AdoptionDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -68,5 +68,8 @@
 
 
 @section Scripts {
+
+    <script src="~/js/fetureofpages.js" asp-append-version="true"></script>
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
