@@ -108,14 +108,31 @@ namespace AdoptNet.Controllers
         // GET: Animals
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
-        {
+        {            
             var adoptNetContext = (from Al in _context.Animal
-                                   join im in _context.AnimalImage
-                                   on Al.Id equals im.AnimalId
                                    join As in _context.Association
                                    on Al.AssociationId equals As.Id
-                                   select Al);
-            // var adoptNetContext = _context.Animal.Include(a => a.Association).Include(a=>a.AnimalImage);
+                                   select new Animal
+                                   {
+                                       Id = Al.Id,
+                                       AssociationId = As.Id,
+                                       Name = Al.Name,
+                                       Kind = Al.Kind,
+                                       Age = Al.Age,
+                                       Gender = Al.Gender,
+                                       Description = Al.Description,
+                                       Size = Al.Size,
+                                       Location = Al.Location,
+                                       AnimalImage = Al.AnimalImage,
+
+                                       Association = As
+
+                                   }
+                                   );
+           
+
+
+            //var adoptNetContext = _context.Animal.Include(a => a.Association).Include(a=>a.AnimalImage);
             return View(await adoptNetContext.ToListAsync());
         }
         // GET: Animals/Details/5
@@ -125,9 +142,11 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
+
+
             var animal = await _context.Animal
-                .Include(a => a.Association)
-                .FirstOrDefaultAsync(m => m.Id == id);
+              .Include(a => a.Association)
+            .FirstOrDefaultAsync(m => m.Id == id);
             if (animal == null)
             {
                 return NotFound();

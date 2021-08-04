@@ -55,7 +55,9 @@
             <a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> |
             <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> |
             <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> |
-            <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a> |
+             @if (Association.AssociationImage == null)
+             {
+            <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} |
             @if (Association.AssociationImage != null)
             {
                 <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |

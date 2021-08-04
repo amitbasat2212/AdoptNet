@@ -7,102 +7,122 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
 using anypet.Models;
-using Microsoft.AspNetCore.Authorization;
 
-namespace AdoptNet.Controllers
+namespace anypet.Controllers
 {
-    public class AnimalImagesController : Controller
+    public class ProductsController : Controller
     {
         private readonly AdoptNetContext _context;
-        public AnimalImagesController(AdoptNetContext context)
+
+        public ProductsController(AdoptNetContext context)
         {
             _context = context;
         }
-        // GET: AnimalImages
-        [Authorize(Roles = "Admin,Association,Client")]
+
+        // GET: Products
         public async Task<IActionResult> Index()
         {
-            var adoptNetContext = _context.AnimalImage.Include(a => a.Animal);
+            var adoptNetContext = (from As in _context.Products
+                                   join im in _context.Animal
+                                   on As.AnimalId equals im.Id
+                                   select new Products
+                                   {
+                                       Id = As.Id,
+                                       Food = As.Food,
+                                       Medicine = As.Medicine,
+                                       Toy = As.Toy,
+                                       Animal = im,
+                                       AnimalId = As.AnimalId
+                                   }
+                                   );
+
+
+            //var adoptNetContext = _context.Products.Include(p => p.Animal);
             return View(await adoptNetContext.ToListAsync());
         }
-        // GET: AnimalImages/Details/5
+
+        // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var animalImage = await _context.AnimalImage
-                .Include(a => a.Animal)
+
+            var products = await _context.Products
+                .Include(p => p.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (animalImage == null)
+            if (products == null)
             {
                 return NotFound();
             }
-            return View(animalImage);
+
+            return View(products);
         }
 
-        // GET: AnimalImages/Create
-        [Authorize(Roles = "Admin,Association")]
+        // GET: Products/Create
         public IActionResult Create()
         {
             ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name));
             return View();
         }
-        // POST: AnimalImages/Create
+
+        // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Image,AnimalId")] AnimalImage animalImage)
+        public async Task<IActionResult> Create([Bind("Id,Food,Toy,Medicine,AnimalId")] Products products)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(animalImage);
+                _context.Add(products);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index), "Animals");
+                return RedirectToAction(nameof(Index));
             }
-            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
-            return View("index",animalImage);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
+            return View(products);
         }
 
-        // GET: AnimalImages/Edit/5
-        [Authorize(Roles = "Admin,Association")]
+        // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var animalImage = await _context.AnimalImage.FindAsync(id);
-            if (animalImage == null)
+
+            var products = await _context.Products.FindAsync(id);
+            if (products == null)
             {
                 return NotFound();
             }
-            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
-            return View(animalImage);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
+            return View(products);
         }
-        // POST: AnimalImages/Edit/5
+
+        // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,AnimalId")] AnimalImage animalImage)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Food,Toy,Medicine,AnimalId")] Products products)
         {
-            if (id != animalImage.Id)
+            if (id != products.Id)
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(animalImage);
+                    _context.Update(products);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AnimalImageExists(animalImage.Id))
+                    if (!ProductsExists(products.Id))
                     {
                         return NotFound();
                     }
@@ -111,42 +131,45 @@ namespace AdoptNet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index), "Animals");
+                return RedirectToAction(nameof(Index));
             }
-            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), animalImage.AnimalId);
-            return View(animalImage);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
+            return View(products);
         }
 
-        // GET: AnimalImages/Delete/5
-        [Authorize(Roles = "Admin,Association")]
+        // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var animalImage = await _context.AnimalImage
-                .Include(a => a.Animal)
+
+            var products = await _context.Products
+                .Include(p => p.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (animalImage == null)
+            if (products == null)
             {
                 return NotFound();
             }
-            return View(animalImage);
+
+            return View(products);
         }
-        // POST: AnimalImages/Delete/
+
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var animalImage = await _context.AnimalImage.FindAsync(id);
-            _context.AnimalImage.Remove(animalImage);
+            var products = await _context.Products.FindAsync(id);
+            _context.Products.Remove(products);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), "Animals"); 
+            return RedirectToAction(nameof(Index));
         }
-        private bool AnimalImageExists(int id)
+
+        private bool ProductsExists(int id)
         {
-            return _context.AnimalImage.Any(e => e.Id == id);
+            return _context.Products.Any(e => e.Id == id);
         }
     }
 }

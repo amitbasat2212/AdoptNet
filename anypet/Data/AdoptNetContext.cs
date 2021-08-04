@@ -30,6 +30,12 @@ namespace AdoptNet.Data
 
        
         public DbSet<anypet.Models.User> User { get; set; }
+
+       
+        public DbSet<anypet.Models.Products> Products { get; set; }
+
+       
+  
         
     }
 }

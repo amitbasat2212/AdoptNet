@@ -4,14 +4,16 @@ using AdoptNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdoptNet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    partial class AdoptNetContextModelSnapshot : ModelSnapshot
+    [Migration("20210802201649_ProductTable")]
+    partial class ProductTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,8 +52,8 @@ namespace AdoptNet.Migrations
                     b.Property<int>("AnimalId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Food")
-                        .HasColumnType("int");
+                    b.Property<string>("Food")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Medicine")
                         .HasColumnType("nvarchar(max)");

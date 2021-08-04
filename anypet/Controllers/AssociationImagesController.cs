@@ -19,17 +19,16 @@ namespace AdoptNet.Controllers
             _context = context;
         }
         // GET: AssociationImages
+
+       
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
-        {
-            var adoptNetContext = (from As in _context.AssociationImage
-                                   join im in _context.Association
-                                   on As.AssociationId equals im.Id
-                                   select As);
+        {       
 
-            //var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
+            var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
             return View(await adoptNetContext.ToListAsync());
         }
+       
         // GET: AssociationImages/Details/5  
         public async Task<IActionResult> Details(int? id)
         {
@@ -52,7 +51,7 @@ namespace AdoptNet.Controllers
         public IActionResult Create()
         {
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
-            return View();
+             return View();
         }
         // POST: AssociationImages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -65,7 +64,7 @@ namespace AdoptNet.Controllers
             {
                 _context.Add(associationImage);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Associations");
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
             return View(associationImage);
@@ -79,6 +78,8 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
+           
+
             var associationImage = await _context.AssociationImage.FindAsync(id);
             if (associationImage == null)
             {
@@ -116,7 +117,7 @@ namespace AdoptNet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Associations");
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
             return View(associationImage);
@@ -130,9 +131,10 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
+                      
             var associationImage = await _context.AssociationImage
                 .Include(a => a.Association)
-                .FirstOrDefaultAsync(m => m.Id == id);
+               .FirstOrDefaultAsync(m => m.Id == id);
             if (associationImage == null)
             {
                 return NotFound();
@@ -147,7 +149,7 @@ namespace AdoptNet.Controllers
             var associationImage = await _context.AssociationImage.FindAsync(id);
             _context.AssociationImage.Remove(associationImage);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Associations");
         }
         private bool AssociationImageExists(int id)
         {

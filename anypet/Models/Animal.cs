@@ -50,7 +50,7 @@ public enum Size
         public int Id { get; set; }
 
 
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name  must contain only letters...")]
+        [RegularExpression(@"^[a-zA-Z_ ]+$", ErrorMessage = "The name  must contain only letters...")]
        
         public String Name { get; set; }
 
@@ -61,7 +61,7 @@ public enum Size
         [RegularExpression("^[0-9]+$", ErrorMessage = "the age is only in numbers ")]
         [Required(ErrorMessage = "You must input Age of the Animal")]
         [Range(0, 110)]
-        public ushort Age { get; set; }
+        public uint Age { get; set; }
 
 
         //need to check this with validation- maby making it a list of female and male** 
@@ -69,7 +69,7 @@ public enum Size
         public Gender Gender { get; set; }
 
 
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "The Description must contain only letters...")]
+        [RegularExpression(@"^[a-zA-Z\s ]+$", ErrorMessage = "The Description must contain only letters...")]
         public String Description  { get; set; }
 
 
@@ -92,10 +92,27 @@ public enum Size
         //this field represent the connection of one to one 
         public AnimalImage AnimalImage { get; set; }
 
-       
+
+        public Products AnimalProducts { get; set; }
+
+
+
+
 
 
 
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

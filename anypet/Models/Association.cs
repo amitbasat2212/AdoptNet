@@ -17,7 +17,7 @@ namespace anypet.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id{ get; set; }
 
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name must contain only letters...")]
+        [RegularExpression(@"^[a-zA-Z_ ]+$", ErrorMessage = "The name must contain only letters...")]
         public String Name { get; set; }
         
         [DataType(DataType.PhoneNumber)]

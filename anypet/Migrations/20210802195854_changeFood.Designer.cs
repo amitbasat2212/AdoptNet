@@ -4,14 +4,16 @@ using AdoptNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdoptNet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    partial class AdoptNetContextModelSnapshot : ModelSnapshot
+    [Migration("20210802195854_changeFood")]
+    partial class changeFood
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace AdoptNet.Migrations
                     b.ToTable("AdoptionDays");
                 });
 
-            modelBuilder.Entity("AdoptNet.Models.Products", b =>
+            modelBuilder.Entity("AdoptNet.Models.AnimalProducts", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +66,7 @@ namespace AdoptNet.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("Products");
+                    b.ToTable("AnimalProducts");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
@@ -209,11 +211,11 @@ namespace AdoptNet.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("AdoptNet.Models.Products", b =>
+            modelBuilder.Entity("AdoptNet.Models.AnimalProducts", b =>
                 {
                     b.HasOne("anypet.Models.Animal", "Animal")
                         .WithOne("AnimalProducts")
-                        .HasForeignKey("AdoptNet.Models.Products", "AnimalId")
+                        .HasForeignKey("AdoptNet.Models.AnimalProducts", "AnimalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
