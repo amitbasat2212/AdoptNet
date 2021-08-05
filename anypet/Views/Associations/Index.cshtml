@@ -42,45 +42,45 @@
     <div class="card-group ">
         @foreach (var Association in Model)
         {
-<div class="col-md-3 ">
-    <div class="card spaceCards" style="width: 18rem;">
-        @if (Association.AssociationImage!= null)
-        {
-            <img src="@Association.AssociationImage.Image" class="card-img-top" alt="...">}
+            <div class="col-md-3 ">
+                <div class="card spaceCards" style="width: 18rem;">
+                    @if (Association.AssociationImage != null)
+                    {
+                        <img src="@Association.AssociationImage.Image" class="card-img-top" alt="...">}
 
-        <div class="card-body list-group-item list-group-item-danger">
+                    <div class="card-body list-group-item list-group-item-danger">
 
-            <h5 class="card-title">@Association.Name</h5>
-            
-            <a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> |
-            <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> |
-            <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> |
-             @if (Association.AssociationImage == null)
-             {
-            <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} |
-            @if (Association.AssociationImage != null)
-            {
-                <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |
-            @if (Association.AssociationImage != null)
-            {
-                <a class="decoText" asp-controller="AssociationImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}
+                        <h5 class="card-title">@Association.Name</h5>
 
-        </div>
-        <ul class="list-group colorCol list-group-flush">
-            <li class="list-group-item list-group-item-danger">Location: @Association.Location</li>
-            <li class="list-group-item list-group-item-danger">Phone number: @Association.PhoneNumber</li>
-            <li class="list-group-item list-group-item-danger">Email: @Association.EmailOfUser</li>
-            <li class="list-group-item list-group-item-danger">
-                Adoption Days:<br />
-                @for(int i = 0; i < Association.AdoptionDays.Count; i++)
-                {
-                    @Association.AdoptionDays[i].Name<br />
-                }
+                        <a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> |
+                        <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> |
+                        <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> |
+                        @if (Association.AssociationImage == null)
+                        {
+                            <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} |
+                        @if (Association.AssociationImage != null)
+                        {
+                            <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |
+                        @if (Association.AssociationImage != null)
+                        {
+                            <a class="decoText" asp-controller="AssociationImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}
 
-            </li>
-        </ul>
+                    </div>
+                    <ul class="list-group colorCol list-group-flush">
+                        <li class="list-group-item list-group-item-danger">Location: @Association.Location</li>
+                        <li class="list-group-item list-group-item-danger">Phone number: @Association.PhoneNumber</li>
+                        <li class="list-group-item list-group-item-danger">Email: @Association.EmailOfUser</li>
+                        <li class="list-group-item list-group-item-danger">
+                            Adoption Days:<br />
+                            @for (int i = 0; i < Association.AdoptionDays.Count; i++)
+                            {
+                                @Association.AdoptionDays[i].Name<br />
+                            }
 
-    </div>
-</div>}
+                        </li>
+                    </ul>
+
+                </div>
+            </div>}
     </div>
 </div>

@@ -74,7 +74,7 @@ namespace Ad.Controllers
 
             var authProperties = new AuthenticationProperties
             {
-                //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
             };
 
             await HttpContext.SignInAsync(

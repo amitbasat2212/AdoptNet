@@ -15,12 +15,12 @@ namespace AdoptNet.Controllers
     public class AssociationsController : Controller
     {
         private readonly AdoptNetContext _context;
-  
+
         public AssociationsController(AdoptNetContext context)
         {
             _context = context;
 
-            
+
 
         }
 
@@ -29,9 +29,9 @@ namespace AdoptNet.Controllers
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
-            
 
-             var adoptNetContext = _context.Association.Include(a => a.AssociationImage).Include(a=>a.AdoptionDays);
+
+            var adoptNetContext = _context.Association.Include(a => a.AssociationImage).Include(a => a.AdoptionDays);
             return View(await adoptNetContext.ToListAsync());
         }
         // GET: Associations/Details/5
@@ -64,15 +64,15 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association, int[] AdoptionDays )
+        public async Task<IActionResult> Create([Bind("Id,Name,PhoneNumber,Location,EmailOfUser")] Association association, int[] AdoptionDays)
         {
             if (ModelState.IsValid)
             {
-                
+
                 association.AdoptionDays = new List<AdoptionDays>();
                 association.AdoptionDays.AddRange(_context.AdoptionDays.Where(x => AdoptionDays.Contains(x.Id)));
 
-                
+
                 _context.Association.Add(association);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -90,12 +90,12 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
             var association = await _context.Association.FindAsync(id);
-            
+
             if (association == null)
             {
                 return NotFound();
             }
-            ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name") ;
+            ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
             return View(association);
         }
         // POST: Associations/Edit/5
@@ -111,16 +111,14 @@ namespace AdoptNet.Controllers
             }
             if (ModelState.IsValid)
             {
-               
+
                 try
                 {
-                   
                     var association1 = _context.Association.Single(n => n.Id == id);
                     association1.AdoptionDays = new List<AdoptionDays>();
-                   
+
                     for (int i = 0; i < AdoptionDays.Length; i++)
                     {
-                    
                         var adopt = _context.AdoptionDays.Single(n => n.Id == AdoptionDays[i]);
                         association1.AdoptionDays.Add(adopt);
                     }
@@ -136,7 +134,7 @@ namespace AdoptNet.Controllers
                         return NotFound();
                     }
                     else
-                    {   
+                    {
                         throw;
                     }
                 }
@@ -167,7 +165,7 @@ namespace AdoptNet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            
+
             var association = await _context.Association.FindAsync(id);
             _context.Association.Remove(association);
             await _context.SaveChangesAsync();
@@ -177,7 +175,7 @@ namespace AdoptNet.Controllers
         {
             return _context.Association.Any(e => e.Id == id);
         }
-       
+
 
     }
 }

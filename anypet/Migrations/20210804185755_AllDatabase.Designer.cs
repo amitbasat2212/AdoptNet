@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AdoptNet.Migrations
+namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    [Migration("20210802201900_ChangeVaribale")]
-    partial class ChangeVaribale
+    [Migration("20210804185755_AllDatabase")]
+    partial class AllDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,33 +40,6 @@ namespace AdoptNet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AdoptionDays");
-                });
-
-            modelBuilder.Entity("AdoptNet.Models.Products", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Food")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Medicine")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Toy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalId")
-                        .IsUnique();
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
@@ -167,7 +140,7 @@ namespace AdoptNet.Migrations
                     b.ToTable("Association");
                 });
 
-            modelBuilder.Entity("anypet.Models.AssociationImage", b =>
+            modelBuilder.Entity("anypet.Models.AssociationImages", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,7 +158,34 @@ namespace AdoptNet.Migrations
                     b.HasIndex("AssociationId")
                         .IsUnique();
 
-                    b.ToTable("AssociationImage");
+                    b.ToTable("AssociationImages");
+                });
+
+            modelBuilder.Entity("anypet.Models.Products", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnimalId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Food")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Medicine")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Toy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("anypet.Models.User", b =>
@@ -209,17 +209,6 @@ namespace AdoptNet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("AdoptNet.Models.Products", b =>
-                {
-                    b.HasOne("anypet.Models.Animal", "Animal")
-                        .WithOne("AnimalProducts")
-                        .HasForeignKey("AdoptNet.Models.Products", "AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Animal");
                 });
 
             modelBuilder.Entity("AdoptionDaysAssociation", b =>
@@ -259,15 +248,26 @@ namespace AdoptNet.Migrations
                     b.Navigation("Animal");
                 });
 
-            modelBuilder.Entity("anypet.Models.AssociationImage", b =>
+            modelBuilder.Entity("anypet.Models.AssociationImages", b =>
                 {
                     b.HasOne("anypet.Models.Association", "Association")
                         .WithOne("AssociationImage")
-                        .HasForeignKey("anypet.Models.AssociationImage", "AssociationId")
+                        .HasForeignKey("anypet.Models.AssociationImages", "AssociationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Association");
+                });
+
+            modelBuilder.Entity("anypet.Models.Products", b =>
+                {
+                    b.HasOne("anypet.Models.Animal", "Animal")
+                        .WithOne("AnimalProducts")
+                        .HasForeignKey("anypet.Models.Products", "AnimalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
                 });
 
             modelBuilder.Entity("anypet.Models.Animal", b =>
