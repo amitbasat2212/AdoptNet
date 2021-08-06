@@ -32,59 +32,75 @@
 
 </head>
 
-<h1 class="space">Adding a New Animal</h1>
-
- <div class="form-group ">
-        <a asp-action="Create"><input value="Add-Animal" style="width:120px"  class="btn btn-outline-dark inputspace subotton " /></a>
+<header class="jumbotron bg-cover text-white image">
+   
+    <div class="container py-5 text-center">
+        <h2 class="display-4 font-weight-bold">Animal-Adoption</h2>
+        <a asp-action="Create"><input value="Add-Animal" style="width:120px" class="btn btn-outline-dark subotton " /></a>
     </div>
-         <div class="row">
+</header>
 
-        <div class="card-group ">
-        @foreach (var Animals in Model.GroupBy(x=> x.Association.Name))
-        {
-            <h3>@Animals.Key</h3>
-        
-            <div class="col-md-3 ">
-                @foreach (var Animal in Animals)
-                {
-                    <div class="card spaceCards" style="width: 18rem;">
-                
-
-                      @if (Animal.AnimalImage != null)
-                      {
-                         <img src="@Animal.AnimalImage.Image" class="card-img-top" alt="...">}
-
-                     <div class="card-body list-group-item list-group-item-danger">
-
-                    <h5 class="card-title">@Animal.Name</h5>
-                    <p class="card-text"> @Animal.Description</p>
-                    <a class="decoText" asp-action="Edit" asp-route-id="@Animal.Id">Edit</a> |
-                    <a class="decoText" asp-action="Details" asp-route-id="@Animal.Id">Details</a> |
-                    <a class="decoText" asp-action="Delete" asp-route-id="@Animal.Id">Delete</a> |
-                    @if (Animal.AnimalImage == null)
-                    {
-                    <a class="decoText" asp-controller="AnimalImages" asp-action="Create">Add-Image</a>} |
-                    @if (Animal.AnimalImage != null)
-                    {
-                         <a class="decoText" asp-controller="AnimalImages" asp-action="Edit" asp-route-id="@Animal.AnimalImage.Id">Edit Image</a>} |
-                    @if (Animal.AnimalImage != null)
-                    {
-                         <a class="decoText" asp-controller="AnimalImages" asp-action="Delete" asp-route-id="@Animal.AnimalImage.Id">Delete Image</a>}
-
+<div class="form-group ">
+    
+</div>
+ @foreach (var Animals in Model.GroupBy(x => x.Association.Name))
+ {
+    <div class="row">
+         
+       <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-caption">
+                        <h3 class="page-title">@Animals.Key</h3>
+                        
+                    </div>
                 </div>
-                <ul class="list-group colorCol list-group-flush">
-                    <li class="list-group-item list-group-item-danger">Age: @Animal.Age</li>
-                    <li class="list-group-item list-group-item-danger">Gender: @Animal.Gender</li>
-                    <li class="list-group-item list-group-item-danger">Size: @Animal.Size</li>
-                    <li class="list-group-item list-group-item-danger">Location: @Animal.Location</li>
-                    <li class="list-group-item list-group-item-danger">Kind: @Animal.Kind</li>
-                    @if (Animal.Association != null)
-                    {
-                      <li class="list-group-item list-group-item-danger">Association: @Animal.Association.Name</li>
-                    }
-                </ul>
+            </div>
+        </div>
+    </div>
 
-                </div>}
-          </div>}
-    </div> 
- </div>
+                 
+           @foreach (var Animal in Animals)
+           {
+            <div class="col-md-3 ">   
+               <div class="card spaceCards spceseColor" style="width: 23rem;">
+                
+             @if (Animal.AnimalImage != null)
+             {                 
+                <img src="@Animal.AnimalImage.Image" class="card-img-top"  alt="...">}
+
+             <div class="card-body">
+                <h3 class="card-title boldt ">@Animal.Name</h3>
+                 <p class="card-text"> @Animal.Description</p>
+                 <a class="decoText" asp-action="Edit" asp-route-id="@Animal.Id">Edit</a> |
+                <a class="decoText" asp-action="Details" asp-route-id="@Animal.Id">Details</a> |
+                 <a class="decoText" asp-action="Delete" asp-route-id="@Animal.Id">Delete</a> |
+                 @if (Animal.AnimalImage == null)
+                 {
+                      <a class="decoText" asp-controller="AnimalImages" asp-action="Create">Add-Image</a>} |
+                 @if (Animal.AnimalImage != null)
+                 {
+                      <a class="decoText" asp-controller="AnimalImages" asp-action="Edit" asp-route-id="@Animal.AnimalImage.Id">Edit Image</a>} |
+                  @if (Animal.AnimalImage != null)
+                  {
+                     <a class="decoText" asp-controller="AnimalImages" asp-action="Delete" asp-route-id="@Animal.AnimalImage.Id">Delete Image</a>}
+
+            
+                <ul class="list-group colorCol list-group-flush">
+                 <li class="list-group-item list-group-item-danger">Age: @Animal.Age</li>
+                 <li class="list-group-item list-group-item-danger">Gender: @Animal.Gender</li>
+                 <li class="list-group-item list-group-item-danger">Size: @Animal.Size</li>
+                <li class="list-group-item list-group-item-danger">Location: @Animal.Location</li>
+                 <li class="list-group-item list-group-item-danger">Kind: @Animal.Kind</li>
+                 @if (Animal.Association != null)
+                 {
+                     <li class="list-group-item list-group-item-danger">Association: @Animal.Association.Name</li>}
+             </ul>
+            </div>
+
+          </div>
+         </div>}
+    
+  
+ </div>}
