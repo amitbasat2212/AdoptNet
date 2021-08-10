@@ -15,9 +15,8 @@ namespace anypet.Models
 
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-
               
-        public  String Location { get; set; }
+        public  Location Location { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public long PhoneNumber { get; set; }

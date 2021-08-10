@@ -1,4 +1,4 @@
-﻿@model IEnumerable<anypet.Models.AnimalImage>
+﻿@model IEnumerable<anypet.Models.Products>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,11 +9,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" id="footerbootom">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                @Html.DisplayNameFor(model => model.Food)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicine)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Animal)
@@ -25,7 +31,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                @Html.DisplayFor(modelItem => item.Food)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicine)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Animal.Name)

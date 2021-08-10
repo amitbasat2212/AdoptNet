@@ -1,4 +1,4 @@
-﻿@model anypet.Models.AssociationImage
+﻿@model anypet.Models.AssociationImages
 
 @{
     ViewData["Title"] = "Delete";
@@ -61,7 +61,7 @@
             <form class="col-6 mx-auto spacesdes" asp-action="Delete" id="footerbootom">
                 <input type="hidden" asp-for="Id" />
                 <input type="submit" value="Delete" class="btn btn-danger btn-outline-dark" id="dangiSize" />
-                <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+                <a asp-controller="Associations" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
             </form>
 
         </div>

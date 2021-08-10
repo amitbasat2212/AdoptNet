@@ -6,28 +6,45 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
-using AdoptNet.Models;
+using anypet.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace AdoptNet.Controllers
+namespace anypet.Controllers
 {
-    public class AdoptionDaysController : Controller
+    public class ProductsController : Controller
     {
         private readonly AdoptNetContext _context;
 
-        public AdoptionDaysController(AdoptNetContext context)
+        public ProductsController(AdoptNetContext context)
         {
             _context = context;
         }
 
-        // GET: AdoptionDays
+        // GET: Products
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.AdoptionDays.ToListAsync());
+            var adoptNetContext = (from As in _context.Products
+                                   join im in _context.Animal
+                                   on As.AnimalId equals im.Id
+                                   select new Products
+                                   {
+                                       Id = As.Id,
+                                       Food = As.Food,
+                                       Medicine = As.Medicine,
+                                       Toy = As.Toy,
+                                       Animal = im,
+                                       AnimalId = As.AnimalId
+                                   }
+                                   );
+
+
+            //var adoptNetContext = _context.Products.Include(p => p.Animal);
+            return View(await adoptNetContext.ToListAsync());
         }
 
-        // GET: AdoptionDays/Details/5
+        // GET: Products/Details/5
+        [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,40 +52,43 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var adoptionDays = await _context.AdoptionDays
+            var products = await _context.Products
+                .Include(p => p.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (adoptionDays == null)
+            if (products == null)
             {
                 return NotFound();
             }
 
-            return View(adoptionDays);
+            return View(products);
         }
 
-        // GET: AdoptionDays/Create
+        // GET: Products/Create
         [Authorize(Roles = "Admin,Association")]
         public IActionResult Create()
         {
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name));
             return View();
         }
 
-        // POST: AdoptionDays/Create
+        // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Id,AdoptionDate,LocationAdopt")] AdoptionDays adoptionDays)
+        public async Task<IActionResult> Create([Bind("Id,Food,Toy,Medicine,AnimalId")] Products products)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(adoptionDays);
+                _context.Add(products);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(adoptionDays);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
+            return View(products);
         }
 
-        // GET: AdoptionDays/Edit/5
+        // GET: Products/Edit/5
         [Authorize(Roles = "Admin,Association")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -77,22 +97,23 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var adoptionDays = await _context.AdoptionDays.FindAsync(id);
-            if (adoptionDays == null)
+            var products = await _context.Products.FindAsync(id);
+            if (products == null)
             {
                 return NotFound();
             }
-            return View(adoptionDays);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
+            return View(products);
         }
 
-        // POST: AdoptionDays/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Id,AdoptionDate,LocationAdopt")] AdoptionDays adoptionDays)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Food,Toy,Medicine,AnimalId")] Products products)
         {
-            if (id != adoptionDays.Id)
+            if (id != products.Id)
             {
                 return NotFound();
             }
@@ -101,12 +122,12 @@ namespace AdoptNet.Controllers
             {
                 try
                 {
-                    _context.Update(adoptionDays);
+                    _context.Update(products);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AdoptionDaysExists(adoptionDays.Id))
+                    if (!ProductsExists(products.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +138,11 @@ namespace AdoptNet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(adoptionDays);
+            ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
+            return View(products);
         }
 
-        // GET: AdoptionDays/Delete/5
+        // GET: Products/Delete/5
         [Authorize(Roles = "Admin,Association")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -129,30 +151,31 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var adoptionDays = await _context.AdoptionDays
+            var products = await _context.Products
+                .Include(p => p.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (adoptionDays == null)
+            if (products == null)
             {
                 return NotFound();
             }
 
-            return View(adoptionDays);
+            return View(products);
         }
 
-        // POST: AdoptionDays/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var adoptionDays = await _context.AdoptionDays.FindAsync(id);
-            _context.AdoptionDays.Remove(adoptionDays);
+            var products = await _context.Products.FindAsync(id);
+            _context.Products.Remove(products);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AdoptionDaysExists(int id)
+        private bool ProductsExists(int id)
         {
-            return _context.AdoptionDays.Any(e => e.Id == id);
+            return _context.Products.Any(e => e.Id == id);
         }
     }
 }

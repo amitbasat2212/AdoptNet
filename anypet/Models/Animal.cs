@@ -1,18 +1,26 @@
 ﻿using AdoptNet.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace anypet.Models
 {
-    public enum Size
+   
+
+public enum Size
     {
+        [Description("Small")]
         Small,
+        [Description("medium")]
         medium,
+        [Description("Big")]
         Big
+
 
     }
     public enum Kind
@@ -42,7 +50,7 @@ namespace anypet.Models
         public int Id { get; set; }
 
 
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name  must contain only letters...")]
+        [RegularExpression(@"^[a-zA-Z_ ]+$", ErrorMessage = "The name  must contain only letters...")]
        
         public String Name { get; set; }
 
@@ -53,7 +61,7 @@ namespace anypet.Models
         [RegularExpression("^[0-9]+$", ErrorMessage = "the age is only in numbers ")]
         [Required(ErrorMessage = "You must input Age of the Animal")]
         [Range(0, 110)]
-        public ushort Age { get; set; }
+        public uint Age { get; set; }
 
 
         //need to check this with validation- maby making it a list of female and male** 
@@ -61,7 +69,7 @@ namespace anypet.Models
         public Gender Gender { get; set; }
 
 
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "The Description must contain only letters...")]
+        [RegularExpression(@"^[a-zA-Z\s ]+$", ErrorMessage = "The Description must contain only letters...")]
         public String Description  { get; set; }
 
 
@@ -82,12 +90,29 @@ namespace anypet.Models
 
               
         //this field represent the connection of one to one 
-        public AnimalImage Image { get; set; }
+        public AnimalImage AnimalImage { get; set; }
 
-       
+
+        public Products AnimalProducts { get; set; }
+
+
+
+
 
 
 
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

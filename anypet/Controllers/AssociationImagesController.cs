@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
 using anypet.Models;
 
-namespace AdoptNet.Controllers
+namespace anypet.Controllers
 {
     public class AssociationImagesController : Controller
     {
@@ -19,36 +19,13 @@ namespace AdoptNet.Controllers
             _context = context;
         }
 
-        // GET: AssociationImages
-        public async Task<IActionResult> Index()
-        {
-            var adoptNetContext = _context.AssociationImage.Include(a => a.Association);
-            return View(await adoptNetContext.ToListAsync());
-        }
-
-        // GET: AssociationImages/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var associationImage = await _context.AssociationImage
-                .Include(a => a.Association)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (associationImage == null)
-            {
-                return NotFound();
-            }
-
-            return View(associationImage);
-        }
+      
+       
 
         // GET: AssociationImages/Create
         public IActionResult Create()
         {
-            ViewData["AssociationId"] = new SelectList(_context.Association, "Id",nameof(Association.Name));
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
             return View();
         }
 
@@ -57,16 +34,25 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Image,AssociationId")] AssociationImage associationImage)
+        public async Task<IActionResult> Create([Bind("Id,Image,AssociationId")] AssociationImages associationImages)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(associationImage);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var check = _context.AssociationImages.Where(r => r.AssociationId.Equals(associationImages.AssociationId));
+
+                if (check.Count()==0)
+                {
+                    _context.Add(associationImages);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index), "Associations");
+                }
+                else
+                {
+                    ViewData["Error"] = "this Association allready  have an image";
+                }
             }
-            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
-            return View(associationImage);
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
+            return View(associationImages);
         }
 
         // GET: AssociationImages/Edit/5
@@ -77,13 +63,13 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var associationImage = await _context.AssociationImage.FindAsync(id);
-            if (associationImage == null)
+            var associationImages = await _context.AssociationImages.FindAsync(id);
+            if (associationImages == null)
             {
                 return NotFound();
             }
-            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
-            return View(associationImage);
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImages.AssociationId);
+            return View(associationImages);
         }
 
         // POST: AssociationImages/Edit/5
@@ -91,9 +77,9 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,AssociationId")] AssociationImage associationImage)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,AssociationId")] AssociationImages associationImages)
         {
-            if (id != associationImage.Id)
+            if (id != associationImages.Id)
             {
                 return NotFound();
             }
@@ -102,12 +88,12 @@ namespace AdoptNet.Controllers
             {
                 try
                 {
-                    _context.Update(associationImage);
+                    _context.Update(associationImages);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssociationImageExists(associationImage.Id))
+                    if (!AssociationImagesExists(associationImages.Id))
                     {
                         return NotFound();
                     }
@@ -116,10 +102,10 @@ namespace AdoptNet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Associations");
             }
-            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImage.AssociationId);
-            return View(associationImage);
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name), associationImages.AssociationId);
+            return View(associationImages);
         }
 
         // GET: AssociationImages/Delete/5
@@ -130,15 +116,15 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
 
-            var associationImage = await _context.AssociationImage
+            var associationImages = await _context.AssociationImages
                 .Include(a => a.Association)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (associationImage == null)
+            if (associationImages == null)
             {
                 return NotFound();
             }
 
-            return View(associationImage);
+            return View(associationImages);
         }
 
         // POST: AssociationImages/Delete/5
@@ -146,15 +132,15 @@ namespace AdoptNet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var associationImage = await _context.AssociationImage.FindAsync(id);
-            _context.AssociationImage.Remove(associationImage);
+            var associationImages = await _context.AssociationImages.FindAsync(id);
+            _context.AssociationImages.Remove(associationImages);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Associations"); 
         }
 
-        private bool AssociationImageExists(int id)
+        private bool AssociationImagesExists(int id)
         {
-            return _context.AssociationImage.Any(e => e.Id == id);
+            return _context.AssociationImages.Any(e => e.Id == id);
         }
     }
 }
