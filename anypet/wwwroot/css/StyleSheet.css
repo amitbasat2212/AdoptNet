@@ -465,13 +465,9 @@ h4 {
 
 .card-img-top {
     width: 100%;
-    height: 9vw;
+    height: 400px;
     object-fit: cover;
 }
-
-
-
-
 
 .page-header {
     background: url(https://images.takeshape.io/fd194db7-7b25-4b5a-8cc7-da7f31fab475/dev/350a0ce6-d88f-4b4d-a11a-863b6bc67d9c/james-barker-560319-unsplash.jpg?auto=compress%2Cformat&crop=faces&fit=crop&fm=jpg&h=630&q=75&w=1200)no-repeat;
@@ -576,4 +572,3 @@ summary:before {
     margin-bottom:350px;
 
 }
-
