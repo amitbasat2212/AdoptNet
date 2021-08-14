@@ -39,13 +39,15 @@
 <body>
 
     <!--  header-navbar -->
-    
+
 
     <h1 class="About">
         <br> </br>
         <b>About us: </b>
 
     </h1>
+
+
     <main class="container">
 
         <!--Top left-->
@@ -123,7 +125,18 @@
             </div>
     </main>
 
-    
+   <!-- canvas + js-->
+    <canvas id="myCanvas" width="383" height="70">
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.font = "20px Arial";
+        ctx.fillText("Contact us on the media for collaborations.", 8, 40);
+    </script>
+
+
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

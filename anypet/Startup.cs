@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AdoptNet.Data;
+using AdoptNet.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace anypet
@@ -33,11 +34,12 @@ namespace anypet
 
             services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(10); });
             services.AddControllersWithViews();
-           
+          
             services.AddDbContext<AdoptNetContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AdoptNetContext")));
             services.AddNodeServices();
             services.AddMvc();
+          
 
 
         }
