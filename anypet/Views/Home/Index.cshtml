@@ -47,6 +47,8 @@
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
                 <li><a asp-controller="Products" asp-action="Index" class="nav-link px-4 text-white ">Animal products</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
+                <li><a asp-controller="Home" asp-action="Other" class="nav-link px-4 text-white ">Other intresting content</a></li>
+
                 <form asp-controller="Animals" asp-action="Search">
                     <input name="Searching" placeholder="Enter something to search" />
                     <input type="submit" value="Search" class="btn btn-primary" />
@@ -172,6 +174,31 @@
 
     </main>
 
+    <!-- the DIV that will contain the widget -->
+    <div class="weatherWidget"></div>
+
+    <script>
+        window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector: ".weatherWidget",
+            apiKey: "QE6RQD4H9DX3UKN2Z7MM3ZSDJ", //Sign up for your personal key
+            location: "Tel Aviv, ISR", //Enter an address
+            unitGroup: "metric", //"us" or "metric"
+            forecastDays: 5, //how many days forecast to show
+            title: "Weather in Tel Aviv, Israel", //optional title to show in the
+            showTitle: true,
+            showConditions: true
+        });
+
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+    <div class="b-example-divider"></div>
 
     <div class="footer-dark">
         <footer>

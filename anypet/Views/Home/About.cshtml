@@ -124,20 +124,39 @@
                 </div>
             </div>
     </main>
+    <img width="80" height="80" src="~/css/star-with-transparent-background-24.png" alt="Sitelogo">
 
-   <!-- canvas + js-->
-    <canvas id="myCanvas" width="383" height="70">
+    <!-- canvas + js-->
+    <canvas id="myCanvas" width="900" height="70">
     </canvas>
+
+    <img width="80" height="80" src="~/css/star-with-transparent-background-24.png" alt="Sitelogo">
 
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         ctx.font = "20px Arial";
-        ctx.fillText("Contact us on the media for collaborations.", 8, 40);
+        ctx.fillText("Contact us on Linkedin for collaborations: Liem Mazal, Amit Ben Basat, Limor Hodory, Rotem Rokah.", 8, 40);
     </script>
 
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://instagram47.p.rapidapi.com/public_user_posts?userid=1718924098",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "99445c66fbmshdaa967843de43d1p1b68d1jsn3b3b70e00ed7",
+                "x-rapidapi-host": "instagram47.p.rapidapi.com"
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    </script>
 
 </body>
 </html>
