@@ -33,11 +33,13 @@
 </head>
 
 <header class="jumbotron bg-cover text-white image">
-   
+
     <div class="container py-5 text-center">
         <h2 class="display-4 font-weight-bold">Animal-Adoption</h2>
-        <a asp-action="Create"><input value="Add-Animal" style="width:120px" class="btn btn-outline-dark subotton " /></a>
     </div>
+
+    <a asp-action="Create"><input value="Add-Animal" style="width:120px;"  class="btn btn-outline-dark subotton mix" /></a>
+
 </header>
 
 <div class="form-group ">
@@ -52,8 +54,10 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-caption">
-                        <h3 class="page-title">@Animals.Key</h3>
-                        
+                        <h3 class="animal-key">
+                            @Animals.Key
+                        </h3> <!--getting the spefic ID q Key of the animals-->
+
                     </div>
                 </div>
             </div>
@@ -93,6 +97,7 @@
                  <li class="list-group-item list-group-item-danger">Size: @Animal.Size</li>
                 <li class="list-group-item list-group-item-danger">Location: @Animal.Location</li>
                  <li class="list-group-item list-group-item-danger">Kind: @Animal.Kind</li>
+                   <!--A check to know if the animal belong to association-->
                  @if (Animal.Association != null)
                  {
                      <li class="list-group-item list-group-item-danger">Association: @Animal.Association.Name</li>}

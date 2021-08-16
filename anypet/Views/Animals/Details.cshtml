@@ -1,8 +1,6 @@
 ﻿@model anypet.Models.Animal
 
-@{
-    ViewData["Title"] = "Details";
-}
+@{ ViewData["Title"] = "Details"; }
 
 <head>
     <meta charset="utf-8" />
@@ -31,21 +29,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 
-
 </head>
-
-
-
-
-
-
-
 
 <h1>Details of an Animal</h1>
 
-
 <details>
-    <summary >@Html.DisplayFor(model => model.Name)</summary>
+    <summary>@Html.DisplayFor(model => model.Name)</summary>
     <div class="content">
         <dt class="col-6 mx-auto spacesdes">
             <h5>
@@ -104,4 +93,3 @@
         </form>
     </div>
 </details>
-

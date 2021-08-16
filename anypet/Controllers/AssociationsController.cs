@@ -20,8 +20,6 @@ namespace AdoptNet.Controllers
         {
             _context = context;
 
-
-
         }
 
 
@@ -29,8 +27,6 @@ namespace AdoptNet.Controllers
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
-
-
             var adoptNetContext = _context.Association.Include(a => a.AssociationImage).Include(a => a.AdoptionDays);
             return View(await adoptNetContext.ToListAsync());
         }
@@ -96,6 +92,7 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
             ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
+
             return View(association);
         }
         // POST: Associations/Edit/5
@@ -114,19 +111,44 @@ namespace AdoptNet.Controllers
 
                 try
                 {
-                    var association1 = _context.Association.Single(n => n.Id == id);
-                    association1.AdoptionDays = new List<AdoptionDays>();
+                    // Taking from the database the association we chose according to id with his adoption days
+                    Association adoptNetContext = (Association)_context.Association.Include(a => a.AdoptionDays).Where(r => r.Id == id).FirstOrDefault(); 
 
-                    for (int i = 0; i < AdoptionDays.Length; i++)
+                    // check if their aint no adoption days
+                    if (adoptNetContext.AdoptionDays.Count() > 0)
                     {
-                        var adopt = _context.AdoptionDays.Single(n => n.Id == AdoptionDays[i]);
-                        association1.AdoptionDays.Add(adopt);
+                        for (int i = 0; i < AdoptionDays.Length; i++)
+                        {
+                            AdoptionDays adopt = _context.AdoptionDays.Single(n => n.Id == AdoptionDays[i]);
+
+                            // check if the adoption day is already exist
+                            if (adoptNetContext.AdoptionDays.Contains(adopt))
+                            {
+                                ViewData["Error"] = "this Association already have this Adoption day";
+                                ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
+                                return View(association);
+                            }
+                            else
+                            {
+                                adoptNetContext.AdoptionDays.Add(adopt);
+                                _context.Update(adoptNetContext);
+                                await _context.SaveChangesAsync();
+                            }
+
+
+                        }
                     }
-                    _context.Update(association1);
-                    await _context.SaveChangesAsync();
 
-
+                    // adding new adoption days list
+                    else
+                    {
+                        adoptNetContext.AdoptionDays = new List<AdoptionDays>();
+                        adoptNetContext.AdoptionDays.AddRange(_context.AdoptionDays.Where(x => AdoptionDays.Contains(x.Id)));
+                        _context.Update(adoptNetContext);
+                        await _context.SaveChangesAsync();
+                    }
                 }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AssociationExists(association.Id))

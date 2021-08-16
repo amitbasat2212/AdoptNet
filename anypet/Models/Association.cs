@@ -29,6 +29,7 @@ namespace anypet.Models
 
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Association Email")]
+        [Required(ErrorMessage = "You must input Email of the Association")]
         public String EmailOfUser { get; set; }
 
         //this field represnt the connection of many to one 
