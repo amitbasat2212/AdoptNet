@@ -1,7 +1,6 @@
-﻿﻿
-* { /* This resets all elements default margins and paddings */
-margin: 0px;
-padding: 0px;
+﻿* { /* This resets all elements default margins and paddings */
+    margin: 0px;
+    padding: 0px;
 }
 
 
@@ -454,13 +453,12 @@ h4 {
     margin-right: 100px;
     background-color: #f8d7da;
     height: 580px;
-    margin-bottom:40px;
+    margin-bottom: 40px;
 }
 
 
-#hidden1{
-
-    display:none;
+#hidden1 {
+    display: none;
 }
 
 .card-img-top {
@@ -469,50 +467,49 @@ h4 {
     object-fit: cover;
 }
 
-
-
-
-
 .page-header {
-    background: url(https://images.takeshape.io/fd194db7-7b25-4b5a-8cc7-da7f31fab475/dev/350a0ce6-d88f-4b4d-a11a-863b6bc67d9c/james-barker-560319-unsplash.jpg?auto=compress%2Cformat&crop=faces&fit=crop&fm=jpg&h=630&q=75&w=1200)no-repeat;
+    background: url(cute-cats-dogs.png)no-repeat;
     position: relative;
-    background-size: cover;
     margin-bottom: 30px;
     margin-top: 30px;
-    margin-right: 60px;
+    margin-left: 350px;
 }
 
 .page-caption {
     padding-top: 100px;
     padding-bottom: 100px;
-   
 }
 
 .page-title {
-    font-size: 46px;
+    font-size: 70px;
     line-height: 1;
-    color: #fff;
-    font-weight: 600;
+    color: #FE7686;
+    font-weight: bold;
     text-align: center;
+    margin-bottom: 70px;
+    margin-top: -70px;
+}
 
+.join {
+    color: #FE7686;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .bg-cover {
     background-size: cover !important;
 }
 
-.image{
-    width:100%;
-    height:100%;
-    background-image:url(BANNER.jpg);
-
-
+.image {
+    width: 50%;
+    height: 60%;
+    background-image: url(2104538.jpg);
+    margin-left: 350px;
+    margin-top: 100px;
+    border-radius: 25px;
+    padding-bottom: 200px
 }
-
-
-
-
-
 
 summary {
     border: 4px solid transparent;
@@ -527,9 +524,6 @@ summary {
     cursor: pointer;
 }
 
-
-
-
 details {
     max-width: 500px;
     box-sizing: border-box;
@@ -539,7 +533,7 @@ details {
     margin-left: auto;
     margin-right: auto
 }
-}
+
 
     details summary::-webkit-details-marker {
         display: none;
@@ -572,9 +566,73 @@ summary:before {
 }
 
 
-.down{
-    margin-bottom:350px;
+.down {
+    margin-bottom: 350px;
+}
 
+.card-img-top2 {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.mix {
+    margin-left: 46%;
+    margin-bottom: 50px;
+}
+
+.animal-key {
+    margin-top: -125px;
+    margin-left: 12%;
+    font-size: 60px;
+    color: #FE7686;
+}
+
+/*
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.card-img-top {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px
+}
+
+span.text-muted {
+    font-size: 12px
+}
+
+small.text-muted {
+    font-size: 15px
+}
+
+h5.ml-1 {
+    font-size: 13px
 }
 
 
+small.justify-content-end {
+    font-size: 9px;
+    cursor: pointer;
+    text-decoration: underline
+}
+
+@media screen and (max-width:600px) {
+    .col-sm-4 {
+        margin-bottom: 50px
+    }
+}
+
+.padup {
+    margin-top: 100px;
+}
+
+.pink {
+    color: #FE7686;
+}
+
+.card-img-topProduct {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}

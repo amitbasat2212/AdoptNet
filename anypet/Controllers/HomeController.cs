@@ -25,12 +25,17 @@ namespace anypet.Controllers
             return View();
         }
 
+        public IActionResult Other()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
         }
 
-        
+
 
 
 

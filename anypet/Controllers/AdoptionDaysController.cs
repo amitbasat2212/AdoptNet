@@ -27,23 +27,7 @@ namespace AdoptNet.Controllers
             return View(await _context.AdoptionDays.ToListAsync());
         }
 
-        // GET: AdoptionDays/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var adoptionDays = await _context.AdoptionDays
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (adoptionDays == null)
-            {
-                return NotFound();
-            }
-
-            return View(adoptionDays);
-        }
+        
 
         // GET: AdoptionDays/Create
         [Authorize(Roles = "Admin,Association")]

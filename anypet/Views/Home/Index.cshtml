@@ -1,5 +1,4 @@
-﻿
-@{ ViewData["Title"] = "Home Page"; }
+﻿@{ ViewData["Title"] = "Home Page"; }
 
 @{ Layout = null; }
 <!DOCTYPE html>
@@ -30,6 +29,8 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
 </head>
 <body>
@@ -47,6 +48,8 @@
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
                 <li><a asp-controller="Products" asp-action="Index" class="nav-link px-4 text-white ">Animal products</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
+                <li><a asp-controller="Home" asp-action="Other" class="nav-link px-4 text-white ">Other intresting content</a></li>
+
                 <form asp-controller="Animals" asp-action="Search">
                     <input name="Searching" placeholder="Enter something to search" />
                     <input type="submit" value="Search" class="btn btn-primary" />
@@ -59,14 +62,9 @@
                     </il>
             </ul>
 
-
-
         </nav>
 
     </header>
-
-
-
 
     <main>
 
@@ -74,7 +72,7 @@
             <source src="~/css/Kittens Meet Puppies For The First Time short video.mp4" type="video/mp4">
         </video>
         <div id="videoMessage" class="styling">
-            <h1 class="headline"><br />AdoptNet</h1>
+            <h1 class="headline page-title"><br />AdoptNet</h1>
             <h3 class="welcome">
                 <b>Hello everyone!</b>
                 <br />We are AdoptNet and we are welcoming all of you to our website.
@@ -86,11 +84,9 @@
 
             </h3>
 
-
         </div>
 
         <!--------------------------------------------------------------->
-
 
         <div class="b-example-divider"></div>
 
@@ -98,7 +94,7 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">
                 <div class="card">
-                    <a target="_new" href="https://www.medicalnewstoday.com/articles/322868 "><img src="~/css/1.jpeg" class="card-img-top" alt="..."></a>
+                    <a target="_new" href="https://www.medicalnewstoday.com/articles/322868 "><img src="~/css/1.jpeg" class="card-img-top2" alt="..."></a>
                     <div class="card-body">
                         <h3 class="card-title">Dogs: Our best friends in sickness and in health</h3>
 
@@ -107,7 +103,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <a target="_new" href="https://brightside.me/wonder-animals/20-curious-facts-about-pets-thatll-make-you-love-them-even-more-757860/"><img src="~/css/2.jpeg" class="card-img-top" alt="..."></a>
+                    <a target="_new" href="https://brightside.me/wonder-animals/20-curious-facts-about-pets-thatll-make-you-love-them-even-more-757860/"><img src="~/css/2.jpeg" class="card-img-top2" alt="..."></a>
                     <div class="card-body">
                         <h3 class="card-title">20 Curious Facts About Pets That’ll Make You Love Them</h3>
 
@@ -116,7 +112,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <a target="_new" href="https://pets.webmd.com/features/pets-and-new-baby#1"><img src="~/css/3.jpeg" class="card-img-top" alt="..."></a>
+                    <a target="_new" href="https://pets.webmd.com/features/pets-and-new-baby#1"><img src="~/css/3.jpeg" class="card-img-top2" alt="..."></a>
                     <div class="card-body">
                         <h3 class="card-title">Prepping Your Pet for Your New Baby</h3>
 
@@ -125,7 +121,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <a target="_new" href="https://www.medicalnewstoday.com/articles/322868"><img src="~/css/4 (3).jpeg" class="card-img-top" alt="..."></a>
+                    <a target="_new" href="https://www.medicalnewstoday.com/articles/322868"><img src="~/css/4 (3).jpeg" class="card-img-top2" alt="..."></a>
                     <div class="card-body">
                         <h3 class="card-title">Dogs: Our best friends in sickness and in health</h3>
 
@@ -134,16 +130,11 @@
             </div>
         </div>
 
-
-
-
-
-
         <div class="b-example-divider"></div>
 
         <div class="bg-dark text-secondary px-4 py-5 text-center">
             <div class="py-5">
-                <h1 class="display-5 fw-bold text-white">Joining AdoptNet</h1>
+                <h1 class="display-5 join">Joining AdoptNet</h1>
                 <div class="col-lg-6 mx-auto">
                     <p class="fs-5 mb-4 text">
                         If you are an association that want to join the AdoptNet team please contact us at the number below <br /> 08-9319192 <br />or send an email to: AdoptNet2021@gmail.com
@@ -164,13 +155,37 @@
 
         <div class="b-example-divider mb-0"></div>
 
-
-
         <!------------------navbarside-->
 
 
 
     </main>
+
+    <!-- the DIV that will contain the widget -->
+    <div class="weatherWidget"></div>
+
+    <script>
+        window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector: ".weatherWidget",
+            apiKey: "QE6RQD4H9DX3UKN2Z7MM3ZSDJ", //Sign up for your personal key
+            location: "Tel Aviv, ISR", //Enter an address
+            unitGroup: "metric", //"us" or "metric"
+            forecastDays: 5, //how many days forecast to show
+            title: "Weather in Tel Aviv, Israel", //optional title to show in the
+            showTitle: true,
+            showConditions: true
+        });
+
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+    <div class="b-example-divider"></div>
 
 
     <div class="footer-dark">
@@ -207,7 +222,14 @@
                             AdoptNet Team.
                         </p>
                     </div>
-                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    <div class="col item social">
+                        <a href="https://www.facebook.com/AdoptNet">
+                            <i class="icon ion-social-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/adopt_net/?utm_medium=copy_link">
+                            <i class="icon ion-social-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>

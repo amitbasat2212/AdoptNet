@@ -39,13 +39,15 @@
 <body>
 
     <!--  header-navbar -->
-    
+
 
     <h1 class="About">
         <br> </br>
         <b>About us: </b>
 
     </h1>
+
+
     <main class="container">
 
         <!--Top left-->
@@ -122,9 +124,23 @@
                 </div>
             </div>
     </main>
+    <img width="80" height="80" src="~/css/star-with-transparent-background-24.png" alt="Sitelogo">
+
+    <!-- canvas + js-->
+    <canvas id="myCanvas" width="900" height="70">
+    </canvas>
+
+    <img width="80" height="80" src="~/css/star-with-transparent-background-24.png" alt="Sitelogo">
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.font = "20px Arial";
+        ctx.fillText("Contact us on Linkedin for collaborations: Liem Mazal, Amit Ben Basat, Limor Hodory, Rotem Rokah.", 8, 40);
+    </script>
+
 
     
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

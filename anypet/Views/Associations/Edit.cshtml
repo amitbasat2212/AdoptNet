@@ -71,10 +71,15 @@
 
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-outline-dark inputspace subotton" />
-                <a asp-controller="Association" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+                <a asp-controller="Associations" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
             </div>
 
         </form>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="text-danger">@ViewBag.Error</div>
+        }
     </div>
 </div>
 
