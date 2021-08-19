@@ -41,7 +41,7 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Id,AdoptionDate,LocationAdopt")] AdoptionDays adoptionDays)
+        public async Task<IActionResult> Create([Bind("Name,Id,AdoptionDate,LocationAdopt,Description")] AdoptionDays adoptionDays)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace AdoptNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Id,AdoptionDate,LocationAdopt")] AdoptionDays adoptionDays)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Id,AdoptionDate,LocationAdopt,Description")] AdoptionDays adoptionDays)
         {
             if (id != adoptionDays.Id)
             {

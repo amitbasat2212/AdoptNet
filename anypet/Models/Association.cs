@@ -18,6 +18,7 @@ namespace anypet.Models
         public int Id { get; set; }
 
         [RegularExpression(@"^[a-zA-Z_ ]+$", ErrorMessage = "The name must contain only letters...")]
+        [Required(ErrorMessage = "You must input Name of the Association")]
         public String Name { get; set; }
 
         [DataType(DataType.PhoneNumber)]

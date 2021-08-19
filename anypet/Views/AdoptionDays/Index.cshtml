@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<AdoptNet.Models.AdoptionDays>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <head>
     <meta charset="utf-8" />
@@ -34,49 +32,36 @@
 
 </head>
 
-<h1>Index</h1>
+<header class="jumbotron bg-cover text-white image">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table id="footerbootom" class="table">
-    <thead class="formback">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AdoptionDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationAdopt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody class="formback">
-        @foreach (var item in Model)
+    <div class="container py-5 text-center">
+        <h2 class="display-4 font-weight-bold">Adoption Days</h2>
+    </div>
+
+</header>
+
+<a asp-action="Create"><input value="Add-AdoptionDay" style="width:160px;" class="btn btn-outline-dark subotton mix" /></a>
+
+<div class="contin">
+    <div class="hero-container">
+        @foreach (var adoption in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AdoptionDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationAdopt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-
-
-
+<div class="main-container">
+    <div class="poster-container">
+        <a href="#"><img src="~/css/3755878.jpg" class="poster" /></a>
+    </div>
+    <div class="ticket-container">
+        <div class="ticket__content">
+            <a class="decoText pink" asp-action="Edit" asp-route-id="@adoption.Id">Edit</a> |
+            <a class="decoText pink" asp-action="Delete" asp-route-id="@adoption.Id">Delete</a>
+            <h4 class="ticket__movie-title">@adoption.Name</h4>
+            <p class="ticket__movie-slogan">
+                @adoption.Description
+            </p>
+            <p class="ticket__current-price">@adoption.AdoptionDate</p>
+            <p class="ticket__old-price">@adoption.LocationAdopt</p>
+        </div>
+    </div>
+</div>}
+    </div>
+</div>

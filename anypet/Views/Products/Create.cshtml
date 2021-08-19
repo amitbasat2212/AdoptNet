@@ -67,6 +67,10 @@
                 <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
             </div>
         </form>
+        @if (ViewBag.Error != null)
+        {
+            <div class="text-danger">@ViewBag.Error</div>
+        }
     </div>
 </div>
 

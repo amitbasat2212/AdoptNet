@@ -43,26 +43,7 @@ namespace anypet.Controllers
             return View(await adoptNetContext.ToListAsync());
         }
 
-        // GET: Products/Details/5
-        [Authorize(Roles = "Admin,Association,Client")]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var products = await _context.Products
-                .Include(p => p.Animal)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (products == null)
-            {
-                return NotFound();
-            }
-
-            return View(products);
-        }
-
+       
         // GET: Products/Create
         [Authorize(Roles = "Admin,Association")]
         public IActionResult Create()
@@ -80,9 +61,17 @@ namespace anypet.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(products);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var check = _context.Products.Where(r => r.AnimalId.Equals(products.AnimalId));
+                if (check.Count() == 0)
+                {
+                    _context.Add(products);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewData["Error"] = "this Animal allready  have an Product ";
+                }
             }
             ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);
             return View(products);

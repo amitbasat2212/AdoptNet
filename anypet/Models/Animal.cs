@@ -51,7 +51,7 @@ public enum Size
 
 
         [RegularExpression(@"^[a-zA-Z_ ]+$", ErrorMessage = "The name  must contain only letters...")]
-       
+        [Required(ErrorMessage = "You must input Name of the Animal")]
         public String Name { get; set; }
 
         [Display(Name = "species")]

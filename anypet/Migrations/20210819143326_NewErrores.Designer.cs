@@ -4,14 +4,16 @@ using AdoptNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    partial class AdoptNetContextModelSnapshot : ModelSnapshot
+    [Migration("20210819143326_NewErrores")]
+    partial class NewErrores
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

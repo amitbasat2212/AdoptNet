@@ -31,7 +31,8 @@ namespace anypet.Models
         public String Medicine { get; set; }
 
         public Animal Animal { get; set; }
-
+       
+        [Display(Name = "Animal name")]
         public int AnimalId { get; set; }
 
     }
