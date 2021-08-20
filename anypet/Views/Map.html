@@ -1,0 +1,21 @@
+﻿    <script src="jquery-3.6.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<html>
+<head>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+</head>
+<body>
+    <input id="btn" type="button" value="search for miami coordinates" />
+</body>
+</html>
+$("#btn").click(function () {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': 'miami, us' }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            alert("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+        } else {
+            alert("Something got wrong " + status);
+        }
+    });
+});

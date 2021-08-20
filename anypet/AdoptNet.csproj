@@ -5,7 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Mapp.cs" />
+    <Compile Remove="Views\Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Views\ItsLiem.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\GoogleMaps.LocationServices.Demo.csproj" />
+    <None Include="Views\Mapp.cs" />
+    <None Include="Views\Program.cs" />
   </ItemGroup>
 
   <ItemGroup>
