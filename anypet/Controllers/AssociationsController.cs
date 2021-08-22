@@ -20,6 +20,8 @@ namespace AdoptNet.Controllers
         {
             _context = context;
 
+
+
         }
 
 
@@ -111,22 +113,20 @@ namespace AdoptNet.Controllers
 
                 try
                 {
-                    // Taking from the database the association we chose according to id with his adoption days
-                    Association adoptNetContext = (Association)_context.Association.Include(a => a.AdoptionDays).Where(r => r.Id == id).FirstOrDefault(); 
+                    Association adoptNetContext = (Association)_context.Association.Include(a => a.AdoptionDays).Where(r => r.Id == id).FirstOrDefault();
 
-                    // check if their aint no adoption days
                     if (adoptNetContext.AdoptionDays.Count() > 0)
                     {
                         for (int i = 0; i < AdoptionDays.Length; i++)
                         {
                             AdoptionDays adopt = _context.AdoptionDays.Single(n => n.Id == AdoptionDays[i]);
 
-                            // check if the adoption day is already exist
                             if (adoptNetContext.AdoptionDays.Contains(adopt))
                             {
-                                ViewData["Error"] = "this Association already have this Adoption day";
+                                ViewData["Error"] = "this Association allready  have this Adoption day  ";
                                 ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
                                 return View(association);
+
                             }
                             else
                             {
@@ -139,7 +139,6 @@ namespace AdoptNet.Controllers
                         }
                     }
 
-                    // adding new adoption days list
                     else
                     {
                         adoptNetContext.AdoptionDays = new List<AdoptionDays>();

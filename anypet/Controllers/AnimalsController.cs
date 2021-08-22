@@ -44,7 +44,7 @@ namespace AdoptNet.Controllers
             if (Searching.Equals("Cat") || Searching.Equals("Dog"))
             {
                 k = (Kind)Enum.Parse(typeof(Kind), Searching);
-                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(x=>x.AnimalImage).Include(a => a.Association).Where(a => a.Kind.Equals(k));
+                SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(x => x.AnimalImage).Include(a => a.Association).Where(a => a.Kind.Equals(k));
 
             }
             else if (Searching.Equals("Center") || Searching.Equals("North") || Searching.Equals("South"))
@@ -88,7 +88,7 @@ namespace AdoptNet.Controllers
 
             k = (Kind)Enum.Parse(typeof(Kind), "Dog");
             SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(x => x.AnimalImage).Include(a => a.Association).Where(a => a.Kind.Equals(k));
-                       
+
             return View("Index", await SearchContent.ToListAsync());
         }
 
@@ -109,7 +109,7 @@ namespace AdoptNet.Controllers
         // GET: Animals
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
-        {            
+        {
             var adoptNetContext = (from Al in _context.Animal
                                    join As in _context.Association
                                    on Al.AssociationId equals As.Id
@@ -130,7 +130,7 @@ namespace AdoptNet.Controllers
 
                                    }
                                    );
-           
+
 
 
             //var adoptNetContext = _context.Animal.Include(a => a.Association).Include(a=>a.AnimalImage);
