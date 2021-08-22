@@ -52,8 +52,10 @@
     </div>
     <div class="ticket-container">
         <div class="ticket__content">
-            <a class="decoText pink" asp-action="Edit" asp-route-id="@adoption.Id">Edit</a> |
+             @if (ViewContext.HttpContext.User.IsInRole("Association") || ViewContext.HttpContext.User.IsInRole("Admin")) {
+            <a class="decoText pink" asp-action="Edit" asp-route-id="@adoption.Id">Edit</a><i> | </i>
             <a class="decoText pink" asp-action="Delete" asp-route-id="@adoption.Id">Delete</a>
+             }
             <h4 class="ticket__movie-title">@adoption.Name</h4>
             <p class="ticket__movie-slogan">
                 @adoption.Description

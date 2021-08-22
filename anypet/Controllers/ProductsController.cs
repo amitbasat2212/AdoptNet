@@ -70,7 +70,7 @@ namespace anypet.Controllers
                 }
                 else
                 {
-                    ViewData["Error"] = "this Animal allready  have an Product ";
+                    ViewData["Error"] = "this Animal already  have a Product ";
                 }
             }
             ViewData["AnimalId"] = new SelectList(_context.Animal, "Id", nameof(Animal.Name), products.AnimalId);

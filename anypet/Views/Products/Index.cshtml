@@ -68,12 +68,13 @@
                 <small class="text-muted mt-1">Animal Medicine</small>
                 <h5 class="pink">@products.Medicine</h5>
             </div>
-
+              @if (ViewContext.HttpContext.User.IsInRole("Association") || ViewContext.HttpContext.User.IsInRole("Admin"))
+              {
             <div class="mx-3 mt-3 mb-2">
                 <a class="decoText pink" asp-action="Edit" asp-route-id="@products.Id">Edit</a> |
                 <a class="decoText pink" asp-action="Delete" asp-route-id="@products.Id">Delete</a>
 
-            </div>
+            </div>}
         </div>
     </div>
 

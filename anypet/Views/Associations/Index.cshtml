@@ -62,18 +62,23 @@
 
         <div class="card-body">
             <h3 class="card-title boldt ">@Association.Name</h3>
-            <a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> |
-            <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> |
-            <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> |
+         @if (ViewContext.HttpContext.User.IsInRole("Admin")) { 
+
+            <a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> <i>|</i>
+            <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> <i>|</i>
+            <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> <i>|</i>
             @if (Association.AssociationImage == null)
             {
-                <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} |
+                <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} <i>|</i>
             @if (Association.AssociationImage != null)
             {
-                <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |
+                <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} <i>|</i>
             @if (Association.AssociationImage != null)
             {
                 <a class="decoText" asp-controller="AssociationImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}
+
+
+        }
 
             <ul class="list-group colorCol list-group-flush">
                 <li class="list-group-item list-group-item-danger">Location: @Association.Location</li>
