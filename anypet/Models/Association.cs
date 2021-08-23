@@ -26,7 +26,7 @@ namespace anypet.Models
         public long PhoneNumber { get; set; }
 
         [Display(Name = "Association Location")]
-        public Location Location { get; set; }
+        public String Location { get; set; }
 
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Association Email")]

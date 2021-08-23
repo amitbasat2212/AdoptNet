@@ -197,6 +197,17 @@ namespace AdoptNet.Controllers
             return _context.Association.Any(e => e.Id == id);
         }
 
+        public JsonResult GetAssociationPlace()
+        {
+            List<Association> AssociationList= new List<Association>();
+            foreach (var item in _context.Association)
+            {
+                AssociationList.Add(item);
+                
+            }
+            return Json(AssociationList);
+        }
+
 
     }
 }
