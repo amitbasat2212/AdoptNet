@@ -52,6 +52,21 @@ namespace AdoptNet.Controllers
             return View(adoptionDays);
         }
 
+        
+
+       
+        public async Task<IActionResult> Search(String Searching)
+        {  // Use LINQ to get list of genres.
+            
+            var adoptionDays = _context.AdoptionDays.Include(a => a.Associations).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Description.Contains(Searching) || Searching == null));
+         
+           return View("Index", await adoptionDays.ToListAsync());
+       }
+    
+  
+    
+
+
         // GET: AdoptionDays/Edit/5
         [Authorize(Roles = "Admin,Association")]
         public async Task<IActionResult> Edit(int? id)

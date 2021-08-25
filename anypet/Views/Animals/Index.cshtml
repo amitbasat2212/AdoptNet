@@ -45,6 +45,11 @@
 
     <a asp-action="Create"><input value="Add-Animal" style="width:120px;" class="btn btn-outline-dark subotton mix" /></a>
 
+    <form asp-controller="Animals" asp-action="Search">
+        <input name="Searching" placeholder="Enter something to search" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+
     <div class="form-group ">
 
     </div>

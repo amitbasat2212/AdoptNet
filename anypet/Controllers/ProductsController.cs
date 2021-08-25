@@ -43,7 +43,39 @@ namespace anypet.Controllers
             return View(await adoptNetContext.ToListAsync());
         }
 
+
+
+
+
+
+
        
+        public async Task<IActionResult> Search(String Searching)
+        {  // Use LINQ to get list of genres.
+            var Products = (from As in _context.Products
+                                   join im in _context.Animal
+                                   on As.AnimalId equals im.Id
+                                   select new Products
+                                   {
+                                       Id = As.Id,
+                                       Food = As.Food,
+                                       Medicine = As.Medicine,
+                                       Toy = As.Toy,
+                                       Animal = im,
+                                       AnimalId = As.AnimalId
+                                   }
+                                  );
+
+            if (!string.IsNullOrEmpty(Searching))
+            {                    
+                Products = Products.Where(s => s.Toy.Contains(Searching) || s.Medicine.Contains(Searching));
+            }       
+            
+           return View("Index", await Products.ToListAsync());
+        }
+        
+
+
         // GET: Products/Create
         [Authorize(Roles = "Admin,Association")]
         public IActionResult Create()

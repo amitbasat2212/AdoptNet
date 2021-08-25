@@ -778,3 +778,34 @@ small.justify-content-end {
     color:black;
 }
 
+.deletePopup {
+    color: darkred;
+
+}
+
+
+
+/*for the errores*/
+
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.validation-summary-valid {
+    display: none;
+}  

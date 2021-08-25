@@ -42,6 +42,13 @@
 
 <a asp-action="Create"><input value="Add-AdoptionDay" style="width:160px;" class="btn btn-outline-dark subotton mix" /></a>
 
+<div>
+    <form asp-controller="AdoptionDays" asp-action="Search">
+        <input name="Searching" placeholder="Enter something to search" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+
 <div class="contin">
     <div class="hero-container">
         @foreach (var adoption in Model)
