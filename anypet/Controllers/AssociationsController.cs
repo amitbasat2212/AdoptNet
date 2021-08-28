@@ -208,6 +208,21 @@ namespace AdoptNet.Controllers
             return Json(AssociationList);
         }
 
+        //graph
+        public JsonResult GetAnimalsCount()
+        {
+            List<String> Res = new List<String>();
+            int AmountOfDogs = _context.Animal.Where(a => a.Kind == Kind.Dog).Count();
+            int AmountOfCats = _context.Animal.Where(a => a.Kind == Kind.Cat).Count();
+
+            Res.Add(AmountOfCats.ToString());
+            Res.Add(AmountOfCats.ToString());
+
+
+
+            return Json(Res);
+        }
+
 
     }
 }

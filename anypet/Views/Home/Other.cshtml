@@ -32,14 +32,21 @@
 
 </head>
 
-
-<div id="myMap"></div>
+<div id="container">
+    <div class="row">
+        <div class="col-sm">
+            <div id="myMap"></div>
+        </div>
+        <div class="col-sm">
+            <canvas id="mypieChart"></canvas>
+        </div>
+        
+    </div>
+</div>
 
 <style>
     #myMap {
         position: relative;
-        width: 500px;
-        height: 500px;
         border: 0px
     }
 
@@ -103,7 +110,44 @@
 
 
 @section Scripts {
+
     <script src="~/js/fetureofpages.js" asp-append-version="true"></script>
     <script src='https://www.bing.com/api/maps/mapcontrol?key=AgkL-WrWqfBFm2nN5EY0u4AMVcS8ezrnW6opuOOenpTkVizmr8FrlkRkfCJbsfD0&callback=GetMap' async defer asp-append-version="true"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
+<!-- graph related start-->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+ 
+        $.getJSON("/Associations/GetAnimalsCount", function (jsonDATA) {
+            console.log("DATA RETURNED: " + jsonDATA);
+            new Chart(document.getElementById("mypieChart"), {
+                type: 'pie',
+                data: {
+                    labels: ["Dogs", "Cats"],
+                    datasets: [{
+                        label: "Amount",
+                        backgroundColor: ["#3e95cd", "#8e5ea2"],
+                        data: [jsonDATA[1], jsonDATA[0]]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Amount of Dogs/Cats in the website'
+                    }
+                }
+            });
+        });
+       
+
+        
+    });
+</script>
+<!-- graph related end-->

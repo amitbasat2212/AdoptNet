@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace anypet.Migrations
 {
-    public partial class AllDatabase : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,9 @@ namespace anypet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdoptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LocationAdopt = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -28,10 +29,10 @@ namespace anypet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
-                    Location = table.Column<int>(type: "int", nullable: false),
-                    EmailOfUser = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailOfUser = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,7 +84,7 @@ namespace anypet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kind = table.Column<int>(type: "int", nullable: false),
                     Age = table.Column<long>(type: "bigint", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
