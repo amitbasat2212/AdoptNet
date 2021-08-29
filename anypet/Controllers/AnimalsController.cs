@@ -63,19 +63,24 @@ namespace AdoptNet.Controllers
                 SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(x => x.AnimalImage).Include(a => a.Association).Where(a => a.Size.Equals(s));
             }
 
+            else
+            {
+               var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null) );
+                return View("Index", await animals.ToListAsync());
+
+            }
+
 
             if (SearchContent == null)
             {
                 return View("Index", new List<Animal>());
             }
 
-            //var SearchContent = _context.Animal.Where(a => 1==1);
-
-            //var q = "SELECT * FROM dbo.Animal WHERE [Name] LIKE '%" + Searching + "%' OR [Description] LIKE '%" + Searching + "%'";
-            //var SearchContent = _context.Animal.FromSqlRaw(q);
-
+           
+            
             return View("Index", await SearchContent.ToListAsync());
-
+            
+            
 
         }
 

@@ -32,15 +32,31 @@
 
 </head>
 
-
-<div id="myMap"></div>
-
+<div id="container">
+    <div class="row">
+        <div class="col-sm">
+            <div id="myMap"></div>
+        </div>
+        <div class="col-sm">
+            <canvas id="mypieChart"></canvas>
+        </div>
+        <div class="row">
+            <canvas id="mybarChart"></canvas>
+        </div>
+    </div>
+</div>
 <style>
+    #container {
+        margin-top: 100px;
+    }
+
     #myMap {
         position: relative;
-        width: 500px;
-        height: 500px;
         border: 0px
+    }
+
+    #mybarChart {
+        margin-top: 200px;
     }
 
     .csharpcode, .csharpcode pre {
@@ -49,7 +65,6 @@
         font-family: consolas, “Courier New”, courier, monospace;
         background-color: #ffffff;
         /white-space: pre;
-        /
     }
 
         .csharpcode pre {
@@ -103,7 +118,108 @@
 
 
 @section Scripts {
+
     <script src="~/js/fetureofpages.js" asp-append-version="true"></script>
     <script src='https://www.bing.com/api/maps/mapcontrol?key=AgkL-WrWqfBFm2nN5EY0u4AMVcS8ezrnW6opuOOenpTkVizmr8FrlkRkfCJbsfD0&callback=GetMap' async defer asp-append-version="true"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
+<!-- graph related start-->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $.getJSON("/Associations/GetAnimalsCount", function (jsonDATA) {
+            console.log("DATA RETURNED: " + jsonDATA);
+            new Chart(document.getElementById("mypieChart"), {
+                type: 'pie',
+                data: {
+                    labels: ["Dogs", "Cats"],
+                    datasets: [{
+                        label: "Amount",
+                        backgroundColor: ["#3e95cd", "#8e5ea2"],
+                        data: [jsonDATA[1], jsonDATA[0]]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Amount of Dogs/Cats in the website'
+                    }
+                }
+            });
+        });
+
+
+        //2nd gragh
+        $.getJSON("/AdoptionDays/GetAdoptDayCount", function (jsonDATA) {
+            console.log("DATA RETURNED 2: " + jsonDATA);
+            new Chart(document.getElementById("mybarChart"), {
+                type: 'bar',
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: "Monthly Adoption Days",
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(245, 250, 63, 0.2)',
+                            'rgba(109, 245, 125, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(245, 250, 63, 0.2)',
+                            'rgba(109, 245, 125, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+
+
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(245, 250, 63)',
+                            'rgb(109, 245, 125)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(245, 250, 63)',
+                            'rgb(109, 245, 125)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+
+
+
+                        ],
+                        borderWidth: 1,
+                        data: jsonDATA
+                        // data: [1,2,3,4,5,6,7,8,9,10,11,12]
+
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+
+
+
+    });
+</script>
+<!-- graph related end-->

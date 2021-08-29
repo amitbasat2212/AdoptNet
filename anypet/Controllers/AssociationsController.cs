@@ -124,8 +124,14 @@ namespace AdoptNet.Controllers
                 try
                 {
                     Association adoptNetContext = (Association)_context.Association.Include(a => a.AdoptionDays).Where(r => r.Id == id).FirstOrDefault();
+                    adoptNetContext.Animals = association.Animals;
+                    adoptNetContext.AssociationImage = association.AssociationImage;
+                    adoptNetContext.EmailOfUser = association.EmailOfUser;
+                    adoptNetContext.Location = association.Location;
+                    adoptNetContext.Name = association.Name;
+                    adoptNetContext.PhoneNumber = association.PhoneNumber;
 
-                    if (adoptNetContext.AdoptionDays.Count()>0)
+                    if (AdoptionDays.Length>0)
                     {
                         for (int i = 0; i < AdoptionDays.Length; i++)
                         {
@@ -135,7 +141,7 @@ namespace AdoptNet.Controllers
                             {
                                 ViewData["Error"] = "this Association allready  have this Adoption day  ";
                                 ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
-                                return View(association);
+                                return View(adoptNetContext);
 
                             }
                             else
@@ -218,6 +224,18 @@ namespace AdoptNet.Controllers
             return Json(AssociationList);
         }
 
+        //graph1
+        public JsonResult GetAnimalsCount()
+        {
+            List<String> Res = new List<String>();
+            int AmountOfDogs = _context.Animal.Where(a => a.Kind == Kind.Dog).Count();
+            int AmountOfCats = _context.Animal.Where(a => a.Kind == Kind.Cat).Count();
+
+            Res.Add(AmountOfCats.ToString());
+            Res.Add(AmountOfDogs.ToString());
+
+            return Json(Res);
+        }
 
     }
 }

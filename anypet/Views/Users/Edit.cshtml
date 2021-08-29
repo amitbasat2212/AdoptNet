@@ -1,8 +1,7 @@
-﻿@model anypet.Models.AnimalImage
+﻿@model anypet.Models.User
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Edit"; }
+
 <head>
     <meta charset="utf-8" />
     <!-- CSS only -->
@@ -33,37 +32,37 @@
 
 </head>
 
-
 <br />
-<h1><ins>Adding a new Animal Image</ins></h1>
-<hr />
+<h1><ins>Edit User</ins></h1>
+
 <div class="row justify-content-center">
     <div class="col-md-3 formback">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnimalId" class="control-label"></label>
-                <select asp-for="AnimalId" class="form-control" asp-items="ViewBag.AnimalId"></select>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
-                <a asp-controller="Animals" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<UserType>()"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-dark inputspace subotton" />
+                <a asp-action="Index" class="btn btn-outline-dark inputspace subotton">List</a>
+
             </div>
         </form>
-
-        @if (ViewBag.Error != null)
-        {
-            <div class="text-danger error field-validation-error">@ViewBag.Error</div>
-        }
     </div>
 </div>
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
