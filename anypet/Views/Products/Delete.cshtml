@@ -1,0 +1,58 @@
+﻿@model anypet.Models.Products
+
+@{ ViewData["Title"] = "Delete"; }
+
+<!-- Button trigger modal -->
+<button type="button" data-toggle="modal" data-target="#exampleModal"
+        style="margin-left:45%; margin-top: 120px;">
+Delete a product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="column" id="main">
+                        <h1 class="deletePopup">
+                            Are you sure you want to delete this product?
+                        </h1>
+            <br />
+                    <dl class="row">
+                        <dt class="col-sm-12">
+                            @Html.DisplayNameFor(model => model.Food)
+                        </dt>
+                        <dd class="col-sm-12">
+                            @Html.DisplayFor(model => model.Food)
+                        </dd>
+                        <dt class="col-sm-12">
+                            @Html.DisplayNameFor(model => model.Toy)
+                        </dt>
+                        <dd class="col-sm-12">
+                            @Html.DisplayFor(model => model.Toy)
+                        </dd>
+                        <dt class="col-sm-12">
+                            @Html.DisplayNameFor(model => model.Medicine)
+                        </dt>
+                        <dd class="col-sm-12">
+                            @Html.DisplayFor(model => model.Medicine)
+                        </dd>
+                        <dt class="col-sm-12">
+                            @Html.DisplayNameFor(model => model.Animal)
+                        </dt>
+                        <dd class="col-sm-12">
+                            @Html.DisplayFor(model => model.Animal.Name)
+                        </dd>
+                    </dl>
+                        <form asp-action="Delete" style="font-size: .8em;">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            <a asp-action="Index">Back to List</a>
+                        </form>
+           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

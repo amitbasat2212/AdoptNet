@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -8,11 +8,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using AdoptNet.Data;
+using AdoptNet.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace anypet
 {
     public class Startup
     {
+
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,12 +29,26 @@ namespace anypet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "/Users/Login"; options.AccessDeniedPath = "/Users/AccessDenied"; });
+
+            services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(10); });
             services.AddControllersWithViews();
+          
+            services.AddDbContext<AdoptNetContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AdoptNetContext")));
+            services.AddNodeServices();
+            services.AddMvc();
+          
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -41,6 +61,7 @@ namespace anypet
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 
