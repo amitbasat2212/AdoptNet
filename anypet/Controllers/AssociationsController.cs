@@ -208,7 +208,7 @@ namespace AdoptNet.Controllers
             return Json(AssociationList);
         }
 
-        //graph
+        //graph1
         public JsonResult GetAnimalsCount()
         {
             List<String> Res = new List<String>();
