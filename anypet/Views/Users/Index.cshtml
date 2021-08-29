@@ -1,8 +1,8 @@
-﻿@model anypet.Models.AnimalImage
+﻿
+@model IEnumerable<anypet.Models.User>
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Index"; }
+
 <head>
     <meta charset="utf-8" />
     <!-- CSS only -->
@@ -32,39 +32,58 @@
 
 
 </head>
+<h1>Users Managing</h1>
 
+<a asp-action="Create"><input value="Add-User" style="width:155px;" class="btn btn-outline-dark subotton mix" /></a>
 
-<br />
-<h1><ins>Adding a new Animal Image</ins></h1>
-<hr />
-<div class="row justify-content-center">
-    <div class="col-md-3 formback">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AnimalId" class="control-label"></label>
-                <select asp-for="AnimalId" class="form-control" asp-items="ViewBag.AnimalId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
-                <a asp-controller="Animals" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
-            </div>
-        </form>
-
-        @if (ViewBag.Error != null)
-        {
-            <div class="text-danger field-validation-error">@ViewBag.Error</div>
-        }
-    </div>
+<div style="text-align: center; margin-right: -80px;">
+    <form asp-controller="Users" asp-action="Search">
+        <input name="Searching" placeholder="Enter something to search" />
+        <input type="submit" value="Search" class="btn btn-outline-dark subotton"
+               style="height:40px; margin-bottom: 15px;" />
+    </form>
 </div>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>
+}}
 
+        @if (ViewContext.HttpContext.User.IsInRole("User"))
+        {
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<tr>
+    <td>
+        @Html.DisplayNameFor(model => model.Username)
+    </td>
+
+</tr>
 }
+
+        </tbody>
+    </table>

@@ -817,6 +817,7 @@ small.justify-content-end {
 
 .column {
     flex: 50%;
+    text-align: center;
 }
 
     .column#main {
@@ -1012,3 +1013,38 @@ small.justify-content-end {
     .social-login__icon:hover {
         transform: scale(1.5);
     }
+
+    /* 
+        new delete affect
+    */
+
+.deletePopup {
+    color: darkred;
+
+}
+
+/* for the errores */
+
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.validation-summary-valid {
+    display: none;
+}

@@ -33,6 +33,7 @@
 
 </head>
 
+
 <div class="container" style="margin-top:150px; margin-left: 400px;">
     <div class="screen">
         <div class="screen__content">
@@ -47,14 +48,16 @@
                     <a>Password:</a>
                     <input asp-for="Password" type="password" class="login__input">
                 </div>
-                <button class="button login__submit">
-                    <span class="button__text">Log In Now</span>
-                    <i class="button__icon fas fa-chevron-right"></i>
-                </button>
+
+                    <button class="button login__submit">
+                        <span class="button__text">Log In Now</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+
             </form>
             @if (ViewBag.Error != null)
             {
-                <div class="text-danger">@ViewBag.Error</div>
+                <div class="text-danger field-validation-error">@ViewBag.Error</div>
             }
         </div>
         <div class="screen__background">

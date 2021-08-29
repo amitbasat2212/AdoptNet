@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using anypet.Controllers;
 
 namespace AdoptNet.Controllers
 {
@@ -62,7 +62,12 @@ namespace AdoptNet.Controllers
                 s = (Size)Enum.Parse(typeof(Size), Searching);
                 SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(x => x.AnimalImage).Include(a => a.Association).Where(a => a.Size.Equals(s));
             }
+            else
+            {
+                var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null));
+                return View("Index", await animals.ToListAsync());
 
+            }
 
             if (SearchContent == null)
             {
@@ -162,6 +167,30 @@ namespace AdoptNet.Controllers
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
             return View();
         }
+
+        //
+        // new part connecting to twitter api
+        public static async Task<String> PostMessageToTwitter(string animalName)
+        {
+            string ConsumerKey = "ArKksYuZtj2RS4MdvZRQtMNBH";
+            string ConsumerKeySecret = "XCibkNO5mdsNXNuv114sw9A9HttGUq8wVTy9wOo7l9zfQSL6dn";
+            string AccessToken = "1429780751516635138-ANSpo1Rojk9VDOSN4gdzPSeDPPmyAE";
+            string AccessTokenSecret = "xsonrP8PHCSE3vy35druX5S62Jx8O4DJKCNfrbKmnqRDO";
+
+            var twitter = new TwitterAPI(ConsumerKey,
+                ConsumerKeySecret, AccessToken, AccessTokenSecret);
+
+            string message = "New animal has been added, come in to our website to see " +
+                "more about: " + animalName + " and maybe adopt this animal! :-)";
+
+            var response = await twitter.Tweet(message);
+            Console.WriteLine(response);
+
+            return response;
+        }
+
+        //
+
         // POST: Animals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -173,10 +202,13 @@ namespace AdoptNet.Controllers
             {
                 _context.Add(animal);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                PostMessageToTwitter(animal.Name).Wait();
+                return RedirectToAction(nameof(Index));               
             }
+
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
             return View(animal);
+
         }
 
         // GET: Animals/Edit/5
@@ -261,5 +293,7 @@ namespace AdoptNet.Controllers
         {
             return _context.Animal.Any(e => e.Id == id);
         }
+       
+        
     }
 }

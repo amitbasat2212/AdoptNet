@@ -39,7 +39,19 @@
 
 </header>
 
+@if (ViewContext.HttpContext.User.IsInRole("Association") || ViewContext.HttpContext.User.IsInRole("Admin"))
+{
 <a asp-action="Create"><input value="Add-Product" style="width: 155px;" class="btn btn-outline-dark subotton mix" /></a>
+}
+
+<div style="text-align: center; margin-right: -80px;">
+    <form asp-controller="Products" asp-action="Search">
+        <input name="Searching" placeholder="Enter something to search" />
+        <input type="submit" value="Search" class="btn btn-outline-dark subotton"
+               style="height:40px; margin-bottom: 15px;" />
+    </form>
+</div>
+
 
 <div class="row padup ">
 
@@ -68,14 +80,18 @@
                 <small class="text-muted mt-1">Animal Medicine</small>
                 <h5 class="pink">@products.Medicine</h5>
             </div>
+            @if (ViewContext.HttpContext.User.IsInRole("Association") || ViewContext.HttpContext.User.IsInRole("Admin"))
+            {
+<div class="mx-3 mt-3 mb-2">
+    <a class="decoText pink" asp-action="Edit" asp-route-id="@products.Id">Edit</a> |
+    <a class="decoText pink" asp-action="Delete" asp-route-id="@products.Id">Delete</a>
 
-            <div class="mx-3 mt-3 mb-2">
-                <a class="decoText pink" asp-action="Edit" asp-route-id="@products.Id">Edit</a> |
-                <a class="decoText pink"
-                   asp-action="Delete" asp-route-id="@products.Id">Delete</a>
-            </div>
+</div>}
         </div>
     </div>
 
 </div>}
+
+
+
 </div>

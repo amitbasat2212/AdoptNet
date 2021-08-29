@@ -2,7 +2,6 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-
 <head>
     <meta charset="utf-8" />
     <!-- CSS only -->
@@ -30,26 +29,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 
-
 </head>
 
 <header class="jumbotron bg-cover text-white image">
 
     <div class="container py-5 text-center">
-        <h2 class="display-4 font-weight-bold">Animal-Adoption</h2>
+        <h2 class="display-4 font-weight-bold">Associations</h2>
     </div>
 
 </header>
 
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
 <a asp-action="Create"><input value="Add-Association" style="width:155px;" class="btn btn-outline-dark subotton mix" /></a>
+}
 
+<div style="text-align: center; margin-right: -80px;">
+    <form asp-controller="Associations" asp-action="Search">
+        <input name="Searching" placeholder="Enter something to search" />
+        <input type="submit" value="Search" class="btn btn-outline-dark subotton"
+               style="height:40px; margin-bottom: 15px;" />
+    </form>
+</div>
 
 <div class="form-group ">
 
 </div>
 <div class="row">
-
-
 
     @foreach (var Association in Model)
     {
@@ -62,18 +68,21 @@
 
         <div class="card-body">
             <h3 class="card-title boldt ">@Association.Name</h3>
-            <a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> |
-            <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> |
-            <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> |
-            @if (Association.AssociationImage == null)
+            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
             {
-<a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} |
-            @if (Association.AssociationImage != null)
-            {
-<a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} |
-            @if (Association.AssociationImage != null)
-            {
-<a class="decoText" asp-controller="AssociationImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}
+
+<a class="decoText" asp-action="Edit" asp-route-id="@Association.Id">Edit</a> <i>|</i>
+                    <a class="decoText" asp-action="Details" asp-route-id="@Association.Id">Details</a> <i>|</i>
+                                        <a class="decoText" asp-action="Delete" asp-route-id="@Association.Id">Delete</a> <i>|</i>
+                                                            @if (Association.AssociationImage == null)
+                                                            {
+                                        <a class="decoText" asp-controller="AssociationImages" asp-action="Create">Add-Image</a>} <i>|</i>
+                                                                                @if (Association.AssociationImage != null)
+                                                                                {
+                                                            <a class="decoText" asp-controller="AssociationImages" asp-action="Edit" asp-route-id="@Association.AssociationImage.Id">Edit Image</a>} <i>|</i>
+                                                                                                    @if (Association.AssociationImage != null)
+                                                                                                    {
+                                                                                <a class="decoText" asp-controller="AssociationImages" asp-action="Delete" asp-route-id="@Association.AssociationImage.Id">Delete Image</a>}}
 
             <ul class="list-group colorCol list-group-flush">
                 <li class="list-group-item list-group-item-danger">Location: @Association.Location</li>

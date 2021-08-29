@@ -79,6 +79,16 @@ namespace AdoptNet.Controllers
             return View(association);
         }
 
+
+
+        public async Task<IActionResult> Search(String Searching)
+        {  // Use LINQ to get list of genres.
+
+            var adoptionDays = _context.Association.Include(a => a.Animals).Include(b => b.AssociationImage).Include(c => c.AdoptionDays).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Location.Contains(Searching) || Searching == null));
+            return View("Index", await adoptionDays.ToListAsync());
+        }
+
+
         // GET: Associations/Edit/5
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
@@ -114,8 +124,14 @@ namespace AdoptNet.Controllers
                 try
                 {
                     Association adoptNetContext = (Association)_context.Association.Include(a => a.AdoptionDays).Where(r => r.Id == id).FirstOrDefault();
+                    adoptNetContext.Animals = association.Animals;
+                    adoptNetContext.AssociationImage = association.AssociationImage;
+                    adoptNetContext.EmailOfUser = association.EmailOfUser;
+                    adoptNetContext.Location = association.Location;
+                    adoptNetContext.Name = association.Name;
+                    adoptNetContext.PhoneNumber = association.PhoneNumber;
 
-                    if (adoptNetContext.AdoptionDays.Count() > 0)
+                    if (AdoptionDays.Length > 0)
                     {
                         for (int i = 0; i < AdoptionDays.Length; i++)
                         {
@@ -125,7 +141,7 @@ namespace AdoptNet.Controllers
                             {
                                 ViewData["Error"] = "this Association allready  have this Adoption day  ";
                                 ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
-                                return View(association);
+                                return View(adoptNetContext);
 
                             }
                             else
@@ -197,6 +213,28 @@ namespace AdoptNet.Controllers
             return _context.Association.Any(e => e.Id == id);
         }
 
+        public JsonResult GetAssociationPlace()
+        {
+            List<Association> AssociationList = new List<Association>();
+            foreach (var item in _context.Association)
+            {
+                AssociationList.Add(item);
+
+            }
+            return Json(AssociationList);
+        }
+
+        public JsonResult GetAnimalsCount()
+        {
+            List<String> Res = new List<String>();
+            int AmountOfDogs = _context.Animal.Where(a => a.Kind == Kind.Dog).Count();
+            int AmountOfCats = _context.Animal.Where(a => a.Kind == Kind.Cat).Count();
+
+            Res.Add(AmountOfCats.ToString());
+            Res.Add(AmountOfDogs.ToString());
+
+            return Json(Res);
+        }
 
     }
 }
