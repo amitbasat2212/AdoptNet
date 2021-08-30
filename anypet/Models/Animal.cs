@@ -16,8 +16,8 @@ namespace anypet.Models
     {
         [Description("Small")]
         Small,
-        [Description("medium")]
-        medium,
+        [Description("Medium")]
+        Medium,
         [Description("Big")]
         Big
 
@@ -39,7 +39,7 @@ namespace anypet.Models
     public enum Gender
     {
         Male,
-        Feamle
+        Female
     }
 
 
