@@ -261,7 +261,7 @@ namespace Ad.Controllers
 
             if (Searching.Equals("Client") || Searching.Equals("Admin") || Searching.Equals("Association"))
             {
-               UserType k = (UserType)Enum.Parse(typeof(UserType), Searching);
+                UserType k = (UserType)Enum.Parse(typeof(UserType), Searching);
                 SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<User>)_context.User.Where(a => a.Type.Equals(k));
 
             }
@@ -272,7 +272,7 @@ namespace Ad.Controllers
 
             }
 
-           
+
             return View("Index", await SearchContent.ToListAsync());
         }
 

@@ -31,6 +31,26 @@ namespace AdoptNet.Controllers
 
         public async Task<IActionResult> Search(String Searching)
         {
+            var adoptNetContext = (from Al in _context.Animal
+                                   join As in _context.Association
+                                   on Al.AssociationId equals As.Id
+                                   select new Animal
+                                   {
+                                       Id = Al.Id,
+                                       AssociationId = As.Id,
+                                       Name = Al.Name,
+                                       Kind = Al.Kind,
+                                       Age = Al.Age,
+                                       Gender = Al.Gender,
+                                       Description = Al.Description,
+                                       Size = Al.Size,
+                                       Location = Al.Location,
+                                       AnimalImage = Al.AnimalImage,
+
+                                       Association = As
+
+                                   }
+                                   );
 
             Kind k;
             Location l;
@@ -39,7 +59,10 @@ namespace AdoptNet.Controllers
 
 
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
-
+            if (Searching == null)
+            {
+                return View("Index", await adoptNetContext.ToListAsync());
+            }
 
             if (Searching.Equals("Cat") || Searching.Equals("Dog"))
             {
@@ -62,25 +85,22 @@ namespace AdoptNet.Controllers
                 s = (Size)Enum.Parse(typeof(Size), Searching);
                 SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<Animal>)_context.Animal.Include(x => x.AnimalImage).Include(a => a.Association).Where(a => a.Size.Equals(s));
             }
+
             else
             {
-                var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null));
+               var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null) );
                 return View("Index", await animals.ToListAsync());
 
             }
-
             if (SearchContent == null)
             {
                 return View("Index", new List<Animal>());
             }
 
-            //var SearchContent = _context.Animal.Where(a => 1==1);
-
-            //var q = "SELECT * FROM dbo.Animal WHERE [Name] LIKE '%" + Searching + "%' OR [Description] LIKE '%" + Searching + "%'";
-            //var SearchContent = _context.Animal.FromSqlRaw(q);
 
             return View("Index", await SearchContent.ToListAsync());
-
+            
+            
 
         }
 
@@ -203,7 +223,7 @@ namespace AdoptNet.Controllers
                 _context.Add(animal);
                 await _context.SaveChangesAsync();
                 PostMessageToTwitter(animal.Name).Wait();
-                return RedirectToAction(nameof(Index));               
+                return RedirectToAction(nameof(Index));
             }
 
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
@@ -293,7 +313,7 @@ namespace AdoptNet.Controllers
         {
             return _context.Animal.Any(e => e.Id == id);
         }
-       
-        
+
+
     }
 }

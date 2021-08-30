@@ -1,8 +1,6 @@
 ﻿@model anypet.Models.User
 
-@{
-    ViewData["Title"] = "Edit";
-}
+@{ ViewData["Title"] = "Edit"; }
 
 <head>
     <meta charset="utf-8" />
@@ -37,35 +35,35 @@
 <br />
 <h1><ins>Edit User</ins></h1>
 
-                <div class="row justify-content-center">
-                    <div class="col-md-3 formback">
-                        <form asp-action="Edit">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="Username" class="control-label"></label>
-                                <input asp-for="Username" class="form-control" />
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Password" class="control-label"></label>
-                                <input asp-for="Password" class="form-control" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Type" class="control-label"></label>
-                                <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<UserType>()"></select>
-                                <span asp-validation-for="Type" class="text-danger"></span>
-                            </div>
+<div class="row justify-content-center">
+    <div class="col-md-3 formback">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<UserType>()"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
 
-                            <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-outline-dark inputspace subotton" />
-                                <a asp-action="Index" class="btn btn-outline-dark inputspace subotton">List</a>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-dark inputspace subotton" />
+                <a asp-action="Index" class="btn btn-outline-dark inputspace subotton">List</a>
 
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-                @section Scripts {
-                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-                }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

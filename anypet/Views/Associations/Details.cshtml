@@ -37,7 +37,7 @@
 <h1>Details of an Animal</h1>
 
 <details>
-    <summary class="background">@Html.DisplayFor(model => model.Name)</summary>
+    <summary class="background" >@Html.DisplayFor(model => model.Name)</summary>
     <div class="content">
         <dt class="col-6 mx-auto spacesdes">
             <h5>
@@ -65,7 +65,7 @@
         <dd class="col-6 mx-auto spacesdes">
             @Html.DisplayFor(model => model.Location)
         </dd>
-
+       
         <form class="col-6 mx-auto spacesdes" id="footerbootom">
             <input type="hidden" asp-for="Id" />
             <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>

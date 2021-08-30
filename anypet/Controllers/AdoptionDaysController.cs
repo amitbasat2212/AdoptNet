@@ -27,7 +27,7 @@ namespace AdoptNet.Controllers
             return View(await _context.AdoptionDays.ToListAsync());
         }
 
-
+        
 
         // GET: AdoptionDays/Create
         [Authorize(Roles = "Admin,Association")]
@@ -52,19 +52,19 @@ namespace AdoptNet.Controllers
             return View(adoptionDays);
         }
 
+        
 
-
-
+       
         public async Task<IActionResult> Search(String Searching)
         {  // Use LINQ to get list of genres.
-
+            
             var adoptionDays = _context.AdoptionDays.Include(a => a.Associations).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Description.Contains(Searching) || Searching == null));
-
-            return View("Index", await adoptionDays.ToListAsync());
-        }
-
-
-
+         
+           return View("Index", await adoptionDays.ToListAsync());
+       }
+    
+  
+    
 
 
         // GET: AdoptionDays/Edit/5
@@ -186,5 +186,9 @@ namespace AdoptNet.Controllers
 
             return Json(Res);
         }
+
+
     }
+
+
 }
