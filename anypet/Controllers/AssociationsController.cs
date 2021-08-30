@@ -39,7 +39,7 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-            var association = await _context.Association
+            var association = await _context.Association.Include(a=>a.AdoptionDays)
                 .FirstOrDefaultAsync(m => m.Id == id);
             var adoptionday = await _context.AdoptionDays
                .FirstOrDefaultAsync(m => m.Id == id);

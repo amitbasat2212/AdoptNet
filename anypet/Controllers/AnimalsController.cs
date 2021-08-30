@@ -31,6 +31,26 @@ namespace AdoptNet.Controllers
 
         public async Task<IActionResult> Search(String Searching)
         {
+            var adoptNetContext = (from Al in _context.Animal
+                                   join As in _context.Association
+                                   on Al.AssociationId equals As.Id
+                                   select new Animal
+                                   {
+                                       Id = Al.Id,
+                                       AssociationId = As.Id,
+                                       Name = Al.Name,
+                                       Kind = Al.Kind,
+                                       Age = Al.Age,
+                                       Gender = Al.Gender,
+                                       Description = Al.Description,
+                                       Size = Al.Size,
+                                       Location = Al.Location,
+                                       AnimalImage = Al.AnimalImage,
+
+                                       Association = As
+
+                                   }
+                                   );
 
             Kind k;
             Location l;
@@ -39,7 +59,10 @@ namespace AdoptNet.Controllers
 
 
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.Animal> SearchContent = null;
-
+            if (Searching == null)
+            {
+                return View("Index", await adoptNetContext.ToListAsync());
+            }
 
             if (Searching.Equals("Cat") || Searching.Equals("Dog"))
             {
@@ -69,15 +92,12 @@ namespace AdoptNet.Controllers
                 return View("Index", await animals.ToListAsync());
 
             }
-
-
             if (SearchContent == null)
             {
                 return View("Index", new List<Animal>());
             }
 
-           
-            
+
             return View("Index", await SearchContent.ToListAsync());
             
             

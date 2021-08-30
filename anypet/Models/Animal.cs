@@ -17,7 +17,7 @@ public enum Size
         [Description("Small")]
         Small,
         [Description("medium")]
-        medium,
+        Medium,
         [Description("Big")]
         Big
 
@@ -39,7 +39,7 @@ public enum Size
     public enum Gender
     {
        Male,
-       Feamle
+       Female
     }
 
 
