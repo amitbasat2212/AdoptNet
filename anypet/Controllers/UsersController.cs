@@ -98,7 +98,8 @@ namespace Ad.Controllers
             if (ModelState.IsValid)
             {
                 var q = _context.User.FirstOrDefault(u => u.Username == user.Username); // if return null- there is no user like this ans we can do register
-
+                              
+                   
                 if (q == null)
                 {
                     _context.Add(user);
@@ -148,16 +149,12 @@ namespace Ad.Controllers
                 {
                     _context.Add(user);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
 
-                    var u = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
-
-                    Signin(u);
-
-                    return RedirectToAction(nameof(Index), "Home");// regsiter succeed- go to home
                 }
                 else // user already exists
                 {
-                    ViewData["Error"] = "Unable to comply; cannot register this user.";
+                    ViewData["Error"] = "Unable to comply; this user exist.";
                 }
             }
             return View(user);
@@ -257,23 +254,23 @@ namespace Ad.Controllers
         public async Task<IActionResult> Search(String Searching)
         {  // Use LINQ to get list of genres.
             Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<anypet.Models.User> SearchContent = null;
-
+            var user = _context.User.Where(b => (b.Username.Equals(Searching) || Searching == null));
+            if (Searching == null)
+            {
+                
+                return View("Index", await user.ToListAsync());
+            }
 
             if (Searching.Equals("Client") || Searching.Equals("Admin") || Searching.Equals("Association"))
             {
                 UserType k = (UserType)Enum.Parse(typeof(UserType), Searching);
                 SearchContent = (Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable<User>)_context.User.Where(a => a.Type.Equals(k));
+                return View("Index", await SearchContent.ToListAsync());
 
-            }
-            else
-            {
-                var user = _context.User.Where(b => (b.Username.Equals(Searching) || Searching == null));
-                return View("Index", await user.ToListAsync());
-
-            }
+            }           
 
 
-            return View("Index", await SearchContent.ToListAsync());
+            return View("Index", await user.ToListAsync());
         }
 
     }
