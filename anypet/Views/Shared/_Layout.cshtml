@@ -54,15 +54,14 @@
                 </form>
                 <il class="moving1 ">
                     <il class="text-end px-5 moving1">
-                        @if (!ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association"))
+                        @if (!(ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association")))
                         {
-                             <a asp-controller="Users" asp-action="Login"><button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button></a>}
-                        @if (!ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association"))
-                        {
-                            <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>}
+                             <a asp-controller="Users" asp-action="Login"><button type="button" class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
+                                    <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>}
+
                         @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association"))
                         {
-                            <a asp-controller="Users" asp-action="Logout"><button type="button" class="btn btn-warning px-3 moving ">Sign-out</button></a>}
+                             <a asp-controller="Users" asp-action="Logout"><button type="button" class="btn btn-warning px-3 moving ">Sign-out</button></a>}
                     </il>
             </ul>
 
@@ -124,6 +123,10 @@
                         <a href="https://www.instagram.com/adopt_net/?utm_medium=copy_link">
                             <i class="icon ion-social-instagram"></i>
                         </a>
+                        <a href="https://twitter.com/NetAdopt">
+                            <i class="icon ion-social-twitter"></i>
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -50,12 +50,11 @@
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
             </form>
-            @if (ViewBag.Error != null)
-            {
-                <div class="text-danger field-validation-error">@ViewBag.Error</div> 
-                
-            }
+
         </div>
+        @if (ViewBag.Error != null)
+        {
+             <div class="text-danger field-validation-error">@ViewBag.Error</div>            }
         <div class="screen__background">
             <span class="screen_backgroundshape screenbackground_shape4"></span>
             <span class="screen_backgroundshape screenbackground_shape3"></span>
