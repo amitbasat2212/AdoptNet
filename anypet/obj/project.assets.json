@@ -9905,17 +9905,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\liemm\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\limor\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
->>>>>>> 60a1591a22fed84f65fdc6a427138ff805cbe7d2
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\liemm\\source\\repos\\anypet\\anypet\\anypet.csproj",
       "projectName": "anypet",
       "projectPath": "C:\\Users\\liemm\\source\\repos\\anypet\\anypet\\anypet.csproj",
@@ -9924,20 +9918,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\liemm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\limor\\source\\repos\\AdoptNet\\anypet\\anypet.csproj",
-      "projectName": "anypet",
-      "projectPath": "C:\\Users\\limor\\source\\repos\\AdoptNet\\anypet\\anypet.csproj",
-      "packagesPath": "C:\\Users\\limor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\limor\\source\\repos\\AdoptNet\\anypet\\obj\\",
-      "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
-      "configFilePaths": [
-        "C:\\Users\\limor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 60a1591a22fed84f65fdc6a427138ff805cbe7d2
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10016,12 +9996,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> 60a1591a22fed84f65fdc6a427138ff805cbe7d2
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\liemm\\source\\repos\\anypet\\anypet\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
