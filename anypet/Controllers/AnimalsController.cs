@@ -26,9 +26,6 @@ namespace AdoptNet.Controllers
 
         //function for graph 
 
-
-
-
         public async Task<IActionResult> Search(String Searching)
         {
             var adoptNetContext = (from Al in _context.Animal
