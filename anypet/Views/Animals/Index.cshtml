@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<anypet.Models.Animal>
+﻿@model IEnumerable<anypet.Models.Animal>
 
 
 
@@ -99,7 +98,7 @@
                                                 <a class="decoText" asp-action="Delete" asp-route-id="@Animal.Id">Delete</a><i>|</i>
 
                                                 @if (Animal.AnimalImage == null)
-                                                {
+                       {
 
                         <a class="decoText" asp-controller="AnimalImages" asp-action="Create">Create Image</a><i>|</i>}
 

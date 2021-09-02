@@ -85,7 +85,7 @@ namespace AdoptNet.Controllers
 
             else
             {
-                var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null));
+               var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null) );
                 return View("Index", await animals.ToListAsync());
 
             }
@@ -96,7 +96,8 @@ namespace AdoptNet.Controllers
 
 
             return View("Index", await SearchContent.ToListAsync());
-
+            
+            
 
 
         }
@@ -220,7 +221,7 @@ namespace AdoptNet.Controllers
                 _context.Add(animal);
                 await _context.SaveChangesAsync();
                 PostMessageToTwitter(animal.Name).Wait();
-                return RedirectToAction(nameof(Index));               
+                return RedirectToAction(nameof(Index));
             }
 
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", nameof(Association.Name));
@@ -310,7 +311,7 @@ namespace AdoptNet.Controllers
         {
             return _context.Animal.Any(e => e.Id == id);
         }
-       
-        
+
+
     }
 }

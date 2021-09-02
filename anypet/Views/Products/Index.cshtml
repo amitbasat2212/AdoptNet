@@ -41,8 +41,7 @@
 
 @if (ViewContext.HttpContext.User.IsInRole("Association") || ViewContext.HttpContext.User.IsInRole("Admin"))
 {
-<a asp-action="Create"><input value="Add-Product" style="width: 155px;" class="btn btn-outline-dark subotton mix" /></a>
-}
+<a asp-action="Create"><input value="Add-Product" style="width: 155px;" class="btn btn-outline-dark subotton mix" /></a>}
 
 <div style="text-align: center; margin-right: -80px;">
     <form asp-controller="Products" asp-action="Search">

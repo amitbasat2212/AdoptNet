@@ -26,6 +26,8 @@ namespace AdoptNet.Controllers
 
 
         // GET: Associations
+        // The connection between many to many -> adoption days and associations
+        // one to one -> each association has it own image
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
@@ -39,7 +41,7 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-            var association = await _context.Association
+            var association = await _context.Association.Include(a=>a.AdoptionDays)
                 .FirstOrDefaultAsync(m => m.Id == id);
             var adoptionday = await _context.AdoptionDays
                .FirstOrDefaultAsync(m => m.Id == id);
@@ -57,6 +59,9 @@ namespace AdoptNet.Controllers
             ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
             return View();
         }
+
+        // many to many - creating new association and allocating memory to adoption days to each association
+        // this connecting is also shows in the adoption days
         // POST: Associations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -83,8 +88,8 @@ namespace AdoptNet.Controllers
 
         public async Task<IActionResult> Search(String Searching)
         {  // Use LINQ to get list of genres.
-
-            var adoptionDays = _context.Association.Include(a => a.Animals).Include(b => b.AssociationImage).Include(c => c.AdoptionDays).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Location.Contains(Searching) || Searching == null));
+         
+            var adoptionDays = _context.Association.Include(a => a.Animals).Include(b=>b.AssociationImage).Include(c=>c.AdoptionDays).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Location.Contains(Searching) || Searching == null));
             return View("Index", await adoptionDays.ToListAsync());
         }
 
@@ -104,7 +109,7 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
             ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
-
+          
             return View(association);
         }
         // POST: Associations/Edit/5
@@ -131,7 +136,7 @@ namespace AdoptNet.Controllers
                     adoptNetContext.Name = association.Name;
                     adoptNetContext.PhoneNumber = association.PhoneNumber;
 
-                    if (AdoptionDays.Length > 0)
+                    if (AdoptionDays.Length>0)
                     {
                         for (int i = 0; i < AdoptionDays.Length; i++)
                         {
@@ -163,7 +168,7 @@ namespace AdoptNet.Controllers
                         await _context.SaveChangesAsync();
                     }
                 }
-
+                
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AssociationExists(association.Id))
@@ -215,15 +220,16 @@ namespace AdoptNet.Controllers
 
         public JsonResult GetAssociationPlace()
         {
-            List<Association> AssociationList = new List<Association>();
+            List<Association> AssociationList= new List<Association>();
             foreach (var item in _context.Association)
             {
                 AssociationList.Add(item);
-
+                
             }
             return Json(AssociationList);
         }
 
+        //graph1
         public JsonResult GetAnimalsCount()
         {
             List<String> Res = new List<String>();

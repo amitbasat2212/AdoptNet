@@ -1,6 +1,8 @@
 ﻿@model anypet.Models.Association
 
-@{ ViewData["Title"] = "Edit"; }
+@{
+    ViewData["Title"] = "Edit";
+}
 
 <head>
     <meta charset="utf-8" />
@@ -34,7 +36,7 @@
 
 
 <br />
-<h1><ins>Edit an Association</ins></h1>
+<h1><ins>Edit an Adoption Day</ins></h1>
 <hr />
 <div class="row justify-content-center">
     <div class="col-md-3 formback">
@@ -76,7 +78,8 @@
 
         @if (ViewBag.Error != null)
         {
-<div class="text-danger field-validation-error">@ViewBag.Error</div>}
+            <div class="text-danger field-validation-error">@ViewBag.Error</div>
+        }
     </div>
 </div>
 
