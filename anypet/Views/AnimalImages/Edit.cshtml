@@ -68,6 +68,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <label asp-for="Size" class="control-label"></label>
                 <select asp-for="Size" class="form-control " asp-items="Html.GetEnumSelectList<Size>()"></select>
                 <span asp-validation-for="Size" class="text-danger"></span>
@@ -85,6 +86,17 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
                 <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+=======
+                <label asp-for="AnimalId" class="control-label"></label>
+                <select asp-for="AnimalId" class="form-control" asp-items="ViewBag.AnimalId" disabled="@(true)"></select>
+
+                <select id="hidden1" asp-for="AnimalId" class="form-control" asp-items="ViewBag.AnimalId" disabled="@(false)"></select>
+                <span asp-validation-for="AnimalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-outline-dark inputspace subotton" />
+                <a asp-controller="Animals" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+>>>>>>> origin/ApplicationLiem
             </div>
         </form>
     </div>
@@ -96,6 +108,11 @@
 
 
 @section Scripts {
+<<<<<<< HEAD
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+=======
+    <script src="~/js/fetureofpages.js" asp-append-version="true"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+>>>>>>> origin/ApplicationLiem
 }
 

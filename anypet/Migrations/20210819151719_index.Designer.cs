@@ -10,13 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-<<<<<<< HEAD:anypet/Migrations/20210904093137_recent.Designer.cs
-    [Migration("20210904093137_recent")]
-    partial class recent
-=======
-    [Migration("20210810131519_init")]
-    partial class init
->>>>>>> origin/ApplicationLiem:anypet/Migrations/20210810131519_init.Designer.cs
+    [Migration("20210819151719_index")]
+    partial class index
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,10 +38,7 @@ namespace anypet.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-<<<<<<< HEAD:anypet/Migrations/20210904093137_recent.Designer.cs
                         .IsRequired()
-=======
->>>>>>> origin/ApplicationLiem:anypet/Migrations/20210810131519_init.Designer.cs
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -140,8 +132,8 @@ namespace anypet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Location")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

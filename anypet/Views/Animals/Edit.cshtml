@@ -1,8 +1,6 @@
 ﻿@model anypet.Models.Animal
 
-@{
-    ViewData["Title"] = "Edit";
-}
+@{ ViewData["Title"] = "Edit"; }
 <head>
     <meta charset="utf-8" />
     <!-- CSS only -->
@@ -79,8 +77,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="AssociationId" class="control-label"></label>
+<<<<<<< HEAD
                 <select asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId" disabled="@(true)"></select>>
                 <select id="hidden1" asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId" disabled="@(false)"></select>>
+=======
+                <select asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId" disabled="@(true)"></select>
+                <select id="hidden1" asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId" disabled="@(false)"></select>
+>>>>>>> origin/ApplicationLiem
 
                 <span asp-validation-for="AssociationId" class="text-danger"></span>
             </div>

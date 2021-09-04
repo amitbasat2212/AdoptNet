@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 ﻿.container {
+=======
+﻿﻿﻿
+* { /* This resets all elements default margins and paddings */
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.container {
+>>>>>>> origin/ApplicationLiem
     max-width: 80%;
 }
 
@@ -113,9 +124,6 @@
 }
 
 
-
-
-
 #myVideo {
     position: absolute;
     right: 0;
@@ -123,9 +131,6 @@
     min-width: 100%;
     min-height: 100%;
 }
-
-
-
 
 
 #video1 {
@@ -246,7 +251,11 @@ h1 {
 
 
 .form-group {
+<<<<<<< HEAD
     margin-bottom: 20px;
+=======
+    margin-bottom: 15px;
+>>>>>>> origin/ApplicationLiem
     text-align: center;
 }
 
@@ -393,7 +402,10 @@ body {
 .spacesdes {
     margin: 20px;
     font-weight: bold;
+<<<<<<< HEAD
     text-align:center;
+=======
+>>>>>>> origin/ApplicationLiem
 }
 
 
@@ -443,6 +455,7 @@ h4 {
     padding-bottom: 70px;
 }
 
+<<<<<<< HEAD
 .spaceCards {
     width: 100rem;
     margin-right: 80px;
@@ -475,3 +488,611 @@ h4 {
 
 
 
+=======
+
+
+.spceseColor {
+    margin-right: 100px;
+    background-color: #f8d7da;
+    height: 580px;
+    margin-bottom: 40px;
+}
+
+
+#hidden1 {
+    display: none;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 9vw;
+    object-fit: cover;
+}
+
+.page-header {
+    background: url(cute-cats-dogs.png)no-repeat;
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 350px;
+}
+
+.page-caption {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.page-title {
+    font-size: 70px;
+    line-height: 1;
+    color: #FE7686;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 70px;
+    margin-top: -70px;
+
+}
+
+.join {
+    color: #FE7686;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bg-cover {
+    background-size: cover !important;
+}
+
+.image {
+    width: 50%;
+    height: 60%;
+    background-image: url(2104538.jpg);
+    margin-left: 350px;
+    margin-top: 100px;
+    border-radius: 25px;
+    padding-bottom: 200px
+}
+
+summary {
+    border: 4px solid transparent;
+    outline: none;
+    border-color: black;
+    padding: 2rem;
+    display: block;
+    background: #444;
+    color: white;
+    padding-left: 2.2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+details {
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    background: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
+
+summary:before {
+    content: '';
+    border-width: .4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: .2rem 50%;
+    transition: .25s transform ease;
+}
+
+
+
+.content {
+    border-top: none;
+    padding: 10px;
+    border: 2px solid #888;
+    border-top: none;
+}
+
+
+.down {
+    margin-bottom: 350px;
+}
+
+.card-img-top2 {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.mix {
+    margin-left: 46%;
+    margin-bottom: 50px;
+}
+
+.animal-key {
+    margin-top: -125px;
+    margin-left: 12%;
+    font-size: 60px;
+    color: #FE7686;
+}
+
+/*
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.card-img-top {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px
+}
+
+span.text-muted {
+    font-size: 12px
+}
+
+small.text-muted {
+    font-size: 15px
+}
+
+h5.ml-1 {
+    font-size: 13px
+}
+
+
+small.justify-content-end {
+    font-size: 9px;
+    cursor: pointer;
+    text-decoration: underline
+}
+
+@media screen and (max-width:600px) {
+    .col-sm-4 {
+        margin-bottom: 50px
+    }
+}
+
+.padup {
+    margin-top: 100px;
+}
+
+.pink {
+    color: #FE7686;
+}
+
+.card-img-topProduct {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+/*  
+
+*/
+/* what i add */
+
+.contin {
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+}
+
+
+
+.hero-container {
+    margin: auto;
+    display: flex;
+}
+
+.main-container {
+    width: 270px;
+    height: 540px;
+    position: relative;
+    margin: 0 20px;
+}
+
+.poster-container {
+    width: 230px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    z-index: 4;
+}
+
+.poster {
+    width: 100%;
+    box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.6);
+}
+
+.ticket-container {
+    background: #fff;
+    width: 270px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+}
+
+.main-container:hover .ticket-container {
+    opacity: 1;
+    animation: bounceIn 0.6s linear;
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.01, 1.01, 1.01);
+        transform: scale3d(1.01, 1.01, 1.01);
+    }
+
+    80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+
+
+
+.ticket__content {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+
+.ticket__movie-title {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #FE7686;
+}
+
+.ticket__movie-slogan {
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.ticket__current-price {
+    color: #FE7686;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.ticket__old-price {
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.ticket__buy-btn {
+    cursor: pointer;
+    width: 100%;
+    background: #2f2f2f;
+    color: white;
+    padding: 15px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.background {
+    background-color: #FE7686;
+    color: black;
+}
+
+/* 
+    newwww pop up
+*/
+/*
+        pop up neww
+    */
+
+.modal-content {
+    border-radius: 4rem;
+    width: 140%;
+    -webkit-box-shadow: -1px -2px 42px -19px rgba(0,0,0,0.74);
+    -moz-box-shadow: -1px -2px 42px -19px rgba(0,0,0,0.74);
+    box-shadow: -1px -2px 42px -19px rgba(0,0,0,0.74);
+}
+
+    .modal-content h1, .modal-content h2, .modal-content h3 {
+        text-align: center;
+    }
+
+    .modal-content h1 {
+        font-size: 1.3em;
+        text-transform: uppercase;
+    }
+
+    .modal-content h2 {
+        font-size: 1.1em;
+    }
+
+    .modal-content h3 {
+        font-size: .8em;
+        letter-spacing: 2px;
+    }
+
+
+.column {
+    flex: 50%;
+    text-align: center;
+}
+
+    .column#main {
+        flex: 75%;
+        padding: 50px;
+    }
+
+#secondary {
+    background-color: pink;
+    border-radius: 0 4rem 4rem 0;
+    text-align: center;
+}
+
+#main .form-control {
+    border-radius: 0;
+    font-size: .9em;
+}
+
+#secondary .btn-primary {
+    background: #f8f9fa4f;
+    color: #000;
+}
+
+.modal-body label {
+    margin-bottom: 0;
+    height: 400px;
+}
+
+.sec-content {
+    margin-top: 85%;
+}
+/* 
+    login design
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+.screen {
+    background: linear-gradient(90deg, #FE7686, #b7525e);
+    position: relative;
+    height: 600px;
+    width: 360px;
+    box-shadow: 0px 0px 24px #FE7686;
+}
+
+.screen__content {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+}
+
+.screen__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+}
+
+.screen__background__shape {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.screen__background__shape1 {
+    height: 520px;
+    width: 520px;
+    background: #FFF;
+    top: -50px;
+    right: 120px;
+    border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+    height: 220px;
+    width: 220px;
+    background: #ff517c;
+    top: -172px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.screen__background__shape3 {
+    height: 540px;
+    width: 190px;
+    background: linear-gradient(270deg, #ad3555, #FE7686);
+    top: -24px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.screen__background__shape4 {
+    height: 400px;
+    width: 200px;
+    background: #ff517c;
+    top: 420px;
+    right: 50px;
+    border-radius: 60px;
+}
+
+.login {
+    width: 320px;
+    padding: 30px;
+    padding-top: 156px;
+}
+
+.login__field {
+    padding: 20px 0px;
+    position: relative;
+}
+
+.login__icon {
+    position: absolute;
+    top: 30px;
+    color: #ff517c;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 2px solid #ff517c;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 700;
+    width: 75%;
+    transition: .2s;
+}
+
+    .login__input:active,
+    .login__input:focus,
+    .login__input:hover {
+        outline: none;
+        border-bottom-color: #ff517c;
+    }
+
+.login__submit {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #b7525e;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #b7525e;
+    box-shadow: 0px 2px 2px #FE7686;
+    cursor: pointer;
+    transition: .2s;
+}
+
+    .login__submit:active,
+    .login__submit:focus,
+    .login__submit:hover {
+        border-color: #6A679E;
+        outline: none;
+    }
+
+.button__icon {
+    font-size: 24px;
+    margin-left: auto;
+    color: #7875B5;
+}
+
+.social-login {
+    position: absolute;
+    height: 140px;
+    width: 160px;
+    text-align: center;
+    bottom: 0px;
+    right: 0px;
+    color: #fff;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-login__icon {
+    padding: 20px 10px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0px 0px 8px #7875B5;
+}
+
+    .social-login__icon:hover {
+        transform: scale(1.5);
+    }
+
+    /* 
+        new delete affect
+    */
+
+.deletePopup {
+    color: darkred;
+
+}
+
+/* for the errores */
+
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+>>>>>>> origin/ApplicationLiem

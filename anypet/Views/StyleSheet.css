@@ -68,10 +68,22 @@
         flex: 1;
     }
 }
+<<<<<<< HEAD
 
 .moving1 {
     padding-right: 50px;
     
+=======
+<<<<<<< HEAD
+
+.moving1 {
+    padding-right: 50px;
+=======
+.moving1 {
+    padding-right: 50px;
+    
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 .btn-outline-secondary {
@@ -97,14 +109,29 @@
 .Search, filter, mb-3 {
     text-align: left;
     float: left;
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
     color: white;
 }
 
 .Search {
     padding-left: 45px;
     padding-top: 30px;
+<<<<<<< HEAD
    background-color: #262626;
+=======
+<<<<<<< HEAD
+    background-color: #262626;
+=======
+   background-color: #262626;
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 
@@ -124,8 +151,16 @@
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
+<<<<<<< HEAD
    
    
+=======
+<<<<<<< HEAD
+=======
+   
+   
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 
@@ -136,8 +171,16 @@
     margin: auto;
     display: block;
     width: 98%;
+<<<<<<< HEAD
     height:80%;
     height: 80%;
+=======
+<<<<<<< HEAD
+    height: 80%;
+=======
+    height:80%;
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 #videoMessage {
@@ -198,23 +241,74 @@ h1 {
 
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.d-block {
+    width: 50px;
+    height: 400px;
+>>>>>>> origin/ApplicationLiem
 }
 
 
 }
 
+<<<<<<< HEAD
+=======
+.card-title {
+    text-align: center;
+=======
+.d-block{
+
+    width:50px;
+    height:400px;
+}
+
+
+.carousel{
+
+    width:600px;
+    height:800px;
+}
+
+.card-title{
+
+    text-align:center;
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 .text {
     color: #D1C9C8;
 }
 
+<<<<<<< HEAD
     width: 50px;
+=======
+<<<<<<< HEAD
+.Facebook {
+    width: 50px;
+    height: 50px;
+=======
+.Facebook{
+    width: 50px;
+    height:50px;
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 .twitter {
     width: 60px;
     height: 60px;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    margin-right: 150px;
+=======
+
+    margin-right:150px;
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 .instagram {
@@ -225,11 +319,30 @@ h1 {
 .icons1 {
     padding-top: 30px;
     margin-left: 50px;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    margin-right: 50px;
+    padding-left: 150px;
+=======
+    margin-right:50px;
+    padding-left:150px;
+>>>>>>> origin/ApplicationAmit
+>>>>>>> origin/ApplicationLiem
 }
 
 .ic {
     padding-right: 100px;
 }
+<<<<<<< HEAD
+=======
 
 
+<<<<<<< HEAD
+=======
+.img_fluid {
+    background-color: #212529;
+}
+>>>>>>> origin/ApplicationLiem
 
+>>>>>>> origin/ApplicationAmit

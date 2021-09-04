@@ -26,9 +26,12 @@ namespace AdoptNet.Controllers
 
         //function for graph 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> origin/ApplicationLiem
         public async Task<IActionResult> Search(String Searching)
         {
             var adoptNetContext = (from Al in _context.Animal
@@ -88,7 +91,11 @@ namespace AdoptNet.Controllers
 
             else
             {
+<<<<<<< HEAD
                 var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null));
+=======
+               var animals = _context.Animal.Include(a => a.Association).Include(b => b.AnimalImage).Where(b => (b.Name.Contains(Searching) || Searching == null) );
+>>>>>>> origin/ApplicationLiem
                 return View("Index", await animals.ToListAsync());
 
             }
@@ -99,8 +106,13 @@ namespace AdoptNet.Controllers
 
 
             return View("Index", await SearchContent.ToListAsync());
+<<<<<<< HEAD
 
 
+=======
+            
+            
+>>>>>>> origin/ApplicationLiem
 
         }
 

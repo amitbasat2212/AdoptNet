@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD:anypet/AdoptNet.csproj
     <Compile Remove="Views\Mapp.cs" />
     <Compile Remove="Views\Program.cs" />
   </ItemGroup>
@@ -21,6 +22,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
+=======
+    <None Include="wwwroot\css\StyleSheet.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="3.1.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.8" />
+>>>>>>> origin/ApplicationLiem:anypet/anypet.csproj
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
       <PrivateAssets>all</PrivateAssets>

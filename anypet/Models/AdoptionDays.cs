@@ -15,8 +15,11 @@ namespace AdoptNet.Models
         [RegularExpression(@"^[a-zA-Z\s ]+$", ErrorMessage = "The Name must contain only letters...")]
         [Required(ErrorMessage = "You must input Name of the Adoption Day")]
         public String Name { get; set; }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/ApplicationLiem
         public int Id { get; set; }
 
         [Display(Name = "Adoption Day")]

@@ -191,4 +191,8 @@ namespace AdoptNet.Controllers
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/ApplicationLiem

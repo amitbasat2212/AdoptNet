@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AdoptNet.Migrations
+namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
     partial class AdoptNetContextModelSnapshot : ModelSnapshot
