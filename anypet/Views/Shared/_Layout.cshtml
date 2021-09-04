@@ -27,37 +27,42 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
     <link rel="stylesheet" href="assets/css/style.css">
-
-
 </head>
 <body>
-
     <header class="site-header sticky-top py-1">
 
         <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <!-- link from the logo to home page -->
             <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" aria-label="Product">
                 <img src="~/css/Lemonsouce.png" class="bi me-4 px-4" width="150" height="70" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap" />
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center ">
-                <li><a asp-controller="Animals" asp-action="Index" class="nav-link px-4 text-white ">Cat Adoption</a></li>
-                <li><a asp-controller="Animals" asp-action="Index" class="nav-link px-4 text-white ">Dog Adoption</a></li>
+                <li><a asp-controller="Animals" asp-action="index" class="nav-link px-4 text-white ">Animal Adoption</a></li>
                 <li><a asp-controller="AdoptionDays" asp-action="Index" class="nav-link px-4 text-white ">Adoption days</a></li>
                 <li><a asp-controller="Associations" asp-action="Index" class="nav-link px-4 text-white ">Associations</a></li>
+                <li><a asp-controller="Products" asp-action="Index" class="nav-link px-4 text-white ">Animal products</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
+                <li><a asp-controller="Home" asp-action="Other" class="nav-link px-4 text-white ">Other intresting content</a></li>
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+    <li><a asp-controller="Users" asp-action="Index" class="nav-link px-4 text-white ">Users Managing</a></li>
+}
                 <form asp-controller="Animals" asp-action="Search">
                     <input name="Searching" placeholder="Enter something to search" />
                     <input type="submit" value="Search" class="btn btn-primary" />
                 </form>
                 <il class="moving1 ">
-
-
-
                     <il class="text-end px-5 moving1">
-                        <a asp-controller="Users" asp-action="Login"><button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
-                        <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>
+                        @if (!(ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association")))
+                        {
+            <a asp-controller="Users" asp-action="Login"><button type="button" class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
+                            <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>}
+
+                        @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association"))
+                        {
+            <a asp-controller="Users" asp-action="Logout"><button type="button" class="btn btn-warning px-3 moving ">Sign-out</button></a>}
                     </il>
             </ul>
 
@@ -67,8 +72,11 @@
 
     </header>
 
+
+
+
     <div class="container containerbackground">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 down">
             @RenderBody()
         </main>
     </div>
@@ -83,8 +91,8 @@
                         <h3>Adoption Days</h3>
                         <ul>
                             <li><a asp-action="Index" asp-controller="AdoptionDays">Adoption Days</a></li>
-                            <li><a asp-action="Index" asp-controller="Animals">Adopt Dog</a></li>
-                            <li><a asp-action="Index" asp-controller="Animals">Adopt Cat</a></li>
+                            <li><a asp-action="SearchDog" asp-controller="Animals">Adopt Dog</a></li>
+                            <li><a asp-action="SearchCat" asp-controller="Animals">Adopt Cat</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
@@ -109,7 +117,18 @@
                             AdoptNet Team.
                         </p>
                     </div>
-                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    <div class="col item social">
+                        <a href="https://www.facebook.com/AdoptNet">
+                            <i class="icon ion-social-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/adopt_net/?utm_medium=copy_link">
+                            <i class="icon ion-social-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/NetAdopt">
+                            <i class="icon ion-social-twitter"></i>
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </footer>
@@ -120,6 +139,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

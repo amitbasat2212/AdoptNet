@@ -1,4 +1,4 @@
-﻿@model anypet.Models.AnimalImage
+﻿@model anypet.Models.Products
 
 @{
     ViewData["Title"] = "Create";
@@ -31,20 +31,32 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 
 
+
 </head>
 
 
+
 <br />
-<h1><ins>Adding a new Animal Image</ins></h1>
+<h1><ins>Adding a new Product</ins></h1>
 <hr />
-<div class="row justify-content-center">
+<div class="row justify-content-center ">
     <div class="col-md-3 formback">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <label asp-for="Food" class="control-label"></label>
+                <select asp-for="Food" class="form-control" asp-items="Html.GetEnumSelectList<Food>()"></select>
+                <span asp-validation-for="Food" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Toy" class="control-label"></label>
+                <input asp-for="Toy" class="form-control" />
+                <span asp-validation-for="Toy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medicine" class="control-label"></label>
+                <input asp-for="Medicine" class="form-control" />
+                <span asp-validation-for="Medicine" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AnimalId" class="control-label"></label>
@@ -52,13 +64,12 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
-                <a asp-controller="Animals" asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+                <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
             </div>
         </form>
-
         @if (ViewBag.Error != null)
         {
-            <div class="text-danger error field-validation-error">@ViewBag.Error</div>
+            <div class="text-danger field-validation-error">@ViewBag.Error</div>
         }
     </div>
 </div>

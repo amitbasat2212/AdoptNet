@@ -1,8 +1,7 @@
-﻿@model anypet.Models.AnimalImage
+﻿@model anypet.Models.Animal
 
-@{
-    ViewData["Title"] = "Edit";
-}
+
+@{ ViewData["Title"] = "Create"; }
 
 <head>
     <meta charset="utf-8" />
@@ -32,27 +31,57 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 
 
+
 </head>
 
 
 <br />
-<h1><ins>Edit an Animal Image</ins></h1>
+<h1><ins>Adding a new animal</ins></h1>
 <hr />
-<div class="row justify-content-center">
+<div class="row justify-content-center ">
     <div class="col-md-3 formback">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control " />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnimalId" class="control-label"></label>
-                <select asp-for="AnimalId" class="form-control" asp-items="ViewBag.AnimalId"></select>
-                <span asp-validation-for="AnimalId" class="text-danger"></span>
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" min="0" />
+                <span asp-validation-for="Age" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Kind" class="control-label"></label>
+                <select asp-for="Kind" class="form-control " asp-items="Html.GetEnumSelectList<Kind>()"></select>
+                <span asp-validation-for="Kind" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control " asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control " />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <select asp-for="Size" class="form-control " asp-items="Html.GetEnumSelectList<Size>()"></select>
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <select asp-for="Location" class="form-control " asp-items="Html.GetEnumSelectList<Location>()"></select>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssociationId" class="control-label"></label>
+                <select asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId"></select>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
                 <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
@@ -62,6 +91,11 @@
 </div>
 
 
+
+
+
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
+

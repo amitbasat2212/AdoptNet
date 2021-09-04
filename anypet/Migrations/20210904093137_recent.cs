@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AdoptNet.Migrations
 {
-    public partial class AddMigrationall : Migration
+    public partial class recent : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,9 @@ namespace AdoptNet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdoptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LocationAdopt = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -27,10 +29,10 @@ namespace AdoptNet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
-                    Location = table.Column<int>(type: "int", nullable: false),
-                    EmailOfUser = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailOfUser = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,9 +84,9 @@ namespace AdoptNet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kind = table.Column<int>(type: "int", nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
+                    Age = table.Column<long>(type: "bigint", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Size = table.Column<int>(type: "int", nullable: false),
@@ -103,7 +105,7 @@ namespace AdoptNet.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AssociationImage",
+                name: "AssociationImages",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -113,9 +115,9 @@ namespace AdoptNet.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AssociationImage", x => x.Id);
+                    table.PrimaryKey("PK_AssociationImages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AssociationImage_Association_AssociationId",
+                        name: "FK_AssociationImages_Association_AssociationId",
                         column: x => x.AssociationId,
                         principalTable: "Association",
                         principalColumn: "Id",
@@ -142,6 +144,28 @@ namespace AdoptNet.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Food = table.Column<int>(type: "int", nullable: false),
+                    Toy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Medicine = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AnimalId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Animal_AnimalId",
+                        column: x => x.AnimalId,
+                        principalTable: "Animal",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AdoptionDaysAssociation_AssociationsId",
                 table: "AdoptionDaysAssociation",
@@ -159,9 +183,15 @@ namespace AdoptNet.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssociationImage_AssociationId",
-                table: "AssociationImage",
+                name: "IX_AssociationImages_AssociationId",
+                table: "AssociationImages",
                 column: "AssociationId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_AnimalId",
+                table: "Products",
+                column: "AnimalId",
                 unique: true);
         }
 
@@ -174,7 +204,10 @@ namespace AdoptNet.Migrations
                 name: "AnimalImage");
 
             migrationBuilder.DropTable(
-                name: "AssociationImage");
+                name: "AssociationImages");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "User");

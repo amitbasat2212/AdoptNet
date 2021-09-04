@@ -30,12 +30,16 @@ namespace anypet
         {
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "/Users/Login"; options.AccessDeniedPath = "/Users/AccessDenied"; });
-
+            
             services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(10); });
             services.AddControllersWithViews();
 
             services.AddDbContext<AdoptNetContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AdoptNetContext")));
+           // services.AddNodeServices();
+            services.AddMvc();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

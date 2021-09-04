@@ -1,8 +1,7 @@
 ﻿@model anypet.Models.User
 
-@{ ViewData["Title"] = "Register";
-                //layout for register page (design) 
-}
+@{ ViewData["Title"] = "Register"; }
+   
 
 <head>
     <meta charset="utf-8" />
@@ -58,7 +57,7 @@
             </form>
             @if (ViewBag.Error != null)
             {
-<div class="text-danger">@ViewBag.Error</div>            }
+<div class="text-danger field-validation-error">@ViewBag.Error</div>}
         </div>
         <div class="screen__background">
             <span class="screen_backgroundshape screenbackground_shape4"></span>

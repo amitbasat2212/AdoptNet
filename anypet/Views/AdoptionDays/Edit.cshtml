@@ -49,8 +49,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="AdoptionDate" class="control-label"></label>
-                <input asp-for="AdoptionDate" class="form-control" />
+                <input asp-for="AdoptionDate" id="Adopt" class="form-control" />
                 <span asp-validation-for="AdoptionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control " />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LocationAdopt" class="control-label"></label>
@@ -58,7 +63,7 @@
                 <span asp-validation-for="LocationAdopt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-outline-dark inputspace subotton" />
+                <input type="submit" value="Edit" class="btn btn-outline-dark inputspace subotton" />
                 <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
             </div>
         </form>
@@ -68,5 +73,8 @@
 
 
 @section Scripts {
+
+    <script src="~/js/fetureofpages.js" asp-append-version="true"></script>
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

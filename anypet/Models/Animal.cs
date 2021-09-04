@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace anypet.Models
 {
-   
 
-public enum Size
+
+    public enum Size
     {
         [Description("Small")]
         Small,
         [Description("medium")]
-        medium,
+        Medium,
         [Description("Big")]
         Big
 
@@ -25,8 +25,8 @@ public enum Size
     }
     public enum Kind
     {
-       Dog,
-       Cat
+        Dog,
+        Cat
 
     }
 
@@ -38,8 +38,8 @@ public enum Size
     }
     public enum Gender
     {
-       Male,
-       Feamle
+        Male,
+        Female
     }
 
 
@@ -50,8 +50,8 @@ public enum Size
         public int Id { get; set; }
 
 
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "The name  must contain only letters...")]
-       
+        [RegularExpression(@"^[a-zA-Z_ ]+$", ErrorMessage = "The name  must contain only letters...")]
+        [Required(ErrorMessage = "You must input Name of the Animal")]
         public String Name { get; set; }
 
         [Display(Name = "species")]
@@ -61,7 +61,7 @@ public enum Size
         [RegularExpression("^[0-9]+$", ErrorMessage = "the age is only in numbers ")]
         [Required(ErrorMessage = "You must input Age of the Animal")]
         [Range(0, 110)]
-        public ushort Age { get; set; }
+        public uint Age { get; set; }
 
 
         //need to check this with validation- maby making it a list of female and male** 
@@ -69,8 +69,8 @@ public enum Size
         public Gender Gender { get; set; }
 
 
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "The Description must contain only letters...")]
-        public String Description  { get; set; }
+        [RegularExpression(@"^[a-zA-Z\s ]+$", ErrorMessage = "The Description must contain only letters...")]
+        public String Description { get; set; }
 
 
         //need to ne a list of small,medium and big 
@@ -86,16 +86,33 @@ public enum Size
         public int AssociationId { get; set; }
 
 
-        public Association Association { get; set; }       
+        public Association Association { get; set; }
 
-              
+
         //this field represent the connection of one to one 
         public AnimalImage AnimalImage { get; set; }
 
-       
+
+        public Products AnimalProducts { get; set; }
+
+
+
+
 
 
 
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

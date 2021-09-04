@@ -30,102 +30,72 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
-    
+
 
 </head>
-
-
-<div class="card" style="width: 18rem;">
-    <div class="card-header">
-       Details
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-            <dt class="col-6 mx-auto spacesdes">
-    <h5>
-        <u>@Html.DisplayNameFor(model => model.Name):</u>
-    </h5>
-            </dt>
-        </li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-    </ul>
-</div>
-
-
 
 
 
 <h1>Details of an Animal</h1>
 
-<div>
+<details>
+    <summary class="background">@Html.DisplayFor(model => model.Name)</summary>
+    <div class="content">
+        <dt class="col-6 mx-auto spacesdes">
+            <h5>
+                <u>@Html.DisplayNameFor(model => model.Name):</u>
+            </h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u> @Html.DisplayNameFor(model => model.Kind):</u> </h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Kind)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u>@Html.DisplayNameFor(model => model.Age):</u>  </h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u>@Html.DisplayNameFor(model => model.Gender):</u> </h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u>@Html.DisplayNameFor(model => model.Description):</u></h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u>@Html.DisplayNameFor(model => model.Size):</u></h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u>@Html.DisplayNameFor(model => model.Location):</u></h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class="col-6 mx-auto spacesdes">
+            <h5><u>@Html.DisplayNameFor(model => model.Association):</u></h5>
+        </dt>
+        <dd class="col-6 mx-auto spacesdes">
+            @Html.DisplayFor(model => model.Association.Name)
+        </dd>
 
-    <hr />
-    <dl class="row justify-content-center ">
-        <div class="col-6 mx-auto spacesdes formback">
-            <dt class="col-6 mx-auto spacesdes">
-                <h5>
-                    <u>@Html.DisplayNameFor(model => model.Name):</u>
-                </h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u> @Html.DisplayNameFor(model => model.Kind):</u> </h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Kind)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u>@Html.DisplayNameFor(model => model.Age):</u>  </h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Age)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u>@Html.DisplayNameFor(model => model.Gender):</u> </h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Gender)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u>@Html.DisplayNameFor(model => model.Description):</u></h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u>@Html.DisplayNameFor(model => model.Size):</u></h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Size)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u>@Html.DisplayNameFor(model => model.Location):</u></h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Location)
-            </dd>
-            <dt class="col-6 mx-auto spacesdes">
-                <h5><u>@Html.DisplayNameFor(model => model.Association):</u></h5>
-            </dt>
-            <dd class="col-6 mx-auto spacesdes">
-                @Html.DisplayFor(model => model.Association.Name)
-            </dd>
+        <form class="col-6 mx-auto spacesdes" id="footerbootom">
+            <input type="hidden" asp-for="Id" />
+            <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
+        </form>
+    </div>
+</details>
 
-            <form class="col-6 mx-auto spacesdes" id="footerbootom">
-                <input type="hidden" asp-for="Id" />
-                <a asp-action="Index"><input value="List" class="btn btn-outline-dark inputspace subotton " /></a>
-            </form>
-
-
-        </div>
-
-
-    </dl>
-
-
-
-
-</div>

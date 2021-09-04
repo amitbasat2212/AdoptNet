@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace anypet.Models
 {
     //this class is represent the image of each association
-    public class AssociationImage
+    public class AssociationImages
     {
         public int Id { get; set; }
         [Display(Name = "Association Image")]
