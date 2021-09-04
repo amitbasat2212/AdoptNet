@@ -41,7 +41,7 @@ namespace AdoptNet.Controllers
             {
                 return NotFound();
             }
-            var association = await _context.Association.Include(a=>a.AdoptionDays)
+            var association = await _context.Association.Include(a => a.AdoptionDays)
                 .FirstOrDefaultAsync(m => m.Id == id);
             var adoptionday = await _context.AdoptionDays
                .FirstOrDefaultAsync(m => m.Id == id);
@@ -88,8 +88,8 @@ namespace AdoptNet.Controllers
 
         public async Task<IActionResult> Search(String Searching)
         {  // Use LINQ to get list of genres.
-         
-            var adoptionDays = _context.Association.Include(a => a.Animals).Include(b=>b.AssociationImage).Include(c=>c.AdoptionDays).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Location.Contains(Searching) || Searching == null));
+
+            var adoptionDays = _context.Association.Include(a => a.Animals).Include(b => b.AssociationImage).Include(c => c.AdoptionDays).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Location.Contains(Searching) || Searching == null));
             return View("Index", await adoptionDays.ToListAsync());
         }
 
@@ -109,7 +109,7 @@ namespace AdoptNet.Controllers
                 return NotFound();
             }
             ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
-          
+
             return View(association);
         }
         // POST: Associations/Edit/5
@@ -135,8 +135,8 @@ namespace AdoptNet.Controllers
                     adoptNetContext.Location = association.Location;
                     adoptNetContext.Name = association.Name;
                     adoptNetContext.PhoneNumber = association.PhoneNumber;
-
-                    if (AdoptionDays.Length>0)
+                 
+                    if (AdoptionDays.Length > 0)
                     {
                         for (int i = 0; i < AdoptionDays.Length; i++)
                         {
@@ -159,8 +159,14 @@ namespace AdoptNet.Controllers
 
                         }
                     }
+                    else if (AdoptionDays.Length == 0)
+                    {
+                        _context.Update(adoptNetContext);
+                        await _context.SaveChangesAsync();
+                       
+                    }
 
-                    else
+                    else 
                     {
                         adoptNetContext.AdoptionDays = new List<AdoptionDays>();
                         adoptNetContext.AdoptionDays.AddRange(_context.AdoptionDays.Where(x => AdoptionDays.Contains(x.Id)));
@@ -168,7 +174,7 @@ namespace AdoptNet.Controllers
                         await _context.SaveChangesAsync();
                     }
                 }
-                
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AssociationExists(association.Id))
@@ -220,11 +226,11 @@ namespace AdoptNet.Controllers
 
         public JsonResult GetAssociationPlace()
         {
-            List<Association> AssociationList= new List<Association>();
+            List<Association> AssociationList = new List<Association>();
             foreach (var item in _context.Association)
             {
                 AssociationList.Add(item);
-                
+
             }
             return Json(AssociationList);
         }
