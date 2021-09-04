@@ -2,7 +2,7 @@
 
 namespace anypet.Migrations
 {
-    public partial class ChangeVaribale : Migration
+    public partial class associationnew : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

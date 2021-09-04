@@ -26,6 +26,8 @@ namespace AdoptNet.Controllers
 
 
         // GET: Associations
+        // The connection between many to many -> adoption days and associations
+        // one to one -> each association has it own image
         [Authorize(Roles = "Admin,Association,Client")]
         public async Task<IActionResult> Index()
         {
@@ -57,6 +59,9 @@ namespace AdoptNet.Controllers
             ViewData["Adoption"] = new SelectList(_context.AdoptionDays, "Id", "Name");
             return View();
         }
+
+        // many to many - creating new association and allocating memory to adoption days to each association
+        // this connecting is also shows in the adoption days
         // POST: Associations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

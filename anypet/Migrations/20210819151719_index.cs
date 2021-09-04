@@ -2,13 +2,23 @@
 
 namespace anypet.Migrations
 {
-    public partial class NewErrores : Migration
+    public partial class index : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Association",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Animal",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -32,6 +42,14 @@ namespace anypet.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Association",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Animal",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),

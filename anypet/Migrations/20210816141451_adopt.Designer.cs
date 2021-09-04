@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    [Migration("20210818153339_Adoption")]
-    partial class Adoption
+    [Migration("20210816141451_adopt")]
+    partial class adopt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,9 +30,6 @@ namespace anypet.Migrations
 
                     b.Property<DateTime>("AdoptionDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LocationAdopt")
                         .HasColumnType("int");

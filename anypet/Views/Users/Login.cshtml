@@ -1,6 +1,8 @@
 ﻿@model anypet.Models.User
 
-@{ ViewData["Title"] = "Login"; }
+@{
+    ViewData["Title"] = "Login";
+}
 
 <head>
     <meta charset="utf-8" />
@@ -9,7 +11,7 @@
     <!-- JavaScript Bundle with Popper -->
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/css/StyleSheet1.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Open+Sans&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
     <title>AdoptNet</title>
@@ -31,6 +33,7 @@
 
 </head>
 
+
 <div class="container" style="margin-top:150px; margin-left: 400px;">
     <div class="screen">
         <div class="screen__content">
@@ -45,21 +48,28 @@
                     <a>Password:</a>
                     <input asp-for="Password" type="password" class="login__input">
                 </div>
+
                 <button class="button login__submit">
                     <span class="button__text">Log In Now</span>
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
+
             </form>
 
         </div>
         @if (ViewBag.Error != null)
         {
+<<<<<<< HEAD
              <div class="text-danger field-validation-error">@ViewBag.Error</div>            }
+=======
+            <div class="text-danger field-validation-error">@ViewBag.Error</div>
+        }
+>>>>>>> origin/ApplicationLiem
         <div class="screen__background">
-            <span class="screen_backgroundshape screenbackground_shape4"></span>
-            <span class="screen_backgroundshape screenbackground_shape3"></span>
-            <span class="screen_backgroundshape screenbackground_shape2"></span>
-            <span class="screen_backgroundshape screenbackground_shape1"></span>
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
         </div>
     </div>
 </div>

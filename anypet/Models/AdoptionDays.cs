@@ -15,8 +15,6 @@ namespace AdoptNet.Models
         [RegularExpression(@"^[a-zA-Z\s ]+$", ErrorMessage = "The Name must contain only letters...")]
         [Required(ErrorMessage = "You must input Name of the Adoption Day")]
         public String Name { get; set; }
-
-      
         public int Id { get; set; }
 
         [Display(Name = "Adoption Day")]
@@ -31,7 +29,7 @@ namespace AdoptNet.Models
         [Display(Name = "Location of the Adoption Day")]
         public Location LocationAdopt { get; set; }
 
-        
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿* { /* This resets all elements default margins and paddings */
+﻿﻿﻿
+* { /* This resets all elements default margins and paddings */
     margin: 0px;
     padding: 0px;
 }
@@ -482,6 +483,7 @@ h4 {
     text-align: center;
     margin-bottom: 70px;
     margin-top: -70px;
+
 }
 
 .join {
@@ -529,13 +531,13 @@ details {
 }
 
 
-    details summary::-webkit-details-marker {
-        display: none;
-    }
+details summary::-webkit-details-marker {
+    display: none;
+}
 
-    details[open] > summary:before {
-        transform: rotate(90deg);
-    }
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
 
 summary:before {
     content: '';
@@ -878,12 +880,12 @@ small.justify-content-end {
     clip-path: inset(0 0 0 0);
 }
 
-.screen_background_shape {
+.screen__background__shape {
     transform: rotate(45deg);
     position: absolute;
 }
 
-.screen_background_shape1 {
+.screen__background__shape1 {
     height: 520px;
     width: 520px;
     background: #FFF;
@@ -892,7 +894,7 @@ small.justify-content-end {
     border-radius: 0 72px 0 0;
 }
 
-.screen_background_shape2 {
+.screen__background__shape2 {
     height: 220px;
     width: 220px;
     background: #ff517c;
@@ -901,7 +903,7 @@ small.justify-content-end {
     border-radius: 32px;
 }
 
-.screen_background_shape3 {
+.screen__background__shape3 {
     height: 540px;
     width: 190px;
     background: linear-gradient(270deg, #ad3555, #FE7686);
@@ -910,7 +912,7 @@ small.justify-content-end {
     border-radius: 32px;
 }
 
-.screen_background_shape4 {
+.screen__background__shape4 {
     height: 400px;
     width: 200px;
     background: #ff517c;
@@ -1012,12 +1014,13 @@ small.justify-content-end {
         transform: scale(1.5);
     }
 
-/* 
+    /* 
         new delete affect
     */
 
 .deletePopup {
     color: darkred;
+
 }
 
 /* for the errores */

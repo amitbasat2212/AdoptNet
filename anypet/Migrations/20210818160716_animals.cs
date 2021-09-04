@@ -2,7 +2,7 @@
 
 namespace anypet.Migrations
 {
-    public partial class Adoption : Migration
+    public partial class animals : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

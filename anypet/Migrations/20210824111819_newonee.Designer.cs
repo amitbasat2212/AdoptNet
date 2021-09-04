@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-    [Migration("20210819143326_NewErrores")]
-    partial class NewErrores
+    [Migration("20210824111819_newonee")]
+    partial class newonee
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
