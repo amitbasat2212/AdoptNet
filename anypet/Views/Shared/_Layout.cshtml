@@ -45,18 +45,27 @@
                 <li><a asp-controller="Products" asp-action="Index" class="nav-link px-4 text-white ">Animal products</a></li>
                 <li><a asp-controller="Home" asp-action="About" class="nav-link px-4 text-white ">About</a></li>
                 <li><a asp-controller="Home" asp-action="Other" class="nav-link px-4 text-white ">Other intresting content</a></li>
-
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                <li><a asp-controller="Users" asp-action="Index" class="nav-link px-4 text-white ">Users Managing</a></li>}
                 <form asp-controller="Animals" asp-action="Search">
                     <input name="Searching" placeholder="Enter something to search" />
                     <input type="submit" value="Search" class="btn btn-primary" />
                 </form>
                 <il class="moving1 ">
                     <il class="text-end px-5 moving1">
-                        <a asp-controller="Users" asp-action="Login"><button type="button " class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
-                        <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>
-                        <a asp-controller="Users" asp-action="Logout"><button type="button" class="btn btn-warning px-3 moving ">Sign-out</button></a>
+                        @if (!(ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association")))
+                        {
+                            <a asp-controller="Users" asp-action="Login"><button type="button" class="btn btn-outline-light me-2 px-3 moving">Login</button></a>
+                            <a asp-controller="Users" asp-action="Register"><button type="button" class="btn btn-warning px-3 ">Sign-up</button></a>
+                        }
+
+                        @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Client") || ViewContext.HttpContext.User.IsInRole("Association"))
+                        {
+                            <a asp-controller="Users" asp-action="Logout"><button type="button" class="btn btn-warning px-3 moving ">Sign-out</button></a>
+                        }
                     </il>
-            </ul>
+</ul>
 
 
 
@@ -115,6 +124,9 @@
                         </a>
                         <a href="https://www.instagram.com/adopt_net/?utm_medium=copy_link">
                             <i class="icon ion-social-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/NetAdopt">
+                            <i class="icon ion-social-twitter"></i>
                         </a>
                     </div>
                 </div>

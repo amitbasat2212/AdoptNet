@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace anypet.Models
 {
-   
 
-public enum Size
+
+    public enum Size
     {
         [Description("Small")]
         Small,
         [Description("medium")]
-        medium,
+        Medium,
         [Description("Big")]
         Big
 
@@ -25,8 +25,8 @@ public enum Size
     }
     public enum Kind
     {
-       Dog,
-       Cat
+        Dog,
+        Cat
 
     }
 
@@ -70,7 +70,7 @@ public enum Size
 
 
         [RegularExpression(@"^[a-zA-Z\s ]+$", ErrorMessage = "The Description must contain only letters...")]
-        public String Description  { get; set; }
+        public String Description { get; set; }
 
 
         //need to ne a list of small,medium and big 
@@ -86,9 +86,9 @@ public enum Size
         public int AssociationId { get; set; }
 
 
-        public Association Association { get; set; }       
+        public Association Association { get; set; }
 
-              
+
         //this field represent the connection of one to one 
         public AnimalImage AnimalImage { get; set; }
 

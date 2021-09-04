@@ -19,8 +19,8 @@ namespace anypet.Controllers
             _context = context;
         }
 
-      
-       
+
+
 
         // GET: AssociationImages/Create
         public IActionResult Create()
@@ -40,7 +40,7 @@ namespace anypet.Controllers
             {
                 var check = _context.AssociationImages.Where(r => r.AssociationId.Equals(associationImages.AssociationId));
 
-                if (check.Count()==0)
+                if (check.Count() == 0)
                 {
                     _context.Add(associationImages);
                     await _context.SaveChangesAsync();
@@ -135,7 +135,7 @@ namespace anypet.Controllers
             var associationImages = await _context.AssociationImages.FindAsync(id);
             _context.AssociationImages.Remove(associationImages);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), "Associations"); 
+            return RedirectToAction(nameof(Index), "Associations");
         }
 
         private bool AssociationImagesExists(int id)

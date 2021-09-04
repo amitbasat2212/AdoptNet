@@ -10,13 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace anypet.Migrations
 {
     [DbContext(typeof(AdoptNetContext))]
-<<<<<<< HEAD:anypet/Migrations/20210825195721_init.Designer.cs
-    [Migration("20210825195721_init")]
-    partial class init
-=======
-    [Migration("20210826143736_association-new")]
-    partial class associationnew
->>>>>>> origin/ApplicationLiem:anypet/Migrations/20210826143736_association-new.Designer.cs
+    [Migration("20210819151719_index")]
+    partial class index
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,8 +132,8 @@ namespace anypet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Location")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

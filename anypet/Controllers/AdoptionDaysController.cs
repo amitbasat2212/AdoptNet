@@ -27,7 +27,7 @@ namespace AdoptNet.Controllers
             return View(await _context.AdoptionDays.ToListAsync());
         }
 
-        
+
 
         // GET: AdoptionDays/Create
         [Authorize(Roles = "Admin,Association")]
@@ -51,6 +51,21 @@ namespace AdoptNet.Controllers
             }
             return View(adoptionDays);
         }
+
+
+
+
+        public async Task<IActionResult> Search(String Searching)
+        {  // Use LINQ to get list of genres.
+
+            var adoptionDays = _context.AdoptionDays.Include(a => a.Associations).Where(b => (b.Name.Contains(Searching) || Searching == null) || (b.Description.Contains(Searching) || Searching == null));
+
+            return View("Index", await adoptionDays.ToListAsync());
+        }
+
+
+
+
 
         // GET: AdoptionDays/Edit/5
         [Authorize(Roles = "Admin,Association")]
@@ -139,11 +154,10 @@ namespace AdoptNet.Controllers
             return _context.AdoptionDays.Any(e => e.Id == id);
         }
 
-        //graph2
         public JsonResult GetAdoptDayCount()
         {
             List<String> Res = new List<String>();
-            
+
             int AmountOfJan = _context.AdoptionDays.Where(a => a.AdoptionDate.Month == 1).Count();
             int AmountOfFeb = _context.AdoptionDays.Where(a => a.AdoptionDate.Month == 2).Count();
             int AmountOfMar = _context.AdoptionDays.Where(a => a.AdoptionDate.Month == 3).Count();
@@ -172,5 +186,9 @@ namespace AdoptNet.Controllers
 
             return Json(Res);
         }
+
+
     }
+
+
 }
